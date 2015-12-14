@@ -26,25 +26,27 @@ VALUES (3, 'Vlad', 'Dracul', 'TheImpaler', 'dracula@wallachia.ro', 'bl00d');
 CREATE Table [ECommerce].[dbo].[Address]
 (
    c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
+   a_id int PRIMARY KEY,
    address_firstline VARCHAR(60),
    address_secondline VARCHAR(60),
    address_city VARCHAR(60),
-   address_country VARCHAR(60)
+   address_country VARCHAR(60),
+   postcode VARCHAR(10)
 );
 
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (1, '4 Privet Drive', 'Little Whinging', 'Surrey', 'England');
+VALUES (1, 1, '4 Privet Drive', 'Little Whinging', 'Surrey', 'England', 'SUR 123');
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (2, 'Bag End', 'Bag Shot Row', 'Hobbiton', 'The Shire');
+VALUES (2, 2, 'Bag End', 'Bag Shot Row', 'Hobbiton', 'The Shire', 'NZ1 234');
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (3, 'Cetatea Poenari', 'Mount Cetatea', 'Târgu Mureș', 'Wallachia');
+VALUES (3, 3, 'Cetatea Poenari', 'Mount Cetatea', 'Târgu Mureș', 'Wallachia', 'ROM VAM');
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (4, 'Boris and Blotts','Knockturn Alley', 'London', 'England');
+VALUES (4, 4, 'Boris and Blotts','Knockturn Alley', 'London', 'England', 'LON 123');
 
 CREATE Table [ECommerce].[dbo].[PaymentInfo]
 (
    c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
-   card_number BIGINT,
+   card_number BIGINT PRIMARY KEY,
    expiry_month int,
    expiry_year int,
    card_name VARCHAR(60)
@@ -81,6 +83,7 @@ VALUES (3, 'Stake', 'An ergonomically designed shard of aspen, excellent for hol
 
 CREATE Table [ECommerce].[dbo].[OrderHistory]
 (
+order_number int PRIMARY KEY,
 quantity int,
 p_id int FOREIGN KEY REFERENCES ProductData(p_id),
 c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
@@ -88,8 +91,8 @@ purchase_date date
 );
 
 INSERT INTO [ECommerce].[dbo].[OrderHistory]
-VALUES (1, 1, 1, '20010101');
+VALUES (1,1, 1, 1, '20010101');
 INSERT INTO [ECommerce].[dbo].[OrderHistory]
-VALUES (1, 1, 4, '19910101');
+VALUES (2, 1, 1, 4, '19910101');
 INSERT INTO [ECommerce].[dbo].[OrderHistory]
-VALUES (1000, 3, 3, '19990101');
+VALUES (3, 1000, 3, 3, '19990101');
