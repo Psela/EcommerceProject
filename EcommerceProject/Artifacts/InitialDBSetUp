@@ -1,0 +1,95 @@
+DROP Table [ECommerce].[dbo].[OrderHistory];
+DROP Table [ECommerce].[dbo].[Address];
+DROP Table [ECommerce].[dbo].[PaymentInfo];
+DROP Table [ECommerce].[dbo].[ProductData];
+DROP Table [ECommerce].[dbo].[CustomerData];
+
+CREATE Table [ECommerce].[dbo].[CustomerData]
+(
+   c_id int NOT NULL PRIMARY KEY,
+   first_name VARCHAR(36) NOT NULL,
+   last_name VARCHAR(36) NOT NULL,
+   username VARCHAR(36) NOT NULL,
+   email VARCHAR(60) NOT NULL,
+   password VARCHAR(40) NOT NULL
+);
+
+INSERT INTO ECommerce.dbo.CustomerData
+VALUES (1, 'Harry', 'Potter', 'HPThatsMe', 'theboywholived@hogwarts.owl', 'scar');
+INSERT INTO ECommerce.dbo.CustomerData
+VALUES (4, 'Tom', 'Riddle', 'TheDarkLord', 'voldemort@hogwarts.owl', 'horcrux');
+INSERT INTO ECommerce.dbo.CustomerData
+VALUES (2, 'Frodo', 'Baggins', 'RingBearer02','fbaggins@shiremail.me', 'precious');
+INSERT INTO ECommerce.dbo.CustomerData
+VALUES (3, 'Vlad', 'Dracul', 'TheImpaler', 'dracula@wallachia.ro', 'bl00d');
+
+CREATE Table [ECommerce].[dbo].[Address]
+(
+   c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
+   address_firstline VARCHAR(60),
+   address_secondline VARCHAR(60),
+   address_city VARCHAR(60),
+   address_country VARCHAR(60)
+);
+
+INSERT INTO [ECommerce].[dbo].[Address]
+VALUES (1, '4 Privet Drive', 'Little Whinging', 'Surrey', 'England');
+INSERT INTO [ECommerce].[dbo].[Address]
+VALUES (2, 'Bag End', 'Bag Shot Row', 'Hobbiton', 'The Shire');
+INSERT INTO [ECommerce].[dbo].[Address]
+VALUES (3, 'Cetatea Poenari', 'Mount Cetatea', 'Târgu Mureș', 'Wallachia');
+INSERT INTO [ECommerce].[dbo].[Address]
+VALUES (4, 'Boris and Blotts','Knockturn Alley', 'London', 'England');
+
+CREATE Table [ECommerce].[dbo].[PaymentInfo]
+(
+   c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
+   card_number BIGINT,
+   expiry_month int,
+   expiry_year int,
+   card_name VARCHAR(60)
+);
+
+INSERT INTO [ECommerce].[dbo].[PaymentInfo]
+VALUES (1, 1122334455, 07, 2018, 'Harry James Potter');
+INSERT INTO [ECommerce].[dbo].[PaymentInfo]
+VALUES (2, 2222334455, 08, 2018, 'Frodo D Baggins');
+INSERT INTO [ECommerce].[dbo].[PaymentInfo]
+VALUES (3, 3322334455, 09, 2018, 'Vlad Basarab');
+INSERT INTO [ECommerce].[dbo].[PaymentInfo]
+VALUES (4, 4422334455, 10, 2018, 'Lucius Malfoy');
+
+CREATE Table [ECommerce].[dbo].[ProductData]
+(
+   p_id int PRIMARY KEY,
+   product_name VARCHAR(255),
+   description VARCHAR(900),
+   price decimal (5,2),
+   tag1 VARCHAR(36),
+   tag2 VARCHAR(36),
+   tag3 VARCHAR(36),
+   stock int,
+   imageurl VARCHAR(255)
+);
+
+INSERT INTO [ECommerce].[dbo].[ProductData](p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES (1, 'Magical Wand with Phoenix feather core', 'A magical stick', 299.99, 'Wand', 'Magic', 'Phoenix', 2, 'http://vignette2.wikia.nocookie.net/harrypotter/images/a/a8/Harrypotterwand.jpg/revision/latest?cb=20090315070416');
+INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock)
+VALUES (2, 'Orc repellent', 'A spray a day keeps the nasty orcs away!', 9.99, 'Spray', 'Orcs', 'Repellent', 200);
+INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock)
+VALUES (3, 'Stake', 'An ergonomically designed shard of aspen, excellent for holding tents and the bodies of your enemies in place', 19.99, 'Stake', 'Impale', 'Gardening', 1000);
+
+CREATE Table [ECommerce].[dbo].[OrderHistory]
+(
+quantity int,
+p_id int FOREIGN KEY REFERENCES ProductData(p_id),
+c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
+purchase_date date
+);
+
+INSERT INTO [ECommerce].[dbo].[OrderHistory]
+VALUES (1, 1, 1, '20010101');
+INSERT INTO [ECommerce].[dbo].[OrderHistory]
+VALUES (1, 1, 4, '19910101');
+INSERT INTO [ECommerce].[dbo].[OrderHistory]
+VALUES (1000, 3, 3, '19990101');
