@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,7 +53,29 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EcommerceProject.AdminPortal\EcommerceProject.AdminPortal.csproj">
+      <Project>{d53a1d8e-25e8-4c9e-8420-d1cbb356826a}</Project>
+      <Name>EcommerceProject.AdminPortal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EcommerceProject.DataModel\EcommerceProject.DataModel.csproj">
+      <Project>{58686f6f-4586-4e45-a3d8-ffd84ed747b9}</Project>
+      <Name>EcommerceProject.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EcommerceProject.Server\EcommerceProject.Server.csproj">
+      <Project>{f82d341a-4d9e-4fc6-b136-6479c88f9a01}</Project>
+      <Name>EcommerceProject.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EcommerceProject.Website\EcommerceProject.Website.csproj">
+      <Project>{d08dca2c-ae8c-45cd-b62a-751f59f89295}</Project>
+      <Name>EcommerceProject.Website</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
