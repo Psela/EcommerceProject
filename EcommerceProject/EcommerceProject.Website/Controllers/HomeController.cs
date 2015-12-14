@@ -35,18 +35,22 @@ namespace EcommerceProject.Website.Controllers
       return View();
     }
 
-    public Product SearchProducts(string searchFor)
+    public List<Product> SearchProducts(string searchFor)
     {
       DataRetrieverService service = new DataRetrieverService();
-      Product foundProduct = new Product();
+      List<Product> foundProduct = new List<Product>();
       List<Product> listOfProducts = reader.GetAllProducts();
 
       foreach (Product product in listOfProducts)
       {
-        if (product.name==searchFor)
+        if (
+          product.name.Contains(searchFor) ||
+          product.tag1 == searchFor ||
+          product.tag2 == searchFor ||
+          product.tag3 == searchFor ||
+          product.description.Contains(searchFor))
         {
-          foundProduct = product;
-          break;
+          foundProduct.Add(product);
         }
       }
 
