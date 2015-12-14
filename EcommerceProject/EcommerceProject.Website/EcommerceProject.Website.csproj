@@ -237,6 +237,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EcommerceProject.DataModel\EcommerceProject.DataModel.csproj">
+      <Project>{58686f6f-4586-4e45-a3d8-ffd84ed747b9}</Project>
+      <Name>EcommerceProject.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EcommerceProject.Server\EcommerceProject.Server.csproj">
+      <Project>{f82d341a-4d9e-4fc6-b136-6479c88f9a01}</Project>
+      <Name>EcommerceProject.Server</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
