@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="c_id" Type="int" />
+          <Property Name="a_id" Type="int" Nullable="false" />
+          <Property Name="address_firstline" Type="varchar" MaxLength="60" />
+          <Property Name="address_secondline" Type="varchar" MaxLength="60" />
+          <Property Name="address_city" Type="varchar" MaxLength="60" />
+          <Property Name="address_country" Type="varchar" MaxLength="60" />
+          <Property Name="postcode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CustomerData">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderHistory">
+          <Key>
+            <PropertyRef Name="order_number" />
+          </Key>
+          <Property Name="order_number" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="p_id" Type="int" />
+          <Property Name="c_id" Type="int" />
+          <Property Name="purchase_date" Type="date" />
+        </EntityType>
+        <EntityType Name="PaymentInfo">
+          <Key>
+            <PropertyRef Name="card_number" />
+          </Key>
+          <Property Name="c_id" Type="int" />
+          <Property Name="card_number" Type="bigint" Nullable="false" />
+          <Property Name="expiry_month" Type="int" />
+          <Property Name="expiry_year" Type="int" />
+          <Property Name="card_name" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="ProductData">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="900" />
+          <Property Name="price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="tag1" Type="varchar" MaxLength="36" />
+          <Property Name="tag2" Type="varchar" MaxLength="36" />
+          <Property Name="tag3" Type="varchar" MaxLength="36" />
+          <Property Name="stock" Type="int" />
+          <Property Name="imageurl" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Address__c_id__5F7E2DAC">
+          <End Role="CustomerData" Type="Self.CustomerData" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerData">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderHisto__c_id__6DCC4D03">
+          <End Role="CustomerData" Type="Self.CustomerData" Multiplicity="0..1" />
+          <End Role="OrderHistory" Type="Self.OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerData">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="OrderHistory">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderHisto__p_id__6CD828CA">
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="0..1" />
+          <End Role="OrderHistory" Type="Self.OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductData">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="OrderHistory">
+              <PropertyRef Name="p_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentInf__c_id__6442E2C9">
+          <End Role="CustomerData" Type="Self.CustomerData" Multiplicity="0..1" />
+          <End Role="PaymentInfo" Type="Self.PaymentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerData">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="PaymentInfo">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ECommerceModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerData" EntityType="Self.CustomerData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderHistory" EntityType="Self.OrderHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentInfo" EntityType="Self.PaymentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductData" EntityType="Self.ProductData" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Address__c_id__5F7E2DAC" Association="Self.FK__Address__c_id__5F7E2DAC">
+            <End Role="CustomerData" EntitySet="CustomerData" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderHisto__c_id__6DCC4D03" Association="Self.FK__OrderHisto__c_id__6DCC4D03">
+            <End Role="CustomerData" EntitySet="CustomerData" />
+            <End Role="OrderHistory" EntitySet="OrderHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderHisto__p_id__6CD828CA" Association="Self.FK__OrderHisto__p_id__6CD828CA">
+            <End Role="ProductData" EntitySet="ProductData" />
+            <End Role="OrderHistory" EntitySet="OrderHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentInf__c_id__6442E2C9" Association="Self.FK__PaymentInf__c_id__6442E2C9">
+            <End Role="CustomerData" EntitySet="CustomerData" />
+            <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ECommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustomerData">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="ECommerceModel.FK__Address__c_id__4B7734FF" FromRole="CustomerData" ToRole="Address" />
+          <NavigationProperty Name="PaymentInfoes" Relationship="ECommerceModel.FK__PaymentInf__c_id__503BEA1C" FromRole="CustomerData" ToRole="PaymentInfo" />
+          <NavigationProperty Name="OrderHistories" Relationship="ECommerceModel.FK__OrderHisto__c_id__6DCC4D03" FromRole="CustomerData" ToRole="OrderHistory" />
+        </EntityType>
+        <EntityType Name="ProductData">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="tag1" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="tag2" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="tag3" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="imageurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderHistories" Relationship="ECommerceModel.FK__OrderHisto__p_id__6CD828CA" FromRole="ProductData" ToRole="OrderHistory" />
+        </EntityType>
+        <EntityContainer Name="ECommerceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerDatas" EntityType="Self.CustomerData" />
+          <EntitySet Name="ProductDatas" EntityType="Self.ProductData" />
+          <EntitySet Name="Addresses" EntityType="ECommerceModel.Address" />
+          <EntitySet Name="PaymentInfoes" EntityType="ECommerceModel.PaymentInfo" />
+          <AssociationSet Name="FK__Address__c_id__4B7734FF" Association="ECommerceModel.FK__Address__c_id__4B7734FF">
+            <End Role="CustomerData" EntitySet="CustomerDatas" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentInf__c_id__503BEA1C" Association="ECommerceModel.FK__PaymentInf__c_id__503BEA1C">
+            <End Role="CustomerData" EntitySet="CustomerDatas" />
+            <End Role="PaymentInfo" EntitySet="PaymentInfoes" />
+          </AssociationSet>
+          <EntitySet Name="OrderHistories" EntityType="ECommerceModel.OrderHistory" />
+          <AssociationSet Name="FK__OrderHisto__c_id__6DCC4D03" Association="ECommerceModel.FK__OrderHisto__c_id__6DCC4D03">
+            <End Role="CustomerData" EntitySet="CustomerDatas" />
+            <End Role="OrderHistory" EntitySet="OrderHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderHisto__p_id__6CD828CA" Association="ECommerceModel.FK__OrderHisto__p_id__6CD828CA">
+            <End Role="ProductData" EntitySet="ProductDatas" />
+            <End Role="OrderHistory" EntitySet="OrderHistories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="a_id" Type="Int32" Nullable="false" />
+          <Property Name="address_firstline" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="address_secondline" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="address_city" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="address_country" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerData" Relationship="ECommerceModel.FK__Address__c_id__4B7734FF" FromRole="Address" ToRole="CustomerData" />
+        </EntityType>
+        <EntityType Name="PaymentInfo">
+          <Key>
+            <PropertyRef Name="card_number" />
+          </Key>
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="card_number" Type="Int64" Nullable="false" />
+          <Property Name="expiry_month" Type="Int32" />
+          <Property Name="expiry_year" Type="Int32" />
+          <Property Name="card_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerData" Relationship="ECommerceModel.FK__PaymentInf__c_id__503BEA1C" FromRole="PaymentInfo" ToRole="CustomerData" />
+        </EntityType>
+        <Association Name="FK__Address__c_id__4B7734FF">
+          <End Type="ECommerceModel.CustomerData" Role="CustomerData" Multiplicity="0..1" />
+          <End Type="ECommerceModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerData">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentInf__c_id__503BEA1C">
+          <End Type="ECommerceModel.CustomerData" Role="CustomerData" Multiplicity="0..1" />
+          <End Type="ECommerceModel.PaymentInfo" Role="PaymentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerData">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="PaymentInfo">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderHistory">
+          <Key>
+            <PropertyRef Name="order_number" />
+          </Key>
+          <Property Name="order_number" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="p_id" Type="Int32" />
+          <Property Name="c_id" Type="Int32" />
+          <Property Name="purchase_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CustomerData" Relationship="ECommerceModel.FK__OrderHisto__c_id__6DCC4D03" FromRole="OrderHistory" ToRole="CustomerData" />
+          <NavigationProperty Name="ProductData" Relationship="ECommerceModel.FK__OrderHisto__p_id__6CD828CA" FromRole="OrderHistory" ToRole="ProductData" />
+        </EntityType>
+        <Association Name="FK__OrderHisto__c_id__6DCC4D03">
+          <End Type="ECommerceModel.CustomerData" Role="CustomerData" Multiplicity="0..1" />
+          <End Type="ECommerceModel.OrderHistory" Role="OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerData">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="OrderHistory">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderHisto__p_id__6CD828CA">
+          <End Type="ECommerceModel.ProductData" Role="ProductData" Multiplicity="0..1" />
+          <End Type="ECommerceModel.OrderHistory" Role="OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductData">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="OrderHistory">
+              <PropertyRef Name="p_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ECommerceModelStoreContainer" CdmEntityContainer="ECommerceEntities">
+          <EntitySetMapping Name="CustomerDatas">
+            <EntityTypeMapping TypeName="ECommerceModel.CustomerData">
+              <MappingFragment StoreEntitySet="CustomerData">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductDatas">
+            <EntityTypeMapping TypeName="ECommerceModel.ProductData">
+              <MappingFragment StoreEntitySet="ProductData">
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="tag1" ColumnName="tag1" />
+                <ScalarProperty Name="tag2" ColumnName="tag2" />
+                <ScalarProperty Name="tag3" ColumnName="tag3" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="imageurl" ColumnName="imageurl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ECommerceModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="address_country" ColumnName="address_country" />
+                <ScalarProperty Name="address_city" ColumnName="address_city" />
+                <ScalarProperty Name="address_secondline" ColumnName="address_secondline" />
+                <ScalarProperty Name="address_firstline" ColumnName="address_firstline" />
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentInfoes">
+            <EntityTypeMapping TypeName="ECommerceModel.PaymentInfo">
+              <MappingFragment StoreEntitySet="PaymentInfo">
+                <ScalarProperty Name="card_name" ColumnName="card_name" />
+                <ScalarProperty Name="expiry_year" ColumnName="expiry_year" />
+                <ScalarProperty Name="expiry_month" ColumnName="expiry_month" />
+                <ScalarProperty Name="card_number" ColumnName="card_number" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderHistories">
+            <EntityTypeMapping TypeName="ECommerceModel.OrderHistory">
+              <MappingFragment StoreEntitySet="OrderHistory">
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="order_number" ColumnName="order_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
