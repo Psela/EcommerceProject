@@ -63,5 +63,29 @@ namespace EcommerceProject.Test
             //Assert
             CollectionAssert.AreEqual(orderHistoryList, list);
         }
+
+        [TestMethod]
+        public void test_thatGetAllCustomers_returnsAListOfAllCustomers_whenCalled()
+        {
+            //Arrange
+            Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
+            List<CustomerData> customerList = new List<CustomerData>();
+            Mock<CustomerData> mockCustomers = new Mock<CustomerData>();
+            mockCustomers.SetupAllProperties();
+
+            customerList.Add(mockCustomers.Object);
+
+            DbSet<CustomerData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<CustomerData>(customerList);
+            context.SetupAllProperties();
+            context.Object.CustomerDatas = mockedDataSet;
+
+            FindCustomer findCustomers = new FindCustomer(context.Object);
+
+            //Act
+            List<CustomerData> list = findCustomers.GetAllCustomers();
+
+            //Assert
+            CollectionAssert.AreEqual(customerList, list);
+        }
     }
 }

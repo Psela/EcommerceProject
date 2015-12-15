@@ -6261,7 +6261,7 @@ button.close {
 }
 .carousel-inner {
   position: relative;
-  width: 100%;
+  width: 400px;
   overflow: hidden;
 }
 .carousel-inner > .item {
