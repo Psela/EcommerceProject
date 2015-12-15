@@ -23,5 +23,14 @@ namespace EcommerceProject.DatabaseModel.Select
                 return customers;  
             }
         }
+
+        public CustomerData GetCustomerByID(int ID)
+        {
+            using (context)
+            {
+                CustomerData customer = context.CustomerDatas.Where<CustomerData>(c => c.c_id == ID).FirstOrDefault();
+                return customer;
+            }
+        }
     }
 }

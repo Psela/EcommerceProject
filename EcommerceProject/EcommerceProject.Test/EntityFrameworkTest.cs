@@ -87,5 +87,29 @@ namespace EcommerceProject.Test
             //Assert
             CollectionAssert.AreEqual(customerList, list);
         }
+
+        [TestMethod]
+        public void test_thatGetCustomerByID_returnsACustomerDataObject_whenCalledWithAValidID()
+        {
+            //Arrange
+            Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
+            List<CustomerData> mockCustomerList = new List<CustomerData>();
+            Mock<CustomerData> mockCustomers = new Mock<CustomerData>();
+            mockCustomers.SetupAllProperties();
+            mockCustomers.Object.c_id = 1;
+            mockCustomerList.Add(mockCustomers.Object);
+
+            DbSet<CustomerData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<CustomerData>(mockCustomerList);
+            mockContext.SetupAllProperties();
+            mockContext.Object.CustomerDatas = mockedDataSet;
+
+            FindCustomer findCustomerByID = new FindCustomer(mockContext.Object);
+
+            //Act
+            CustomerData returnedCustomer = findCustomerByID.GetCustomerByID(1);
+
+            //Assert
+            Assert.AreEqual(mockCustomers.Object, returnedCustomer);
+        }
     }
 }
