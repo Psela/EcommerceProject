@@ -28,7 +28,7 @@ namespace EcommerceProject.Test
       Mock<DataRetrieverService> mockService = new Mock<DataRetrieverService>();
       mockDbReader = new Mock<DatabaseReader>(mockService.Object);
       controller = new HomeController(mockDbReader.Object);
-      product1 = new Product() { name = "product1", tag1 = "tag1", tag2 = "tag2", tag3 = "tag6", description = "description 1 is here" };
+      product1 = new Product() { name = "product1", tag1 = "tag1", tag2 = "tag2", tag3 = "tag6", description = "description 1 is here",id=1 };
       product2 = new Product() { name = "product2", tag1 = "tag1", tag2 = "tag3", tag3 = "tag2", description = "description 2 not is here" };
       Product product3 = new Product() { name = "product3", tag1 = "tag2", tag2 = "tag5", tag3 = "tag6", description = "description 6 is not here" };
       Product product4 = new Product() { name = "product4", tag1 = "tag3", tag2 = "tag8", tag3 = "tag12", description = "description 3 is over there" };
@@ -54,17 +54,17 @@ namespace EcommerceProject.Test
       mockDbReader.Setup(x => x.GetAllProducts()).Returns(listOfProduct);
     }
 
-    [TestMethod]
-    public void Test_HomeControllerHasIndex()
-    {
-      // Arrange
+    //[TestMethod]
+    //public void Test_HomeControllerHasIndex()
+    //{
+    //  // Arrange
 
-      // Act
-      ViewResult result = controller.Index() as ViewResult;
+    //  // Act
+    //  ViewResult result = controller.Index() as ViewResult;
 
-      // Assert
-      Assert.IsNotNull(result);
-    }
+    //  // Assert
+    //  Assert.IsNotNull(result);
+    //}
 
     [TestMethod]
     public void Test_SearchProducts_CallsUponGetAllProducts_ExactlyOnce_WhenCalled()
@@ -167,5 +167,17 @@ namespace EcommerceProject.Test
       Assert.AreEqual(0, actualResults.Count);
     }
 
+    [TestMethod]
+    public void Test_SearchProducts_ReturnsProduct_WhenGivenAProductID()
+    {
+      //Arrange
+      List<Product> expectedResults = new List<Product>() { product1};
+
+      //Act
+      List<Product> actualResults = controller.SearchProducts("1");
+
+      //Assert
+      CollectionAssert.AreEqual(expectedResults, actualResults);
+    }
   }
 }
