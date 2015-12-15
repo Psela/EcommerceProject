@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFramework
+namespace EcommerceProject.DatabaseModel
 {
     using System;
     using System.Data.Entity;

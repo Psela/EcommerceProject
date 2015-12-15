@@ -4,9 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.Select
+namespace EcommerceProject.DatabaseModel.Select
 {
-    class FindProduct
+    public class FindProduct
     {
+        private ECommerceEntities context;
+
+        public FindProduct(ECommerceEntities eCommerceEntities)
+        {
+            context = eCommerceEntities;
+        }
+
+        public List<ProductData> GetAllProducts()
+        {
+            using (context)
+            {
+                List<ProductData> products = context.ProductDatas.ToList<ProductData>();
+                return products;
+            }
+        }
     }
 }
