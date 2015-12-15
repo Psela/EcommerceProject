@@ -23,5 +23,14 @@ namespace EcommerceProject.DatabaseModel.Select
                 return orders;
             }
         }
+
+        public OrderHistory GetOrderByID(int ID)
+        {
+            using (context)
+            {
+                OrderHistory order = context.OrderHistories.Where<OrderHistory>(o => o.order_number == ID).FirstOrDefault();
+                return order;
+            }
+        }
     }
 }
