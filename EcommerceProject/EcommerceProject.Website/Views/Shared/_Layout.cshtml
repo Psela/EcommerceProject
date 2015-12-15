@@ -6,9 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,7 +17,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="searchBar" href="~/Home/index" >
+                    <img src="~/Images/logo.png" height="50" width="50"/>
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -30,11 +32,14 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" >
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer id="footer">
+            <div class="footer" >
+                <p id="footerText" style="color:#808080;text-align:left">&copy; 2015-@DateTime.Now.Year - The Dragons Hoard. <br/> Thedragonshoard.com All rights reserved.</p>
+            </div>
+            @*For now its 2015-2015 but next year it will say 2015-2016..*@
         </footer>
     </div>
 
