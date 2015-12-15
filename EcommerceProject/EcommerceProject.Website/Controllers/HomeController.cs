@@ -1,4 +1,5 @@
-﻿using EcommerceProject.Test;
+﻿using EcommerceProject.DataModel;
+using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace EcommerceProject.Website.Controllers
     {
 
     }
+
     public HomeController(DatabaseReader DbReader)
     {
       reader = DbReader;
@@ -47,6 +49,16 @@ namespace EcommerceProject.Website.Controllers
 
       foreach (Product product in listOfProducts)
       {
+        int id = 0;
+        if (int.TryParse(searchFor, out id))
+        {
+          if (product.id == id)
+          {
+            foundProduct.Clear();
+            foundProduct.Add(product);
+            break;
+          }
+        }
         if (
           product.name.Contains(searchFor) ||
           product.tag1 == searchFor ||

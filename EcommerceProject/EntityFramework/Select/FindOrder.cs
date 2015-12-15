@@ -4,9 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.Select
+namespace EcommerceProject.DatabaseModel.Select
 {
-    class FindOrder
+    public class FindOrder
     {
+        private ECommerceEntities context;
+
+        public FindOrder(ECommerceEntities eCommerceEntities)
+        {
+            context = eCommerceEntities;
+        }
+
+        public List<OrderHistory> GetAllOrders()
+        {
+            using (context)
+            {
+                List<OrderHistory> orders = context.OrderHistories.ToList<OrderHistory>();
+                return orders;
+            }
+        }
     }
 }

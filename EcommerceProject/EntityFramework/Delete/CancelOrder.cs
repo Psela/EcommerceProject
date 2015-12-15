@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.Delete
+namespace EcommerceProject.DatabaseModel.Delete
 {
     class CancelOrder
     {
