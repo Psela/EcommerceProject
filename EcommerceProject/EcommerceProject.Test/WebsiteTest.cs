@@ -1,4 +1,6 @@
-﻿using EcommerceProject.Website.Controllers;
+﻿using EcommerceProject.DataModel;
+using EcommerceProject.Server;
+using EcommerceProject.Website.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;

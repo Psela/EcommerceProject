@@ -1,4 +1,5 @@
-﻿using EcommerceProject.Test;
+﻿using EcommerceProject.DataModel;
+using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace EcommerceProject.Website.Controllers
   public class HomeController : Controller
   {
     DatabaseReader reader;
+
+    public HomeController()
+    {
+
+    }
 
     public HomeController(DatabaseReader DbReader)
     {

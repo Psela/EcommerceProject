@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using EcommerceProject.DataModel;
+using EcommerceProject.Server;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,7 @@ namespace EcommerceProject.Test
       select = new DatabaseReader(mockDBReader.Object);
       expectedResult = new List<Product>();
     }
+
     [TestMethod]
     public void Test_GetAllProducts_CallsReadDataOnTheDataRetrieverService_WhenCalled_ExactlyOnce()
     {
