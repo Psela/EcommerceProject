@@ -14,7 +14,7 @@ namespace EcommerceProject.Test
       reader = dbReader;
     }
 
-    public List<Product> GetAllProducts()
+    public virtual List<Product> GetAllProducts()
     {
       List<Product> listOfProducts = new List<Product>();
       listOfProducts = (List<Product>)reader.ReadData();

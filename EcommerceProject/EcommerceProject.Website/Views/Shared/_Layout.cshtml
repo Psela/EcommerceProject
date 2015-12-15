@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -24,7 +25,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Categories", "About", "Home")</li>
+                    <li id="hover" onmouseover="$('#displaydropdownmenu').show(1000); " 
+                        onmouseout="$('#displaydropdownmenu').hide();">
+                    @Html.ActionLink("Categories", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Basket", "Basket", "Home")</li>
                 </ul>
@@ -32,7 +35,71 @@
             </div>
         </div>
     </div>
-    <div class="container body-content" >
+    <div class="relative" id="displaydropdownmenu">
+
+        <div class="static">
+            <span class="fontface underline">~ Ladies ~</span><br/>
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a>
+
+                        <div class="staticmiddle">
+                            <span class="fontface underline">~ Men ~</span><br/>
+                            <a href="#"><span>Partywear</span></a><br />
+                            <a href="#"><span>Partywear</span></a><br />
+                            <a href="#"><span>Partywear</span></a><br />
+                            <a href="#"><span>Partywear</span></a><br />
+                            <a href="#"><span>Partywear</span></a><br />
+                        </div>
+                        <div class="staticbottom">
+                            <span class="fontface underline">~ Kids ~</span><br/>
+                            <a href="#"><span>Partywear</span></a><br />
+                            <a href="#"><span>Partywear</span></a><br />
+                            <a href="#"><span>Partywear</span></a><br />
+                        </div>
+                        <img id="babytoys" src="http://localhost:55805/babytoys.jpg" width="190" />
+</div>
+        <div class="verticalline1"></div>
+
+        <div class="absolute-centre">
+            <span class="fontface underline">~  Books ~ </span>
+            <br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <div class="absolute-centre-middle">
+                <span class="fontface underline">~ Electronics ~</span>
+                <br />
+                <a href="#"><span>Partywear</span></a><br />
+                <a href="#"><span>Partywear</span></a><br />
+                <a href="#"><span>Partywear</span></a><br />
+            </div>
+            <div class="absolute-centre-bottom">
+                <span class="fontface underline">~ Christmas ~</span>
+                <br />
+                <a href="#"><span>Partywear</span></a><br />
+                <a href="#"><span>Partywear</span></a><br />
+        </div>
+            <img class="menswear" src="http://localhost:55805/menswear.jpg"></div>
+
+        <div class="verticalline2"></div>
+        <div class="absolute-right">
+            <span class="fontface underline">~ Toys ~ </span>
+            <br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <a href="#"><span>Partywear</span></a><br />
+            <img id="img2" src="http://localhost:55805/women.jpg">
+            <img class="img1" src="http://localhost:55805/gowns.jpg"></div>
+
+       
+
+    </div>
+    
+    <div class="container body-content">
         @RenderBody()
         <hr />
         <footer id="footer">
@@ -42,9 +109,25 @@
             @*For now its 2015-2015 but next year it will say 2015-2016..*@
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @RenderSection("scripts", required: false)
+
+
+
+    <script type="text/javascript">
+
+    /*    alert("javascript is working");
+        $('#hover').popover({
+            trigger: "focus",
+            html: true, content: function () {
+
+                return $('#displaydropdownmenu').html()
+
+            }
+        })
+        */
+    </script>
 </body>
 </html>

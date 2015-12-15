@@ -23,7 +23,7 @@ namespace EcommerceProject.Test
       expectedResult = new List<Product>();
     }
     [TestMethod]
-    public void Test_GetAllProducts_CallsReadDataOnTheDatabaseReader_WhenCalled_ExactlyOnce()
+    public void Test_GetAllProducts_CallsReadDataOnTheDataRetrieverService_WhenCalled_ExactlyOnce()
     {
       //Arrange
 
