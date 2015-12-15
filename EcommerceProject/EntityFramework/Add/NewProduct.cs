@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.Add
+namespace EcommerceProject.DatabaseModel.Add
 {
     class NewProduct
     {
