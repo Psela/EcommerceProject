@@ -18,20 +18,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="searchBar" href="~/Home/index" >
+                <a class="logo" href="~/Home/index" >
                     <img src="~/Images/logo.png" height="50" width="50"/>
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li id="firstLink">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li id="hover" onmouseover="$('#displaydropdownmenu').show(1000); " 
                         onmouseout="$('#displaydropdownmenu').hide();">
                     @Html.ActionLink("Categories", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Basket", "Basket", "Home")</li>
+                    <li id="thirdLink">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li id="fourthLink">@Html.ActionLink("Basket", "Basket", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+
             </div>
         </div>
     </div>

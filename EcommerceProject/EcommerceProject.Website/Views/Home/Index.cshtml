@@ -6,11 +6,14 @@
     <div>
         @* This is for the search bar *@
         <form id="NewSearch" method="get" action="/Home/About">
-            @* <----At the moment this is linked to the About page but we can
+            @* <----At the moment this is linked to the About page but we can link
                 it to go to the products page once we have one made. *@
             <p >
                 Search:
                 <input class="SearchBox" type="text" style="width:100%;height:30px;position:relative;" />
+                <a id="magnifyingGlass" href="~/Home/index">
+                    <img src="~/Images/MagnifyingGlass.JPG" height="20" width="20" />
+                </a>
             </p>
         </form>
     </div>
