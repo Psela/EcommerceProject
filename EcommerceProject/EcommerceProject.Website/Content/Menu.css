@@ -1,0 +1,133 @@
+﻿        div.relative {
+                /*  display:none;*/
+                position: absolute;
+                background-color: #FBFBFB;
+                width: 600px;
+                height: 600px;
+                border-width:2px;
+                border-left-style:ridge;
+                border-right-style:ridge;      
+                border-bottom-style:ridge;          
+                display:none;
+                left:300px;
+                top:50px;
+                z-index: 10;
+            }
+
+         div.static
+         {
+               padding-right:4px;
+               /*position:static;*/
+               position:absolute;
+               left:50px;
+               top:10px;
+               width:160px;
+               
+         }
+         
+            div.absolute-centre {
+              /*  padding-left:4px;*/
+                position: absolute;
+                right: 212px;
+                top: 10px;
+                 width:160px;
+                
+            }
+
+            div.absolute-centre-middle
+            {
+               position:absolute;
+               left:0px;
+               top:150px;
+            }
+
+           div.absolute-centre-bottom{
+               position:absolute;
+               top:300px;
+            }
+            div.absolute-right
+            {
+                padding-left:4px;
+                position:absolute;
+                right:3px;
+                top:10px;
+                 width:160px;
+
+            }
+            div.verticalline1
+            {
+                position:absolute;
+                width:1px;
+                /*background-color:gray;*/
+                border:1px ridge;
+                right:410px;
+                height:400px;
+                top:22px;
+            }
+            div.verticalline2
+            {
+                position:absolute;
+                width:1px;
+               /* background-color:gray;*/
+                border:1px ridge;
+                right:198px;
+                top:22px;
+                height:400px;
+            }
+
+            div.staticmiddle
+            {
+                
+             /*  padding-right:4px;   */        
+               position:absolute;
+               left:0px;
+               top:150px;
+            }
+
+            div.staticbottom
+            {
+               position:absolute;
+               left:0px;
+               top:300px;
+
+            }
+            
+
+            .fontface{
+                font-family: 'Alice', serif;
+                font-size:large;
+            }
+
+            .underline
+            {
+               text-decoration:underline;
+            }
+
+            img.img1
+            {
+                position:absolute;
+                right:0px;
+                top:378px;
+                width:195px;
+            }
+
+            img.menswear
+            {
+                position:absolute;
+                top:378px;
+                right:0px;
+               width:190px;
+            }
+            img#babytoys
+            {
+                position:absolute;
+                right:18px;
+                top:378px;
+            }
+            img#img2
+            {
+                position:absolute;
+                top:150px;
+                right:0px;
+                width:190px;
+            }
