@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="a_id" />
+    </Key>
+    <Property Name="c_id" Type="int" />
+    <Property Name="a_id" Type="int" Nullable="false" />
+    <Property Name="address_firstline" Type="varchar" MaxLength="60" />
+    <Property Name="address_secondline" Type="varchar" MaxLength="60" />
+    <Property Name="address_city" Type="varchar" MaxLength="60" />
+    <Property Name="address_country" Type="varchar" MaxLength="60" />
+    <Property Name="postcode" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CustomerData">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderHistory">
+    <Key>
+      <PropertyRef Name="order_number" />
+    </Key>
+    <Property Name="order_number" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="p_id" Type="int" />
+    <Property Name="c_id" Type="int" />
+    <Property Name="purchase_date" Type="date" />
+  </EntityType>
+  <EntityType Name="PaymentInfo">
+    <Key>
+      <PropertyRef Name="card_number" />
+    </Key>
+    <Property Name="c_id" Type="int" />
+    <Property Name="card_number" Type="bigint" Nullable="false" />
+    <Property Name="expiry_month" Type="int" />
+    <Property Name="expiry_year" Type="int" />
+    <Property Name="card_name" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="ProductData">
+    <Key>
+      <PropertyRef Name="p_id" />
+    </Key>
+    <Property Name="p_id" Type="int" Nullable="false" />
+    <Property Name="product_name" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="900" />
+    <Property Name="price" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="tag1" Type="varchar" MaxLength="36" />
+    <Property Name="tag2" Type="varchar" MaxLength="36" />
+    <Property Name="tag3" Type="varchar" MaxLength="36" />
+    <Property Name="stock" Type="int" />
+    <Property Name="imageurl" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__Address__c_id__5F7E2DAC">
+    <End Role="CustomerData" Type="Self.CustomerData" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerData">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderHisto__c_id__6DCC4D03">
+    <End Role="CustomerData" Type="Self.CustomerData" Multiplicity="0..1" />
+    <End Role="OrderHistory" Type="Self.OrderHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerData">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="OrderHistory">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderHisto__p_id__6CD828CA">
+    <End Role="ProductData" Type="Self.ProductData" Multiplicity="0..1" />
+    <End Role="OrderHistory" Type="Self.OrderHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductData">
+        <PropertyRef Name="p_id" />
+      </Principal>
+      <Dependent Role="OrderHistory">
+        <PropertyRef Name="p_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentInf__c_id__6442E2C9">
+    <End Role="CustomerData" Type="Self.CustomerData" Multiplicity="0..1" />
+    <End Role="PaymentInfo" Type="Self.PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerData">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ECommerceModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerData" EntityType="Self.CustomerData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderHistory" EntityType="Self.OrderHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentInfo" EntityType="Self.PaymentInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductData" EntityType="Self.ProductData" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Address__c_id__5F7E2DAC" Association="Self.FK__Address__c_id__5F7E2DAC">
+      <End Role="CustomerData" EntitySet="CustomerData" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderHisto__c_id__6DCC4D03" Association="Self.FK__OrderHisto__c_id__6DCC4D03">
+      <End Role="CustomerData" EntitySet="CustomerData" />
+      <End Role="OrderHistory" EntitySet="OrderHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderHisto__p_id__6CD828CA" Association="Self.FK__OrderHisto__p_id__6CD828CA">
+      <End Role="ProductData" EntitySet="ProductData" />
+      <End Role="OrderHistory" EntitySet="OrderHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentInf__c_id__6442E2C9" Association="Self.FK__PaymentInf__c_id__6442E2C9">
+      <End Role="CustomerData" EntitySet="CustomerData" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
