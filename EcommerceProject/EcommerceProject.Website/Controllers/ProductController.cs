@@ -11,7 +11,11 @@ namespace EcommerceProject.Website.Controllers
   {
     public ActionResult Index(string product_id)
     {
-      return View(product_id);
+      HomeController homeController = new HomeController();
+
+      Product product = homeController.SearchProducts(product_id)[0];
+
+      return View(product);
     }
   }
 }

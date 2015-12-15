@@ -14,7 +14,7 @@ namespace EcommerceProject.Website.Controllers
 
     public HomeController()
     {
-
+      reader = new DatabaseReader(new DataRetrieverService());
     }
 
     public HomeController(DatabaseReader DbReader)
