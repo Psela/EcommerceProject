@@ -15,5 +15,6 @@ namespace EcommerceProject.DataModel
     public string imageurl { get; set; }
     public int stock { get; set; }
     public double price { get; set; }
+    public int id { get; set; }
   }
 }
