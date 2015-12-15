@@ -135,5 +135,29 @@ namespace EcommerceProject.Test
             //Assert
             Assert.AreEqual(mockProducts.Object, returnedProduct);
         }
+
+        [TestMethod]
+        public void test_thatGetOrderByID_returnsAnOrderHistoryObject_whenCalledWithAValidID()
+        {
+            //Arrange
+            Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
+            List<OrderHistory> mockOrderList = new List<OrderHistory>();
+            Mock<OrderHistory> mockOrders = new Mock<OrderHistory>();
+            mockOrders.SetupAllProperties();
+            mockOrders.Object.order_number = 1;
+            mockOrderList.Add(mockOrders.Object);
+
+            DbSet<OrderHistory> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<OrderHistory>(mockOrderList);
+            mockContext.SetupAllProperties();
+            mockContext.Object.OrderHistories = mockedDataSet;
+
+            FindOrder findOrderByID = new FindOrder(mockContext.Object);
+
+            //Act
+            OrderHistory returnedOrder = findOrderByID.GetOrderByID(1);
+
+            //Assert
+            Assert.AreEqual(mockOrders.Object, returnedOrder);
+        }
     }
 }
