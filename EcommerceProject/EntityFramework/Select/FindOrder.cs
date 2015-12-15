@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace EcommerceProject.DatabaseModel.Select
 {
-    class FindOrder
+    public class FindOrder
     {
+        private ECommerceEntities context;
+
+        public FindOrder(ECommerceEntities eCommerceEntities)
+        {
+            context = eCommerceEntities;
+        }
+
+        public List<OrderHistory> GetAllOrders()
+        {
+            using (context)
+            {
+                List<OrderHistory> orders = context.OrderHistories.ToList<OrderHistory>();
+                return orders;
+            }
+        }
     }
 }

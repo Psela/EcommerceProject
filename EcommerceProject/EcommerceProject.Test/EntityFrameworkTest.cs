@@ -39,5 +39,29 @@ namespace EcommerceProject.Test
             //Assert
             CollectionAssert.AreEqual(productDataList, list);
         }
+
+        [TestMethod]
+        public void test_thatGetAllOrders_returnsOrderHistory_whenCalled()
+        {
+            //Arrange
+            Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
+            List<OrderHistory> orderHistoryList = new List<OrderHistory>();
+            Mock<OrderHistory> mockOrderHistory = new Mock<OrderHistory>();
+            mockOrderHistory.SetupAllProperties();
+
+            orderHistoryList.Add(mockOrderHistory.Object);
+
+            DbSet<OrderHistory> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<OrderHistory>(orderHistoryList);
+            context.SetupAllProperties();
+            context.Object.OrderHistories = mockedDataSet;
+
+            FindOrder findOrder = new FindOrder(context.Object);
+
+            //Act
+            List<OrderHistory> list = findOrder.GetAllOrders();
+
+            //Assert
+            CollectionAssert.AreEqual(orderHistoryList, list);
+        }
     }
 }
