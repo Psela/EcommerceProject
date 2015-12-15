@@ -23,5 +23,13 @@ namespace EcommerceProject.DatabaseModel.Select
                 return products;
             }
         }
+        public ProductData GetProductByID(int ID)
+        {
+            using (context)
+            {
+                ProductData product = context.ProductDatas.Where<ProductData>(p => p.p_id == ID).FirstOrDefault();
+                return product;
+            }
+        }
     }
 }
