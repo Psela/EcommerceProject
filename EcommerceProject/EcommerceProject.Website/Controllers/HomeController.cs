@@ -12,6 +12,11 @@ namespace EcommerceProject.Website.Controllers
   {
     DatabaseReader reader;
 
+    public HomeController()
+    {
+
+    }
+
     public HomeController(DatabaseReader DbReader)
     {
       reader = DbReader;
