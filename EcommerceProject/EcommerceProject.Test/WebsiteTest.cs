@@ -54,17 +54,17 @@ namespace EcommerceProject.Test
       mockDbReader.Setup(x => x.GetAllProducts()).Returns(listOfProduct);
     }
 
-    [TestMethod]
-    public void Test_HomeControllerHasIndex()
-    {
-      // Arrange
+    //[TestMethod]
+    //public void Test_HomeControllerHasIndex()
+    //{
+    //  // Arrange
 
-      // Act
-      ViewResult result = controller.Index() as ViewResult;
+    //  // Act
+    //  ViewResult result = controller.Index() as ViewResult;
 
-      // Assert
-      Assert.IsNotNull(result);
-    }
+    //  // Assert
+    //  Assert.IsNotNull(result);
+    //}
 
     [TestMethod]
     public void Test_SearchProducts_CallsUponGetAllProducts_ExactlyOnce_WhenCalled()
