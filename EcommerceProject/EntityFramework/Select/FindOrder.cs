@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.Select
+namespace EcommerceProject.DatabaseModel.Select
 {
     class FindOrder
     {
