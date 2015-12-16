@@ -11,6 +11,7 @@ namespace EcommerceProject.Website.Controllers
   public class HomeController : Controller
   {
     DatabaseReader reader;
+  
 
     public HomeController()
     {
@@ -22,6 +23,7 @@ namespace EcommerceProject.Website.Controllers
       reader = DbReader;
     }
 
+    
     public ActionResult Index(string searchInput)
     {
         if (Request.IsAjaxRequest())
@@ -98,10 +100,11 @@ namespace EcommerceProject.Website.Controllers
     {
         DataRetrieverService service = new DataRetrieverService();
         List<Product> listOfProducts = reader.GetAllProducts();
+    
         return listOfProducts;
     }
 
-  /*   public PartialViewResult showProductDetails()
+ /*   public PartialViewResult showProductDetails()
     {
         List<Product>  listOfProducts = GetAllProductsInList();
         return PartialView("_PartialListView", listOfProducts);
