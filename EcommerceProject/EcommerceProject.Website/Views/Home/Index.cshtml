@@ -5,25 +5,33 @@
 <center>
     <div>
         @* This is for the search bar *@
-        <form id="NewSearch" method="get" action="/Home/About">
-            @* <----At the moment this is linked to the About page but we can link
-                it to go to the products page once we have one made. *@
-            <p >
-                Search:
-                <input class="SearchBox" type="text" style="width:100%;height:30px;position:relative;" />
-                <a id="magnifyingGlass" href="~/Home/index">
+        @using (Ajax.BeginForm(
+                new AjaxOptions
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "midPage",
+                    InsertionMode = InsertionMode.Replace
+                }))
+        {
+            <p>
+                Search:@Html.TextBox("searchInput")
+                <input type="submit" value="Search"/>
+                @*<a id="magnifyingGlass">
+                    LINK TO SEARCH
                     <img src="~/Images/MagnifyingGlass.JPG" height="20" width="20" />
-                </a>
+                </a>*@
+
             </p>
-        </form>
+        }
     </div>
 </center>
 
 <div class="jumbotron">
+
     <h1>The Dragons Hoard</h1>
 </div>
 
-<div class="row">
+<div class="row" id="midPage">
     <div class="col-md-4">
         <h2>Products</h2>
         <p>
