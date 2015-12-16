@@ -56,6 +56,10 @@
       <Project>{f82d341a-4d9e-4fc6-b136-6479c88f9a01}</Project>
       <Name>EcommerceProject.Server</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntityFramework\EcommerceProject.DatabaseModel.csproj">
+      <Project>{9097d3ac-e0bd-452b-a580-e9417ac0cbae}</Project>
+      <Name>EcommerceProject.DatabaseModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

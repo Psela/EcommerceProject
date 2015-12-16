@@ -1,11 +1,15 @@
-﻿@model EcommerceProject.DataModel.Product
+﻿<link href='https://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
+@model EcommerceProject.DataModel.Product
 
-<img src=@Model.imageurl style="height:300px;width:300px" />
+<img id="img" src=@Model.imageurl style=" height:300px;width:300px" />
 <div id="product">
   <h2>@Model.name</h2><br />
-  <h4>@Model.price</h4>
-  <h5>@Model.stock</h5>
+  <h4>£@Model.price</h4>
+  <h5>@Model.stock left in stock</h5>
 </div>
 <div id="product_description">
+  <h2>Description</h2>
   @Model.description
 </div>
+
+@Styles.Render("../Content/ProductPage.css")

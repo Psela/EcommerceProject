@@ -6,17 +6,24 @@
 <center>
     <div>
         @* This is for the search bar *@
-        <form id="NewSearch" method="get" action="/Home/About">
-            @* <----At the moment this is linked to the About page but we can link
-                it to go to the products page once we have one made. *@
+        @using (Ajax.BeginForm(
+                new AjaxOptions
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "midPage",
+                    InsertionMode = InsertionMode.Replace
+                }))
+        {
             <p>
-                Search:
-                <input class="SearchBox" type="text" style="width:100%;height:30px;position:relative;" />
-                <a id="magnifyingGlass" href="~/Home/index">
+                Search:@Html.TextBox("searchInput")
+                <input type="submit" value="Search"/>
+                @*<a id="magnifyingGlass">
+                    LINK TO SEARCH
                     <img src="~/Images/MagnifyingGlass.JPG" height="20" width="20" />
-                </a>
+                </a>*@
+
             </p>
-        </form>
+        }
     </div>
 </center>
 
@@ -58,7 +65,7 @@ This evolution of Amazon from Web site to e-commerce partner to development plat
         <h2>More Products</h2>
         <p>Product descriptions.</p>
         <p><a class="secondLink" href="/Home/About">Product link &raquo;</a></p>
-    </div>
+</div>
 
     <div class="col-md-3">
         <h2>More Products</h2>

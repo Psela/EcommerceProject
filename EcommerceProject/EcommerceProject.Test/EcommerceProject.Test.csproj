@@ -69,6 +69,7 @@
     <Compile Include="DataModelTests.cs" />
     <Compile Include="EntityFrameworkTest.cs" />
     <Compile Include="GetQueryableMockSet.cs" />
+    <Compile Include="IEqualityComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebsiteTest.cs" />
   </ItemGroup>
