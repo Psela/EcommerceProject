@@ -36,20 +36,13 @@ namespace EcommerceProject.Website.Controllers
 
     public PartialViewResult ShowResults(string searchInput)
     {
-        //List<Product> listOfProducts = SearchProducts(searchInput);
+        List<Product> listOfProducts = SearchProducts(searchInput);
 
-        ////// DELETE ONCE CONNECTED TO DATABASE!//////
-        List<Product> listOfProducts = new List<Product>();
-        Product prod = new Product() { id = 1, name = "Book", price = 10.00, stock = 1, tag1 = "Wand", tag2 = "Harry Potter", tag3 = "Magic", description = "abc \n bcd", imageurl = "http://vignette2.wikia.nocookie.net/harrypotter/images/a/a8/Harrypotterwand.jpg/revision/latest?cb=20090315070416" };
-        //listOfProducts.Add(new Product() { id = 1, name = "Wand", price = 10.00, stock = 1, tag1 = "Wand", tag2 = "Harry Potter", tag3 = "Magic", description = "abc \n bcd", imageurl = "http://vignette2.wikia.nocookie.net/harrypotter/images/a/a8/Harrypotterwand.jpg/revision/latest?cb=20090315070416" });
-        listOfProducts.Add(prod);
-        return PartialView("_PartialProductView", prod);
-        ///////////////////////////////////////////////
-
-        //foreach (Product p in listOfProducts)
-        //{
-        //    return PartialView("_PartialProductView", listOfProducts);
-        //}
+        foreach (Product p in listOfProducts)
+        {
+            return PartialView("_PartialProductView", p);
+        }
+        return PartialView();
     }
 
     public ActionResult About()

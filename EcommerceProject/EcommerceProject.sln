@@ -13,12 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.DataModel"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.Server", "EcommerceProject.Server\EcommerceProject.Server.csproj", "{F82D341A-4D9E-4FC6-B136-6479C88F9A01}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C88F062-0F75-41F8-81A6-19D05BBFC8A3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artifacts", "Artifacts", "{2C88F062-0F75-41F8-81A6-19D05BBFC8A3}"
 	ProjectSection(SolutionItems) = preProject
 		Artifacts\InitialDBSetUp = Artifacts\InitialDBSetUp
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.DatabaseModel", "EntityFramework\EcommerceProject.DatabaseModel.csproj", "{9097D3AC-E0BD-452B-A580-E9417AC0CBAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pictures", "Pictures", "{2B1AB122-1F79-41BE-8E65-A0E775AED63D}"
+	ProjectSection(SolutionItems) = preProject
+		Artifacts\Pictures\OrcRepel.png = Artifacts\Pictures\OrcRepel.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,5 +58,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B1AB122-1F79-41BE-8E65-A0E775AED63D} = {2C88F062-0F75-41F8-81A6-19D05BBFC8A3}
 	EndGlobalSection
 EndGlobal
