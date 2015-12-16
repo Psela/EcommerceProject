@@ -24,6 +24,7 @@ namespace EcommerceProject.Website.Controllers
 
     public ActionResult Index()
     {
+
       return View();
     }
 
@@ -43,10 +44,8 @@ namespace EcommerceProject.Website.Controllers
 
     public List<Product> SearchProducts(string searchFor)
     {
-      DataRetrieverService service = new DataRetrieverService();
-      List<Product> foundProduct = new List<Product>();
-      List<Product> listOfProducts = reader.GetAllProducts();
-
+        List<Product> listOfProducts= GetAllProductsInList();
+        List<Product> foundProduct = new List<Product>();
       foreach (Product product in listOfProducts)
       {
         int id = 0;
@@ -72,5 +71,24 @@ namespace EcommerceProject.Website.Controllers
 
       return foundProduct;
     }
+
+    private List<Product> GetAllProductsInList()
+    {
+        DataRetrieverService service = new DataRetrieverService();
+        List<Product> listOfProducts = reader.GetAllProducts();
+        return listOfProducts;
+    }
+
+  /*   public PartialViewResult showProductDetails()
+    {
+        List<Product>  listOfProducts = GetAllProductsInList();
+        return PartialView("_PartialListView", listOfProducts);
+    }
+
+
+   public ActionResult GetProductsAction()
+    {
+        return showProductDetails();
+    }*/
   }
 }
