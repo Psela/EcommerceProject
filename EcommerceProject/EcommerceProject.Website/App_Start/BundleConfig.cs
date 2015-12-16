@@ -27,7 +27,7 @@ namespace EcommerceProject.Website
                 "~/Scripts/respond.js"));
 
       bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css","~/Content/Menu.css","~/Content/SlideShowFile.css",
+                "~/Content/bootstrap.css","~/Content/Menu.css","~/Content/HomePage.css",
                 "~/Content/site.css"));
     }
   }
