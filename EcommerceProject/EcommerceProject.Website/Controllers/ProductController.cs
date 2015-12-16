@@ -9,9 +9,13 @@ namespace EcommerceProject.Website.Controllers
 {
   public class ProductController : Controller
   {
-    public ActionResult Index(string product_id)
+    public ActionResult Index(string id)
     {
-      return View(product_id);
+      HomeController homeController = new HomeController();
+
+      Product product = homeController.SearchProducts(id)[0];
+
+      return View(product);
     }
   }
 }

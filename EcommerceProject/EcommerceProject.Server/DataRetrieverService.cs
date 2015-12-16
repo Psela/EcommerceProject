@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcommerceProject.DatabaseModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,12 @@ namespace EcommerceProject.Server
 {
   public class DataRetrieverService
   {
-    public virtual object ReadData()
+
+    public virtual List<ProductData> ReadData()
     {
-      return null;
+        DatabaseModel.Select.FindProduct find = new DatabaseModel.Select.FindProduct();
+        List<ProductData> products = find.GetAllProducts();
+        return products;
     }
   }
 }

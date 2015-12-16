@@ -10,6 +10,11 @@ namespace EcommerceProject.DatabaseModel.Select
     {
         private ECommerceEntities context;
 
+        public FindProduct()
+        {
+            context = new ECommerceEntities();
+        }
+
         public FindProduct(ECommerceEntities eCommerceEntities)
         {
             context = eCommerceEntities;
@@ -21,6 +26,14 @@ namespace EcommerceProject.DatabaseModel.Select
             {
                 List<ProductData> products = context.ProductDatas.ToList<ProductData>();
                 return products;
+            }
+        }
+        public ProductData GetProductByID(int ID)
+        {
+            using (context)
+            {
+                ProductData product = context.ProductDatas.Where<ProductData>(p => p.p_id == ID).FirstOrDefault();
+                return product;
             }
         }
     }

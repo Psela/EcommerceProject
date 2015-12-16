@@ -1,0 +1,23 @@
+﻿body {
+}
+
+#img {
+  position: relative;
+}
+
+#product {
+  position: absolute;
+  color: blue;
+  left: 40%;
+  top: 10%;
+  width: 30%;
+}
+
+#product_description {
+  font-family: 'Allan', cursive;
+  font-size:1.5em;
+  position: absolute;
+  width: 50%;
+  left: 40%;
+  top: 35%;
+}

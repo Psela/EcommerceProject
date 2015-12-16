@@ -14,7 +14,7 @@ namespace EcommerceProject.Website.Controllers
 
     public HomeController()
     {
-        reader = new DatabaseReader(new DataRetrieverService());
+      reader = new DatabaseReader(new DataRetrieverService());
     }
 
     public HomeController(DatabaseReader DbReader)
@@ -29,7 +29,7 @@ namespace EcommerceProject.Website.Controllers
             return ShowResults(searchInput);
         }
 
-        return View();
+      return View();
     }
 
     public PartialViewResult ShowResults(string searchInput)
