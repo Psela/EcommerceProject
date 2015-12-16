@@ -1,0 +1,30 @@
+﻿
+.fontface1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-style:oblique;
+}
+
+#banner1
+{
+    background-color:whitesmoke;
+    
+  
+}
+
+#bottomlayout{
+    height:220px;
+}
+
+#banneritem{
+    border-style:groove;
+    border-bottom-width:2px;
+    border-top-width:4px;
+    border-top-color:gray;
+    border-bottom-color:black;
+}
+
+#Aboutid {
+    background-color:#D43943;
+    position:absolute;
+    top:550px;
+}
