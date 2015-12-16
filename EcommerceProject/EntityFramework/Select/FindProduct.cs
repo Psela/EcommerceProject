@@ -10,6 +10,11 @@ namespace EcommerceProject.DatabaseModel.Select
     {
         private ECommerceEntities context;
 
+        public FindProduct()
+        {
+            context = new ECommerceEntities();
+        }
+
         public FindProduct(ECommerceEntities eCommerceEntities)
         {
             context = eCommerceEntities;
