@@ -41,7 +41,7 @@ namespace EcommerceProject.Website.Controllers
         {
             return PartialView("_PartialProductView", p);
         }
-        return PartialView();
+      return PartialView("_PartialProductView", null);
     }
 
     public ActionResult About()
@@ -60,7 +60,7 @@ namespace EcommerceProject.Website.Controllers
 
     public List<Product> SearchProducts(string searchFor)
     {
-        List<Product> listOfProducts= GetAllProductsInList();
+      List<Product> listOfProducts = GetAllProductsInList();
       List<Product> foundProduct = new List<Product>();
       foreach (Product product in listOfProducts)
       {
