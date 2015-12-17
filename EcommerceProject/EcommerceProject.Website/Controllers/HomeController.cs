@@ -11,11 +11,12 @@ namespace EcommerceProject.Website.Controllers
   public class HomeController : Controller
   {
     DatabaseReader reader;
-  
+    List<Product> listOfProducts;
 
     public HomeController()
     {
       reader = new DatabaseReader(new DataRetrieverService());
+      listOfProducts = GetAllProductsInList();
     }
 
     public HomeController(DatabaseReader DbReader)
@@ -23,25 +24,22 @@ namespace EcommerceProject.Website.Controllers
       reader = DbReader;
     }
 
-    
+
     public ActionResult Index(string searchInput)
     {
-        if (Request.IsAjaxRequest())
-        {
-            return ShowResults(searchInput);
-        }
-      return View();
+
+      if (Request.IsAjaxRequest())
+      {
+        return ShowResults(searchInput);
+      }
+      return View(listOfProducts);
     }
 
     public PartialViewResult ShowResults(string searchInput)
     {
-        List<Product> listOfProducts = SearchProducts(searchInput);
+      List<Product> listOfResultProducts = SearchProducts(searchInput);
 
-        foreach (Product p in listOfProducts)
-        {
-            return PartialView("_PartialProductView", p);
-        }
-      return PartialView("_PartialProductView", null);
+      return PartialView("_ProductListView", listOfResultProducts);
     }
 
     public ActionResult About()
@@ -58,7 +56,6 @@ namespace EcommerceProject.Website.Controllers
 
     public List<Product> SearchProducts(string searchFor)
     {
-      List<Product> listOfProducts = GetAllProductsInList();
       List<Product> foundProduct = new List<Product>();
       foreach (Product product in listOfProducts)
       {
@@ -86,12 +83,12 @@ namespace EcommerceProject.Website.Controllers
       return foundProduct;
     }
 
-   public List<Product> GetAllProductsInList()
+    public List<Product> GetAllProductsInList()
     {
-        DataRetrieverService service = new DataRetrieverService();
-        List<Product> listOfProducts = reader.GetAllProducts();
-    
-        return listOfProducts;
+      DataRetrieverService service = new DataRetrieverService();
+      List<Product> listOfProducts = reader.GetAllProducts();
+
+      return listOfProducts;
     }
 
 
