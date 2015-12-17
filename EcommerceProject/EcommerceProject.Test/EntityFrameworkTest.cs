@@ -159,5 +159,21 @@ namespace EcommerceProject.Test
             //Assert
             Assert.AreEqual(mockOrders.Object, returnedOrder);
         }
+
+        //[TestMethod]
+        //public void test_thatAddNewProduct_returnsANewProduct_whenCalledWithValidParameters()
+        //{
+        //    //Arrange
+        //    Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
+        //    List<OrderHistory> mockOrderList = new List<OrderHistory>();
+        //    Mock<OrderHistory> mockOrders = new Mock<OrderHistory>();
+        //    mockOrders.SetupAllProperties();
+        //    mockOrders.Object.order_number = 1;
+        //    mockOrderList.Add(mockOrders.Object);
+
+        //    DbSet<OrderHistory> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<OrderHistory>(mockOrderList);
+        //    mockContext.SetupAllProperties();
+        //    mockContext.Object.OrderHistories = mockedDataSet;
+        //}
     }
 }
