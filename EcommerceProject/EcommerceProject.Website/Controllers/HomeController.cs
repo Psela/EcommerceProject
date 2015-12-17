@@ -11,7 +11,7 @@ namespace EcommerceProject.Website.Controllers
   public class HomeController : Controller
   {
     DatabaseReader reader;
-
+  
 
     public HomeController()
     {
@@ -23,25 +23,24 @@ namespace EcommerceProject.Website.Controllers
       reader = DbReader;
     }
 
-
+    
     public ActionResult Index(string searchInput)
     {
-      if (Request.IsAjaxRequest())
-      {
-        return ShowResults(searchInput);
-      }
-
+        if (Request.IsAjaxRequest())
+        {
+            return ShowResults(searchInput);
+        }
       return View();
     }
 
     public PartialViewResult ShowResults(string searchInput)
     {
-      List<Product> listOfProducts = SearchProducts(searchInput);
+        List<Product> listOfProducts = SearchProducts(searchInput);
 
-      foreach (Product p in listOfProducts)
-      {
-        return PartialView("_PartialProductView", p);
-      }
+        foreach (Product p in listOfProducts)
+        {
+            return PartialView("_PartialProductView", p);
+        }
       return PartialView("_PartialProductView", null);
     }
 
@@ -87,24 +86,14 @@ namespace EcommerceProject.Website.Controllers
       return foundProduct;
     }
 
-    private List<Product> GetAllProductsInList()
+   public List<Product> GetAllProductsInList()
     {
-      DataRetrieverService service = new DataRetrieverService();
-      List<Product> listOfProducts = reader.GetAllProducts();
-
-      return listOfProducts;
+        DataRetrieverService service = new DataRetrieverService();
+        List<Product> listOfProducts = reader.GetAllProducts();
+    
+        return listOfProducts;
     }
 
-    /*   public PartialViewResult showProductDetails()
-       {
-           List<Product>  listOfProducts = GetAllProductsInList();
-           return PartialView("_PartialListView", listOfProducts);
-       }
 
-
-      public ActionResult GetProductsAction()
-       {
-           return showProductDetails();
-       }*/
   }
 }
