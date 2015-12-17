@@ -22,6 +22,7 @@ namespace EcommerceProject.Website.Controllers
     public HomeController(DatabaseReader DbReader)
     {
       reader = DbReader;
+      listOfProducts = GetAllProductsInList();
     }
 
 
