@@ -71,6 +71,7 @@
     <Compile Include="UpdateProductView.xaml.cs">
       <DependentUpon>UpdateProductView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateProductViewModel.cs" />
     <Page Include="AddProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
