@@ -13,12 +13,32 @@ namespace EcommerceProject.AdminPortal
         private ICommand _addButton;
         public ICommand addButton
         {
-            get { return _addButton; }
+            get
+            {
+                if (_addButton == null)
+                {
+                    _addButton = new Command(GoToAddPage, CanChangeAddCommand);
+                }
+                return _addButton;
+            
+            }
             set 
             { 
                 _addButton = value;
                 onPropertyChanged("addButton");
             }
+        }
+
+        private bool CanChangeAddCommand()
+        {
+            return true;
+        }
+
+        private void GoToAddPage()
+        {
+            MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
+            AddProductViewModel viewmodel = new AddProductViewModel();
+            vm.source = viewmodel.source;
         }
 
         private ICommand _updateButton;
@@ -53,9 +73,9 @@ namespace EcommerceProject.AdminPortal
                 onPropertyChanged("manageCustomerButton");
             }
         }
-        
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
         private void onPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -64,6 +84,6 @@ namespace EcommerceProject.AdminPortal
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+       
     }
 }

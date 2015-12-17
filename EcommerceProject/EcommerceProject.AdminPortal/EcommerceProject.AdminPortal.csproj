@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddProductViewModel.cs" />
     <Compile Include="ManageCustomerView.xaml.cs">
       <DependentUpon>ManageCustomerView.xaml</DependentUpon>
     </Compile>
