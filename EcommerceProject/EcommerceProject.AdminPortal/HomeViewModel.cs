@@ -39,23 +39,6 @@ namespace EcommerceProject.AdminPortal
             }
         }
 
-        private ICommand _updateButton;
-        public ICommand updateButton
-        {
-            get
-            {
-                if (_updateButton == null)
-                {
-                    _updateButton = new Command(GoToUpdatePage, CanGoToUpdatePage);
-                }
-                return _updateButton;
-            }
-            set
-            {
-                _updateButton = value;
-            }
-        }
-
         private ICommand _removeButton;
         public ICommand removeButton
         {
@@ -121,15 +104,7 @@ namespace EcommerceProject.AdminPortal
             vm.source = "FindProductView.xaml";
         }
 
-        private bool CanGoToUpdatePage()
-        {
-            return true;
-        }
-        private void GoToUpdatePage()
-        {
-            MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
-            vm.source = "UpdateProductView.xaml";
-        }
+
 
         private void onPropertyChanged(string propertyName)
         {
