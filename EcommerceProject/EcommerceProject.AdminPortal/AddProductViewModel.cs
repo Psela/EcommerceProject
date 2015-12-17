@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -28,7 +29,7 @@ namespace EcommerceProject.AdminPortal
             get { return _productId; }
             set
             {
-                if (value.GetType() == Price.GetType())
+                if (value.GetType() == Product_ID.GetType())
                 {
                     _productId = value;
                     onPropertyChanged("Product_ID");
@@ -36,6 +37,7 @@ namespace EcommerceProject.AdminPortal
                 else
                 {
                     BorderColor = "red";
+                    
                 }
             }
         }
@@ -74,6 +76,7 @@ namespace EcommerceProject.AdminPortal
                 else
                 {
                     BorderColor = "red";
+                    
                 }
             }
         }
@@ -121,6 +124,7 @@ namespace EcommerceProject.AdminPortal
                 else
                 {
                     BorderColor = "red";
+                   
                 }
             }
         }
