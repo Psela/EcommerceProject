@@ -43,7 +43,7 @@
         <Label Grid.Column="0" Grid.Row="5" Content="Tag 3" FontSize="12" Background="Beige" Margin="0,25,0,0" Grid.RowSpan="2"></Label>
         <Label Grid.Column="0" Grid.Row="7" Content="Stock" FontSize="12" Background="Beige" Margin="0,0,0,1"></Label>
         <Label Grid.Column="0" Grid.Row="8" Content="Image Url" FontSize="12" Background="Beige" Margin="0,0,0,24" Grid.RowSpan="2"></Label>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Product_ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="{Binding BorderColor}" Text="{Binding Product_ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" />
         <TextBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="3" Text="{Binding Description, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }"/>
         <TextBox Grid.Row="2" Text="{Binding Price, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }" Margin="0,24,0,1" Grid.Column="1" Grid.RowSpan="2"/>
