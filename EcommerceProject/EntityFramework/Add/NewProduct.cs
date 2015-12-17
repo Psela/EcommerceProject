@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceProject.DatabaseModel.Add
 {
-    class NewProduct
+    public class NewProduct
     {
     }
 }
