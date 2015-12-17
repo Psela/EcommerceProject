@@ -184,6 +184,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Homepage.css" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\PartialProductView.css" />
     <Content Include="Content\ProductPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

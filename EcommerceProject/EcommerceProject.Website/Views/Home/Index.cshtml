@@ -12,11 +12,12 @@
                     HttpMethod = "GET",
                     UpdateTargetId = "midPage",
                     InsertionMode = InsertionMode.Replace
+
                 }))
         {
             <p>
                 Search:@Html.TextBox("searchInput")
-                <input type="submit" value="Search"/>
+                <input type="submit" value="Search" />
 
 
             </p>
@@ -24,12 +25,15 @@
     </div>
 </center>
 
+<div id="midPage">
 <div id="banner1">
     <div id="banneritem"><h1><span class="fontface1">The Dragon&rsquo;s Hoard</></span></h1></div>
     <span><img src="http://localhost:55805/discount.gif" width="1140" height="400"></span>
     <div id="Aboutid" class="fontface btn btn-default">About Dragon&rsquo;s Hoard</div>
-    <div id="bottomlayout"> <br/>
-    <span class="fontface">Earth's Most Customer-Centric Company
+        <div id="bottomlayout">
+            <br />
+            <span class="fontface">
+                Earth's Most Customer-Centric Company
 The Dragon&rsquo;s Hoard, a Fortune 500 company based in Seattle,
          Washington, is the global leader in e-commerce.
          Since Jeff Bezos started Amazon in 1995,
@@ -42,7 +46,8 @@ The Dragon&rsquo;s Hoard, a Fortune 500 company based in Seattle,
 
 We've Only Just Begun
 
-This evolution of Amazon from Web site to e-commerce partner to development platform is driven by the spirit of innovation that is part of the company's DNA. E-commerce is still in its infancy. In the years to come, you'll see Amazon create new technologies, expand into more geographies and continue to improve the lives of shoppers and sellers around the world.</span>
+                This evolution of Amazon from Web site to e-commerce partner to development platform is driven by the spirit of innovation that is part of the company's DNA. E-commerce is still in its infancy. In the years to come, you'll see Amazon create new technologies, expand into more geographies and continue to improve the lives of shoppers and sellers around the world.
+            </span>
     </div>
 </div>
 
@@ -53,7 +58,8 @@ This evolution of Amazon from Web site to e-commerce partner to development plat
 <div class="row">
     <div class="col-md-3">
         <h2>Products</h2>
-        <p>            Product descriptions.
+            <p>
+                Product descriptions.
         </p>
         <p><a class="firstLink" href="/Home/About">Product link &raquo;</a></p>
     </div>
@@ -77,7 +83,7 @@ This evolution of Amazon from Web site to e-commerce partner to development plat
     </div>
 </div>
 
-<div class="row">
+    <div class="row" id="lowerPage">
     <div class="col-md-3">
         <h2>Products</h2>
         <p>
@@ -106,7 +112,8 @@ This evolution of Amazon from Web site to e-commerce partner to development plat
 </div>
 
 <div class="row">
-
+    </div>
+  
 </div>
 
 
