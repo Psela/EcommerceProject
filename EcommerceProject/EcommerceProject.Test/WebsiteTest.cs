@@ -27,7 +27,7 @@ namespace EcommerceProject.Test
     {
       Mock<DataRetrieverService> mockService = new Mock<DataRetrieverService>();
       mockDbReader = new Mock<DatabaseReader>(mockService.Object);
-      controller = new HomeController(mockDbReader.Object);
+
       product1 = new Product() { name = "product1", tag1 = "tag1", tag2 = "tag2", tag3 = "tag6", description = "description 1 is here",id=1 };
       product2 = new Product() { name = "product2", tag1 = "tag1", tag2 = "tag3", tag3 = "tag2", description = "description 2 not is here" };
       Product product3 = new Product() { name = "product3", tag1 = "tag2", tag2 = "tag5", tag3 = "tag6", description = "description 6 is not here" };
@@ -51,7 +51,8 @@ namespace EcommerceProject.Test
         product9,
         product10
       };
-      mockDbReader.Setup(x => x.GetAllProducts()).Returns(listOfProduct);
+      mockDbReader.Setup(x => x.GetAllProducts()).Returns(listOfProduct);   
+      controller = new HomeController(mockDbReader.Object);
     }
 
     //[TestMethod]

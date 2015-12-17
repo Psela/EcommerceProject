@@ -1,20 +1,10 @@
 ﻿@model EcommerceProject.DataModel.Product
 
-@if (Model == null)
-{
-  <h1>No product have been found.</h1>
-}
-else
-{
-  <h3>
+<h3>
+  <a href="http://localhost:55805/Product/Index/@Model.id" id="fontcolorface" class="fontface" title="@Model.name">
     <img src=@Model.imageurl style="width:80px;height:80px" />
-      <br/>
-      <span class="fontface"> @Model.name <br /></span>
-      <span class="fontface">£@Model.price</span>
-  </h3>
-
-}
-
-
-
-
+  </a>
+  <br />
+  <a href="http://localhost:55805/Product/Index/@Model.id" id="fontcolorface" class="fontface" title="@Model.name"><span>@Model.name <br /></span></a>
+  <span class="fontface">£@Model.price</span>
+</h3>

@@ -45,3 +45,22 @@
 {
     background-color:white;
 }
+
+a:link{
+    text-decoration:none;    
+    font-family: 'Alice', serif;
+    font-size: large;
+}
+
+#fontcolorface{
+    color: #8A6D3B;
+   
+}
+
+#fontcolorface:hover{
+         color:#47381f;
+}
+
+ a:hover{
+     color:#47381f;
+ }
