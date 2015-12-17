@@ -30,7 +30,6 @@ namespace EcommerceProject.Website.Controllers
         {
             return ShowResults(searchInput);
         }
-
       return View();
     }
 
@@ -89,7 +88,7 @@ namespace EcommerceProject.Website.Controllers
       return foundProduct;
     }
 
-    private List<Product> GetAllProductsInList()
+   public List<Product> GetAllProductsInList()
     {
         DataRetrieverService service = new DataRetrieverService();
         List<Product> listOfProducts = reader.GetAllProducts();
@@ -97,16 +96,6 @@ namespace EcommerceProject.Website.Controllers
         return listOfProducts;
     }
 
- /*   public PartialViewResult showProductDetails()
-    {
-        List<Product>  listOfProducts = GetAllProductsInList();
-        return PartialView("_PartialListView", listOfProducts);
-    }
 
-
-   public ActionResult GetProductsAction()
-    {
-        return showProductDetails();
-    }*/
   }
 }

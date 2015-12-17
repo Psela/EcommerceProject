@@ -7,8 +7,7 @@
 #banner1
 {
     background-color:whitesmoke;
-    
-  
+     
 }
 
 #bottomlayout{
@@ -27,4 +26,22 @@
     background-color:#D43943;
     position:absolute;
     top:550px;
+}
+
+.boundaries
+{
+    border-left-style:groove;
+    border-right-style:groove;
+    border-width:2px;
+}
+
+.fontcolorclass{
+    color:white;
+}
+
+
+
+.productsview
+{
+    background-color:white;
 }
