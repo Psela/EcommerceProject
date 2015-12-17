@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EcommerceProject.AdminPortal
 {
     /// <summary>
-    /// Interaction logic for RemoveProductView.xaml
+    /// Interaction logic for FindProductView.xaml
     /// </summary>
-    public partial class RemoveProductView : Page
+    public partial class FindProductView : Page
     {
-        public RemoveProductView()
+        public FindProductView()
         {
             InitializeComponent();
         }
