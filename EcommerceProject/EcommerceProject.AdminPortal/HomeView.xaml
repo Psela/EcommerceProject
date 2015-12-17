@@ -8,6 +8,9 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="HomeView">
 
+    <Page.DataContext>
+        <viewModel:HomeViewModel/>
+    </Page.DataContext>
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -26,7 +29,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" Content="Add Product" Height="70" Width="110" Command="{Binding addButton}"  />
+            <Button Grid.Row="0" Grid.Column="0" Content="Add Product" Height="70" Width="110" Command="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
             <Button Grid.Row="1" Grid.Column="0" Content="Remove Product" Height="70" Width="110" Command="{Binding removeButton}" />
             <Button Grid.Row="0" Grid.Column="1" Content="Update Product" Height="70" Width="110" Command="{Binding updateButton}" />
             <Button Grid.Row="1" Grid.Column="1" Content="Manage Customer" Height="70" Width="110" Command="{Binding manageCustomerButton}" />
