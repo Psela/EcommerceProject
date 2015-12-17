@@ -30,7 +30,6 @@ namespace EcommerceProject.Website.Controllers
         {
             return ShowResults(searchInput);
         }
-
       return View();
     }
 
@@ -42,7 +41,7 @@ namespace EcommerceProject.Website.Controllers
         {
             return PartialView("_PartialProductView", p);
         }
-        return PartialView();
+      return PartialView("_PartialProductView", null);
     }
 
     public ActionResult About()
@@ -54,14 +53,12 @@ namespace EcommerceProject.Website.Controllers
 
     public ActionResult Contact()
     {
-      ViewBag.Message = "Your contact page.";
-
       return View();
     }
 
     public List<Product> SearchProducts(string searchFor)
     {
-        List<Product> listOfProducts= GetAllProductsInList();
+      List<Product> listOfProducts = GetAllProductsInList();
       List<Product> foundProduct = new List<Product>();
       foreach (Product product in listOfProducts)
       {
@@ -89,7 +86,7 @@ namespace EcommerceProject.Website.Controllers
       return foundProduct;
     }
 
-    private List<Product> GetAllProductsInList()
+   public List<Product> GetAllProductsInList()
     {
         DataRetrieverService service = new DataRetrieverService();
         List<Product> listOfProducts = reader.GetAllProducts();
@@ -97,16 +94,6 @@ namespace EcommerceProject.Website.Controllers
         return listOfProducts;
     }
 
- /*   public PartialViewResult showProductDetails()
-    {
-        List<Product>  listOfProducts = GetAllProductsInList();
-        return PartialView("_PartialListView", listOfProducts);
-    }
 
-
-   public ActionResult GetProductsAction()
-    {
-        return showProductDetails();
-    }*/
   }
 }
