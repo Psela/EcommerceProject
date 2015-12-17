@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace EcommerceProject.AdminPortal
 {
     /// <summary>
-    /// Interaction logic for RemoveProductView.xaml
+    /// Interaction logic for FindProductView.xaml
     /// </summary>
     public partial class FindProductView : Page
     {
