@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace EcommerceProject.AdminPortal
@@ -27,8 +28,15 @@ namespace EcommerceProject.AdminPortal
             get { return _productId; }
             set
             {
-                _productId = value;
-                onPropertyChanged("Product_ID");
+                if (value.GetType() == Price.GetType())
+                {
+                    _productId = value;
+                    onPropertyChanged("Product_ID");
+                }
+                else
+                {
+                    BorderColor = "red";
+                }
             }
         }
 
@@ -57,8 +65,16 @@ namespace EcommerceProject.AdminPortal
             get { return _price; }
             set
             {
-                _price = value;
-                onPropertyChanged("Price");
+                if (value.GetType() == Price.GetType())
+                {
+                    _price = value;
+                    onPropertyChanged("Price");
+
+                }
+                else
+                {
+                    BorderColor = "red";
+                }
             }
         }
 
@@ -97,8 +113,15 @@ namespace EcommerceProject.AdminPortal
             get { return _stock; }
             set
             {
-                _stock = value;
-                onPropertyChanged("Stock");
+                if (value.GetType() == Price.GetType())
+                {
+                    _stock = value;
+                    onPropertyChanged("Stock");
+                }
+                else
+                {
+                    BorderColor = "red";
+                }
             }
         }
 
@@ -180,6 +203,18 @@ namespace EcommerceProject.AdminPortal
         }
 
 
+
+        private string _bordercolor;
+
+        public string BorderColor
+        {
+            get { return _bordercolor; }
+            set { _bordercolor = value;
+            onPropertyChanged("BorderColor");
+            }
+        }
+        
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void onPropertyChanged(string propertyName)
         {
@@ -188,6 +223,7 @@ namespace EcommerceProject.AdminPortal
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
 
     }
 }
