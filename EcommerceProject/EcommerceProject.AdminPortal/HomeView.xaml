@@ -17,7 +17,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        
+
         <TextBlock Margin="0,5,0,0" Grid.Row="0" FontFamily="Trebuchet MS" HorizontalAlignment="Center" Foreground="Gray"> Welcome (PERSONS NAME AFTER SIGN IN)</TextBlock>
         <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Trebuchet MS Bold" FontSize="15" Foreground="Gray">What would you like to do?</TextBlock>
         <Grid Grid.Row="1" >
@@ -25,14 +25,22 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" Content="Add Product" Height="70" Width="110" Command="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
-            <Button Grid.Row="1" Grid.Column="0" Content="Remove Product" Height="70" Width="110" Command="{Binding removeButton}" />
-            <Button Grid.Row="0" Grid.Column="1" Content="Update Product" Height="70" Width="110" Command="{Binding updateButton}" />
-            <Button Grid.Row="1" Grid.Column="1" Content="Manage Customer" Height="70" Width="110" Command="{Binding manageCustomerButton}" />
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="Add Product" Height="70" Width="110" Command="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
+                <Button Grid.Row="0" Grid.Column="1" Content="Update/Remove" Height="70" Width="110" Command="{Binding removeButton}" />
+            </Grid>
+            
+            <Grid Grid.Row="2">
+                <Button Grid.Row="1"  Content="Manage Customer" Height="70" Width="150" Command="{Binding manageCustomerButton}" />
+
+
+            </Grid>
+
         </Grid>
     </Grid>
 </Page>
