@@ -14,13 +14,13 @@ CREATE Table [ECommerce].[dbo].[CustomerData]
    password VARCHAR(40) NOT NULL
 );
 
-INSERT INTO ECommerce.dbo.CustomerData
+INSERT INTO [ECommerce].[dbo].[CustomerData](first_name,last_name,username,email,password)
 VALUES ('Harry', 'Potter', 'HPThatsMe', 'theboywholived@hogwarts.owl', 'scar');
-INSERT INTO ECommerce.dbo.CustomerData
+INSERT INTO [ECommerce].[dbo].[CustomerData](first_name,last_name,username,email,password)
 VALUES ('Tom', 'Riddle', 'TheDarkLord', 'voldemort@hogwarts.owl', 'horcrux');
-INSERT INTO ECommerce.dbo.CustomerData
+INSERT INTO [ECommerce].[dbo].[CustomerData](first_name,last_name,username,email,password)
 VALUES ('Frodo', 'Baggins', 'RingBearer02','fbaggins@shiremail.me', 'precious');
-INSERT INTO ECommerce.dbo.CustomerData
+INSERT INTO [ECommerce].[dbo].[CustomerData](first_name,last_name,username,email,password)
 VALUES ('Vlad', 'Dracul', 'TheImpaler', 'dracula@wallachia.ro', 'bl00d');
 
 CREATE Table [ECommerce].[dbo].[Address]
@@ -34,13 +34,13 @@ CREATE Table [ECommerce].[dbo].[Address]
    postcode VARCHAR(10)
 );
 
-INSERT INTO [ECommerce].[dbo].[Address]
+INSERT INTO [ECommerce].[dbo].[Address](c_id,address_firstline,address_secondline,address_city,address_country,postcode)
 VALUES (1, '4 Privet Drive', 'Little Whinging', 'Surrey', 'England', 'SUR 123');
-INSERT INTO [ECommerce].[dbo].[Address]
+INSERT INTO [ECommerce].[dbo].[Address](c_id,address_firstline,address_secondline,address_city,address_country,postcode)
 VALUES (2, 'Bag End', 'Bag Shot Row', 'Hobbiton', 'The Shire', 'NZ1 234');
-INSERT INTO [ECommerce].[dbo].[Address]
+INSERT INTO [ECommerce].[dbo].[Address](c_id,address_firstline,address_secondline,address_city,address_country,postcode)
 VALUES (3, 'Cetatea Poenari', 'Mount Cetatea', 'Târgu Mureș', 'Wallachia', 'ROM VAM');
-INSERT INTO [ECommerce].[dbo].[Address]
+INSERT INTO [ECommerce].[dbo].[Address](c_id,address_firstline,address_secondline,address_city,address_country,postcode)
 VALUES (4, 'Boris and Blotts','Knockturn Alley', 'London', 'England', 'LON 123');
 
 CREATE Table [ECommerce].[dbo].[PaymentInfo]
@@ -52,7 +52,7 @@ CREATE Table [ECommerce].[dbo].[PaymentInfo]
    card_name VARCHAR(60)
 );
 
-INSERT INTO [ECommerce].[dbo].[PaymentInfo]
+INSERT INTO [ECommerce].[dbo].[PaymentInfo](c_id,card_number,expiry_month,expiry_year,card_name)
 VALUES (1, 1122334455, 07, 2018, 'Harry James Potter');
 INSERT INTO [ECommerce].[dbo].[PaymentInfo]
 VALUES (2, 2222334455, 08, 2018, 'Frodo D Baggins');
