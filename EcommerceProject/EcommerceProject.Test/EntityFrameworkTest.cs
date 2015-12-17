@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
 using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
+using EcommerceProject.DatabaseModel.Add;
 
 
 namespace EcommerceProject.Test
@@ -160,20 +161,75 @@ namespace EcommerceProject.Test
             Assert.AreEqual(mockOrders.Object, returnedOrder);
         }
 
-        //[TestMethod]
-        //public void test_thatAddNewProduct_returnsANewProduct_whenCalledWithValidParameters()
-        //{
-        //    //Arrange
-        //    Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
-        //    List<OrderHistory> mockOrderList = new List<OrderHistory>();
-        //    Mock<OrderHistory> mockOrders = new Mock<OrderHistory>();
-        //    mockOrders.SetupAllProperties();
-        //    mockOrders.Object.order_number = 1;
-        //    mockOrderList.Add(mockOrders.Object);
+        [TestMethod]
+        public void test_thatAddNewProduct_addsANewProductToTheDatabase_whenCalledWithValidParameters()
+        {
+            //Arrange
+            Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
+            List<ProductData> productDataList = new List<ProductData>();
+            Mock<ProductData> mockProductData = new Mock<ProductData>();
+            mockProductData.SetupAllProperties();
 
-        //    DbSet<OrderHistory> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<OrderHistory>(mockOrderList);
-        //    mockContext.SetupAllProperties();
-        //    mockContext.Object.OrderHistories = mockedDataSet;
-        //}
+            productDataList.Add(mockProductData.Object);
+
+            DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
+            context.SetupAllProperties();
+            context.Object.ProductDatas = mockedDataSet;
+
+            NewProduct addProduct = new NewProduct(context.Object);
+
+            //Act
+            addProduct.CreateNewProduct("", "", 0.0m, "", "", "", 0, "");
+
+            //Assert
+            Assert.AreEqual(2, productDataList.Count);
+        }
+
+        [TestMethod]
+        public void test_thatAddNewProduct_PassesCorrectParametersToDatabase_whenCalledWithValidParameters()
+        {
+            //Arrange
+            Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
+            List<ProductData> productDataList = new List<ProductData>();
+
+            DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
+            context.SetupAllProperties();
+            context.Object.ProductDatas = mockedDataSet;
+
+            NewProduct addProduct = new NewProduct(context.Object);
+            ProductData product = new ProductData()
+            {
+                product_name = "",
+                description = "",
+                price = 0.0m,
+                tag1 = "",
+                tag2 = "",
+                tag3 = "",
+                stock = 1,
+                imageurl = ""
+            };
+            //Act
+            addProduct.CreateNewProduct(
+                product.product_name, 
+                product.description, 
+                (decimal)product.price, 
+                product.tag1, 
+                product.tag2, 
+                product.tag3, 
+                (int)product.stock, 
+                product.imageurl
+                );
+
+
+            //Assert
+            Assert.AreEqual(product.product_name,productDataList[0].product_name);
+            Assert.AreEqual(product.description, productDataList[0].description);
+            Assert.AreEqual(product.imageurl, productDataList[0].imageurl);
+            Assert.AreEqual(product.price, productDataList[0].price);
+            Assert.AreEqual(product.stock, productDataList[0].stock);
+            Assert.AreEqual(product.tag1, productDataList[0].tag1);
+            Assert.AreEqual(product.tag2, productDataList[0].tag2);
+            Assert.AreEqual(product.tag3, productDataList[0].tag3);
+        }
     }
 }
