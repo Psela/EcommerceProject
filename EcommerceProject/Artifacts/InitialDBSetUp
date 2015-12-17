@@ -6,7 +6,7 @@ DROP Table [ECommerce].[dbo].[CustomerData];
 
 CREATE Table [ECommerce].[dbo].[CustomerData]
 (
-   c_id int NOT NULL PRIMARY KEY,
+   c_id int IDENTITY(1,1) PRIMARY KEY,
    first_name VARCHAR(36) NOT NULL,
    last_name VARCHAR(36) NOT NULL,
    username VARCHAR(36) NOT NULL,
@@ -15,18 +15,18 @@ CREATE Table [ECommerce].[dbo].[CustomerData]
 );
 
 INSERT INTO ECommerce.dbo.CustomerData
-VALUES (1, 'Harry', 'Potter', 'HPThatsMe', 'theboywholived@hogwarts.owl', 'scar');
+VALUES ('Harry', 'Potter', 'HPThatsMe', 'theboywholived@hogwarts.owl', 'scar');
 INSERT INTO ECommerce.dbo.CustomerData
-VALUES (4, 'Tom', 'Riddle', 'TheDarkLord', 'voldemort@hogwarts.owl', 'horcrux');
+VALUES ('Tom', 'Riddle', 'TheDarkLord', 'voldemort@hogwarts.owl', 'horcrux');
 INSERT INTO ECommerce.dbo.CustomerData
-VALUES (2, 'Frodo', 'Baggins', 'RingBearer02','fbaggins@shiremail.me', 'precious');
+VALUES ('Frodo', 'Baggins', 'RingBearer02','fbaggins@shiremail.me', 'precious');
 INSERT INTO ECommerce.dbo.CustomerData
-VALUES (3, 'Vlad', 'Dracul', 'TheImpaler', 'dracula@wallachia.ro', 'bl00d');
+VALUES ('Vlad', 'Dracul', 'TheImpaler', 'dracula@wallachia.ro', 'bl00d');
 
 CREATE Table [ECommerce].[dbo].[Address]
 (
    c_id int FOREIGN KEY REFERENCES CustomerData(c_id),
-   a_id int PRIMARY KEY,
+   a_id int IDENTITY(1,1) PRIMARY KEY,
    address_firstline VARCHAR(60),
    address_secondline VARCHAR(60),
    address_city VARCHAR(60),
@@ -35,13 +35,13 @@ CREATE Table [ECommerce].[dbo].[Address]
 );
 
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (1, 1, '4 Privet Drive', 'Little Whinging', 'Surrey', 'England', 'SUR 123');
+VALUES (1, '4 Privet Drive', 'Little Whinging', 'Surrey', 'England', 'SUR 123');
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (2, 2, 'Bag End', 'Bag Shot Row', 'Hobbiton', 'The Shire', 'NZ1 234');
+VALUES (2, 'Bag End', 'Bag Shot Row', 'Hobbiton', 'The Shire', 'NZ1 234');
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (3, 3, 'Cetatea Poenari', 'Mount Cetatea', 'Târgu Mureș', 'Wallachia', 'ROM VAM');
+VALUES (3, 'Cetatea Poenari', 'Mount Cetatea', 'Târgu Mureș', 'Wallachia', 'ROM VAM');
 INSERT INTO [ECommerce].[dbo].[Address]
-VALUES (4, 4, 'Boris and Blotts','Knockturn Alley', 'London', 'England', 'LON 123');
+VALUES (4, 'Boris and Blotts','Knockturn Alley', 'London', 'England', 'LON 123');
 
 CREATE Table [ECommerce].[dbo].[PaymentInfo]
 (
@@ -63,7 +63,7 @@ VALUES (4, 4422334455, 10, 2018, 'Lucius Malfoy');
 
 CREATE Table [ECommerce].[dbo].[ProductData]
 (
-   p_id int PRIMARY KEY,
+   p_id int IDENTITY(1,1) PRIMARY KEY,
    product_name VARCHAR(255),
    description VARCHAR(900),
    price decimal (5,2),
@@ -74,18 +74,18 @@ CREATE Table [ECommerce].[dbo].[ProductData]
    imageurl text
 );
 
-INSERT INTO [ECommerce].[dbo].[ProductData](p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
-VALUES (1, 'Magical Wand with Phoenix feather core', 'A magical stick', 299.99, 'Wand', 'Magic', 'Tools', 2, 'http://vignette2.wikia.nocookie.net/harrypotter/images/a/a8/Harrypotterwand.jpg/revision/latest?cb=20090315070416');
-INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
-VALUES (2, 'Orc repellent', 'A spray a day keeps the nasty orcs away!', 9.99, 'Outdoors', 'Orcs', 'Repellent', 200, 'https://github.com/Psela/EcommerceProject/blob/master/EcommerceProject/Artifacts/Pictures/OrcRepel.png?raw=true');
-INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
-VALUES (3, 'Stake', 'An ergonomically designed shard of aspen, excellent for holding tents and the bodies of your enemies in place', 19.99, 'Stake', 'Tools', 'Garden', 1000, 'http://www.buyfencingdirect.co.uk/images/800/800/140307032853/productimages/bfd/post-and-rail/machine-half-round-56-x-35-1650-x-85mm1.jpg');
-INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
-VALUES (4, 'Carrot Cake', 'A delicious cake born of a the madness of chefs who decided to turn CARROTS and CHEESE into cake. Somehow it worked.', 18.99, 'Cake', 'Carrots', 'Food', 1000, 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR78K_ExbEs6wsaUfmzMi4oiM1mWXgrvb8ENy7NG-lvtvfFmp6Y');
-INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
-VALUES (5, 'Lightsaber', 'A ray of light that cuts into your enemies.', 999.99, 'Science', 'Tools', 'Weapons', 100, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Lightsaber_blue.svg/2000px-Lightsaber_blue.svg.png');
-INSERT INTO ECommerce.dbo.ProductData(p_id, product_name, description, price, tag1, tag2, tag3, stock, imageurl)
-VALUES (6, 'Raspberry Pi', 'An itty bitty $5 computer', 3.34, 'Science', 'Tools', 'Computer', 300, 'https://www.raspberrypi.org/wp-content/uploads/2015/09/Display.png');
+INSERT INTO [ECommerce].[dbo].[ProductData](product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES ('Magical Wand with Phoenix feather core', 'A magical stick', 299.99, 'Wand', 'Magic', 'Tools', 2, 'http://vignette2.wikia.nocookie.net/harrypotter/images/a/a8/Harrypotterwand.jpg/revision/latest?cb=20090315070416');
+INSERT INTO ECommerce.dbo.ProductData(product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES ('Orc repellent', 'A spray a day keeps the nasty orcs away!', 9.99, 'Outdoors', 'Orcs', 'Repellent', 200, 'https://github.com/Psela/EcommerceProject/blob/master/EcommerceProject/Artifacts/Pictures/OrcRepel.png?raw=true');
+INSERT INTO ECommerce.dbo.ProductData(product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES ('Stake', 'An ergonomically designed shard of aspen, excellent for holding tents and the bodies of your enemies in place', 19.99, 'Stake', 'Tools', 'Garden', 1000, 'http://www.buyfencingdirect.co.uk/images/800/800/140307032853/productimages/bfd/post-and-rail/machine-half-round-56-x-35-1650-x-85mm1.jpg');
+INSERT INTO ECommerce.dbo.ProductData(product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES ('Carrot Cake', 'A delicious cake born of a the madness of chefs who decided to turn CARROTS and CHEESE into cake. Somehow it worked.', 18.99, 'Cake', 'Carrots', 'Food', 1000, 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR78K_ExbEs6wsaUfmzMi4oiM1mWXgrvb8ENy7NG-lvtvfFmp6Y');
+INSERT INTO ECommerce.dbo.ProductData(product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES ('Lightsaber', 'A ray of light that cuts into your enemies.', 999.99, 'Science', 'Tools', 'Weapons', 100, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Lightsaber_blue.svg/2000px-Lightsaber_blue.svg.png');
+INSERT INTO ECommerce.dbo.ProductData(product_name, description, price, tag1, tag2, tag3, stock, imageurl)
+VALUES ('Raspberry Pi', 'An itty bitty $5 computer', 3.34, 'Science', 'Tools', 'Computer', 300, 'https://www.raspberrypi.org/wp-content/uploads/2015/09/Display.png');
 
 
 CREATE Table [ECommerce].[dbo].[OrderHistory]
