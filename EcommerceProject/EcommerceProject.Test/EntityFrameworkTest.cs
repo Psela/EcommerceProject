@@ -9,6 +9,7 @@ using System.Data.Entity;
 using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.DatabaseModel.Add;
+using EcommerceProject.DatabaseModel.Delete;
 
 
 namespace EcommerceProject.Test
@@ -230,6 +231,32 @@ namespace EcommerceProject.Test
             Assert.AreEqual(product.tag1, productDataList[0].tag1);
             Assert.AreEqual(product.tag2, productDataList[0].tag2);
             Assert.AreEqual(product.tag3, productDataList[0].tag3);
+        }
+
+        [TestMethod]
+        public void test_thatDeleteProductByID_DeletesAProductFromTheDatabase_whenCalledWithAValidID()
+        {
+            //Arrange
+            Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
+            List<ProductData> productDataList = new List<ProductData>();
+            Mock<ProductData> mockProductData = new Mock<ProductData>();
+            mockProductData.SetupAllProperties();
+            mockProductData.Object.p_id = 1;
+
+            productDataList.Add(mockProductData.Object);
+
+            DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
+            context.SetupAllProperties();
+            context.Object.ProductDatas = mockedDataSet;
+
+
+            RemoveProduct delProduct = new RemoveProduct(context.Object);
+
+            //Act
+            delProduct.DeleteProductByID(1);
+
+            //Assert
+            Assert.AreEqual(0, productDataList.Count);
         }
     }
 }
