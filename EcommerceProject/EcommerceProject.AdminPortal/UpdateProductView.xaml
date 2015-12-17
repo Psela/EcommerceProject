@@ -7,7 +7,10 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="UpdateProductView">
 
-    <Grid>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <TextBlock> Update </TextBlock>
     </Grid>
 </Page>
