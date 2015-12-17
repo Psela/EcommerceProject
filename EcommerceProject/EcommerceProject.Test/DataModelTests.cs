@@ -117,8 +117,7 @@ namespace EcommerceProject.Test
 
             //Assert
             Assert.IsTrue(expectedProductList.SequenceEqual(actualResult, new ProductEqualityComparer()));
-            //Assert.AreEqual(expectedproduct1, actualResult[0]);
-            //CollectionAssert.AreEqual(expectedProductList, actualResult);
+
         }
     }
 }

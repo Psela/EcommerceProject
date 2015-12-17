@@ -31,6 +31,7 @@ namespace EcommerceProject.DatabaseModel.Add
                 product.tag1 = tagOne;
                 product.tag2 = tagTwo;
                 product.tag3 = tagThree;
+                product.stock = stockAmount;
                 product.imageurl = picture;
                 context.ProductDatas.Add(product);
                 context.SaveChanges();
