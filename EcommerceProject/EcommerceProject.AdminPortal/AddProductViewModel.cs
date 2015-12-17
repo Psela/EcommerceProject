@@ -11,7 +11,7 @@ namespace EcommerceProject.AdminPortal
     public class AddProductViewModel : INotifyPropertyChanged
     {
 
-   
+
         private int _productId;
         private string _name;
         private string _description;
@@ -25,55 +25,91 @@ namespace EcommerceProject.AdminPortal
         public int Product_ID
         {
             get { return _productId; }
-            set { _productId = value; }
+            set
+            {
+                _productId = value;
+                onPropertyChanged("Product_ID");
+            }
         }
 
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set
+            {
+                _name = value;
+                onPropertyChanged("Name");
+            }
         }
 
         public string Description
         {
             get { return _description; }
-            set { _description = value; }
+            set
+            {
+                _description = value;
+                onPropertyChanged("Description");
+            }
         }
 
         public double Price
         {
             get { return _price; }
-            set { _price = value; }
+            set
+            {
+                _price = value;
+                onPropertyChanged("Price");
+            }
         }
 
         public string Tag1
         {
             get { return _tag1; }
-            set { _tag1 = value; }
+            set
+            {
+                _tag1 = value;
+                onPropertyChanged("Tag1");
+            }
         }
 
         public string Tag2
         {
             get { return _tag2; }
-            set { _tag2 = value; }
+            set
+            {
+                _tag2 = value;
+                onPropertyChanged("Tag2");
+            }
         }
 
         public string Tag3
         {
             get { return _tag3; }
-            set { _tag3 = value; }
+            set
+            {
+                _tag3 = value;
+                onPropertyChanged("Tag3");
+            }
         }
 
         public int Stock
         {
             get { return _stock; }
-            set { _stock = value; }
+            set
+            {
+                _stock = value;
+                onPropertyChanged("Stock");
+            }
         }
 
         public string ImageUrl
         {
             get { return _imageUrl; }
-            set { _imageUrl = value; }
+            set
+            {
+                _imageUrl = value;
+                onPropertyChanged("ImageUrl");
+            }
         }
 
 
@@ -140,7 +176,7 @@ namespace EcommerceProject.AdminPortal
 
         private void SaveAddPage()
         {
-           // yet to be implemented
+            // yet to be implemented
         }
 
 
