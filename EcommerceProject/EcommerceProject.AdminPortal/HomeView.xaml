@@ -8,6 +8,9 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="HomeView">
 
+    <Page.DataContext>
+        <viewModel:HomeViewModel/>
+    </Page.DataContext>
 
     <Grid Background="White">
         <Grid.RowDefinitions>
