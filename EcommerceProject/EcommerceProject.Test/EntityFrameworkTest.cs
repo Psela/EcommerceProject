@@ -10,6 +10,7 @@ using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.DatabaseModel.Add;
 using EcommerceProject.DatabaseModel.Delete;
+using EcommerceProject.DatabaseModel.Update;
 
 
 namespace EcommerceProject.Test
@@ -258,5 +259,48 @@ namespace EcommerceProject.Test
             //Assert
             Assert.AreEqual(0, productDataList.Count);
         }
+
+        [TestMethod]
+        public void test_thatUpdateProduct_PassesCorrectParametersToDatabase_whenCalledWithValidParameters()
+        {
+            //Arrange
+            Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
+            List<ProductData> productDataList = new List<ProductData>();
+            Mock<ProductData> mockProductData = new Mock<ProductData>();
+            mockProductData.SetupAllProperties();
+            mockProductData.Object.p_id = 1;
+            productDataList.Add(mockProductData.Object);
+
+            DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
+            context.SetupAllProperties();
+            context.Object.ProductDatas = mockedDataSet;
+
+            EditProduct updateProduct = new EditProduct(context.Object);
+
+            //Act
+            updateProduct.UpdateProduct(
+                1,
+                "MizzyB",
+                "Whattadoo",
+                0.50m,
+                "M",
+                "I",
+                "Z",
+                1,
+                "whatever"
+                );
+
+
+            //Assert
+            Assert.AreEqual("MizzyB", productDataList[0].product_name);
+            Assert.AreEqual("Whattadoo", productDataList[0].description);
+            Assert.AreEqual(0.50m, productDataList[0].price);
+            Assert.AreEqual("M", productDataList[0].tag1);
+            Assert.AreEqual("I", productDataList[0].tag2);
+            Assert.AreEqual("Z", productDataList[0].tag3);
+            Assert.AreEqual(1, productDataList[0].stock);
+            Assert.AreEqual("whatever", productDataList[0].imageurl);
+        }
+
     }
 }
