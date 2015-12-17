@@ -3,17 +3,21 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:viewModel="clr-namespace:EcommerceProject.AdminPortal"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="HomeView">
+
 
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center">What would you like to do?</TextBlock>
-        <Grid Grid.Row="1">
+        
+        <TextBlock Margin="0,5,0,0" Grid.Row="0" FontFamily="Trebuchet MS" HorizontalAlignment="Center" Foreground="Gray"> Welcome (PERSONS NAME AFTER SIGN IN)</TextBlock>
+        <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Trebuchet MS Bold" FontSize="15" Foreground="Gray">What would you like to do?</TextBlock>
+        <Grid Grid.Row="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -22,10 +26,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" Content="Add" Height="70" Width="110"/>
-            <Button Grid.Row="1" Grid.Column="0" Content="Remove" Height="70" Width="110"/>
-            <Button Grid.Row="0" Grid.Column="1" Content="Update" Height="70" Width="110"/>
-            <Button Grid.Row="1" Grid.Column="1" Content="Other" Height="70" Width="110"/>
+            <Button Grid.Row="0" Grid.Column="0" Content="Add Product" Height="70" Width="110" Command="{Binding addButton}"  />
+            <Button Grid.Row="1" Grid.Column="0" Content="Remove Product" Height="70" Width="110" Command="{Binding removeButton}" />
+            <Button Grid.Row="0" Grid.Column="1" Content="Update Product" Height="70" Width="110" Command="{Binding updateButton}" />
+            <Button Grid.Row="1" Grid.Column="1" Content="Manage Customer" Height="70" Width="110" Command="{Binding manageCustomerButton}" />
         </Grid>
     </Grid>
 </Page>
