@@ -8,8 +8,8 @@ else
 {
   <h2>
     <img src=@Model.imageurl style="width:80px;height:80px" id="prodImage"/>
-      <span>@Model.name </span> <br/>
-      <span>£@Model.price</span>
+      <span id="namePartialView">@Model.name </span> <br/>
+      <a href="Product/Index/@Model.id"><span id="pricePartial">£@Model.price</span></a>
   </h2>
 
 }
