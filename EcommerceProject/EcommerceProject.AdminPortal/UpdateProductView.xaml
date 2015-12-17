@@ -9,7 +9,7 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition 
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock> Update </TextBlock>
     </Grid>

@@ -105,10 +105,10 @@ namespace EcommerceProject.AdminPortal
         {
             return true;
         }
-        //Connect to add page
         private void GoToAddPage()
         {
-            source = ""; //
+            MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
+            vm.source = "AddProduct.xaml"; 
         }
 
         private bool CanGoToRemovePage()
