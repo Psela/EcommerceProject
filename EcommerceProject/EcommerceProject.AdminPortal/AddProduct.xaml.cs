@@ -24,5 +24,7 @@ namespace EcommerceProject.AdminPortal
         {
             InitializeComponent();
         }
+
+
     }
 }
