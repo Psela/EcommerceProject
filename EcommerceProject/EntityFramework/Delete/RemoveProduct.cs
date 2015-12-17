@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceProject.DatabaseModel.Delete
 {
-    class RemoveProduct
+    public class RemoveProduct
     {
     }
 }
