@@ -61,11 +61,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddProductViewModel.cs" />
     <Compile Include="ManageCustomerView.xaml.cs">
       <DependentUpon>ManageCustomerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RemoveProductView.xaml.cs">
-      <DependentUpon>RemoveProductView.xaml</DependentUpon>
+    <Compile Include="FindProductView.xaml.cs">
+      <DependentUpon>FindProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateProductView.xaml.cs">
       <DependentUpon>UpdateProductView.xaml</DependentUpon>
@@ -102,7 +103,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RemoveProductView.xaml">
+    <Page Include="FindProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
