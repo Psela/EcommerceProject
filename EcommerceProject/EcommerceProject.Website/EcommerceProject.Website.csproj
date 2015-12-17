@@ -202,6 +202,7 @@
     <Content Include="Images\Banner.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\MagnifyingGlass.JPG" />
+    <Content Include="Images\PlainLogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
