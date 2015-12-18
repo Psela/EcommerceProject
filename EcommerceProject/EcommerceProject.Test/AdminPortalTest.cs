@@ -186,18 +186,18 @@ namespace EcommerceProject.Test
       Assert.IsTrue(actualresult);
     }
 
-    [TestMethod]
-    public void Test_Remove_DoesntCallDeleteProductById_WhenSearchBoxStringNotInt()
-    {
-      //Arrange
-      viewModel.SearchBox = "Fail";
+    //[TestMethod]
+    //public void Test_Remove_DoesntCallDeleteProductById_WhenSearchBoxStringNotInt()
+    //{
+    //  //Arrange
+    //  viewModel.SearchBox = "Fail";
 
-      //Act
-      viewModel.Remove();
+    //  //Act
+    //  viewModel.Remove();
 
-      //Assert
-      mockRemoveProduct.Verify(x => x.DeleteProductByID(It.IsAny<int>()), Times.Never);
-    }
+    //  //Assert
+    //  mockRemoveProduct.Verify(x => x.DeleteProductByID(It.IsAny<int>()), Times.Never);
+    //}
 
     [TestMethod]
     public void Test_CanRemove_ReturnsTrue_WhenCalled()
