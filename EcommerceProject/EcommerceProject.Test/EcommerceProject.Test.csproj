@@ -66,6 +66,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AdminPortalTest.cs" />
     <Compile Include="DataModelTests.cs" />
     <Compile Include="EntityFrameworkTest.cs" />
     <Compile Include="GetQueryableMockSet.cs" />

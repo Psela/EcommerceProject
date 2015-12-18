@@ -79,7 +79,7 @@
     </StackPanel>
     <StackPanel Grid.Column="1" Grid.Row="1" Margin="0,0,10,10">
       <TextBox
-        Text="{Binding SearchBox}"
+        Text="{Binding SearchBox, Mode=TwoWay}"
       Width="150"
       Height="20"
       VerticalAlignment="Top"

@@ -1,4 +1,5 @@
-﻿using EcommerceProject.DataModel;
+﻿using EcommerceProject.DatabaseModel.Delete;
+using EcommerceProject.DataModel;
 using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EcommerceProject.AdminPortal
@@ -13,6 +15,9 @@ namespace EcommerceProject.AdminPortal
   public class FindProductViewModel : INotifyPropertyChanged
   {
     public DatabaseReader dbReader { get; set; }
+
+    RemoveProduct rm;
+    Product product;
 
     private ICommand _EditButton;
     public ICommand EditButton
@@ -45,6 +50,23 @@ namespace EcommerceProject.AdminPortal
       set
       {
         _search = value;
+      }
+    }
+
+    private ICommand _RemoveButton;
+    public ICommand RemoveButton
+    {
+      get
+      {
+        if (_RemoveButton == null)
+        {
+          _RemoveButton = new Command(Remove, CanRemove);
+        }
+        return _RemoveButton;
+      }
+      set
+      {
+        _RemoveButton = value;
       }
     }
 
@@ -125,6 +147,17 @@ namespace EcommerceProject.AdminPortal
       }
     }
 
+    private string _imageurl;
+    public string imageurl
+    {
+      get { return _imageurl; }
+      set
+      {
+        _imageurl = value;
+        onPropertyChanged("imageurl");
+      }
+    }
+
     private int _Stock;
     public int Stock
     {
@@ -139,20 +172,65 @@ namespace EcommerceProject.AdminPortal
     public FindProductViewModel()
     {
       dbReader = new DatabaseReader(new DataRetrieverService());
+      rm = new RemoveProduct();
     }
-    private bool CanSearch()
+
+    public FindProductViewModel(DatabaseReader databaseReader, RemoveProduct removeProduct)
+    {
+      dbReader = databaseReader;
+      rm = removeProduct;
+    }
+
+    public bool CanRemove()
     {
       return true;
     }
 
-    private void Search()
+    public void Remove()
+    {
+      int id = 0;
+      if (int.TryParse(SearchBox, out id))
+      {
+        if (product.id == id)
+        {
+          MessageBoxResult result = MessageBox.Show("You are about to remove " + product.name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
+          switch (result)
+          {
+            case MessageBoxResult.Cancel:
+              return;
+            case MessageBoxResult.No:
+              return;
+            case MessageBoxResult.Yes:
+              rm.DeleteProductByID(Convert.ToInt32(SearchBox));
+              MessageBox.Show(product.name + " has been removed.");
+              return;
+          }
+
+        }
+      }
+
+      MessageBox.Show("You cannot remove this item as you haven't checked it is the right one \n Please press the search button.");
+    }
+
+    public bool CanSearch()
+    {
+      return true;
+    }
+
+    public void Search()
     {
       if (!string.IsNullOrWhiteSpace(SearchBox))
       {
         int id = 0;
         if (int.TryParse(SearchBox, out id))
         {
-          Product product = dbReader.GetAllProducts().Where<Product>(x => x.id == Convert.ToInt32(SearchBox)).First();
+          product = new Product();
+          List<Product> listOfFoundProducts = dbReader.GetAllProducts().Where<Product>(x => x.id == Convert.ToInt32(SearchBox)).ToList();
+          if (listOfFoundProducts.Count == 1)
+          {
+            product = listOfFoundProducts.First();
+          }
+
           Name = product.name;
           Description = product.description;
           Price = product.price;
@@ -160,22 +238,23 @@ namespace EcommerceProject.AdminPortal
           Tag2 = product.tag2;
           Tag3 = product.tag3;
           Stock = product.stock;
+          imageurl = product.imageurl;
         }
       }
     }
 
-    private bool CanGoToUpdatePage()
+    public bool CanGoToUpdatePage()
     {
       return true;
     }
 
-    private void GoToUpdatePage()
+    public void GoToUpdatePage()
     {
       MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
       vm.source = "UpdateProductView.xaml";
     }
 
-    private void onPropertyChanged(string propertyName)
+    public void onPropertyChanged(string propertyName)
     {
       if (PropertyChanged != null)
       {
@@ -184,5 +263,7 @@ namespace EcommerceProject.AdminPortal
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
+    private RemoveProduct removeProduct;
+    private DatabaseReader databaseReader;
   }
 }

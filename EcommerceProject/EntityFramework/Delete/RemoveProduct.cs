@@ -20,7 +20,7 @@ namespace EcommerceProject.DatabaseModel.Delete
             context = eCommerceEntities;
         }
 
-        public void DeleteProductByID(int id)
+        public virtual void DeleteProductByID(int id)
         {
             using (context)
             {
