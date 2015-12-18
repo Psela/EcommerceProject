@@ -205,6 +205,7 @@ namespace EcommerceProject.AdminPortal
                     tag2 = product.tag2;
                     tag3 = product.tag3;
                     stock = product.stock;
+                    image = product.imageurl;
                 }
             }
         }

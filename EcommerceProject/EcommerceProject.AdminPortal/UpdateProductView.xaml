@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:EcommerceProject.AdminPortal"
       mc:Ignorable="d" 
-      d:DesignHeight="296.386" d:DesignWidth="359.036"
+      d:DesignHeight="296" d:DesignWidth="360"
 	Title="UpdateProductView">
 
     <Page.DataContext>
@@ -13,14 +13,6 @@
     </Page.DataContext>
 
     <Grid Background="White" RenderTransformOrigin="0.5,0.5">
-        <Grid.RenderTransform>
-            <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="-0.109"/>
-                <TranslateTransform/>
-            </TransformGroup>
-        </Grid.RenderTransform>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="38"/>
