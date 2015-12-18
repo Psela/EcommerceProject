@@ -26,7 +26,7 @@ namespace EcommerceProject.DatabaseModel.Update
             {
                 int p_id = id;
 
-                ProductData product = context.ProductDatas.Where(p=>p_id==id).First();
+                ProductData product = context.ProductDatas.Where(p => p.p_id == id).First();
                 product.product_name = name;
                 product.description = descript;
                 product.price = prices;
