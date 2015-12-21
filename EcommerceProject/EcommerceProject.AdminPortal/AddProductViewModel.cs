@@ -116,7 +116,7 @@ namespace EcommerceProject.AdminPortal
             get { return _stock; }
             set
             {
-                if (value.GetType() == Price.GetType())
+                if (value.GetType() == Stock.GetType())
                 {
                     _stock = value;
                     onPropertyChanged("Stock");
