@@ -43,15 +43,15 @@
         <Label Grid.Column="0" Grid.Row="5" Content="Tag 3" FontSize="12" Background="Beige" Margin="0,25,0,0" Grid.RowSpan="2"></Label>
         <Label Grid.Column="0" Grid.Row="7" Content="Stock" FontSize="12" Background="Beige" Margin="0,0,0,1"></Label>
         <Label Grid.Column="0" Grid.Row="8" Content="Image Url" FontSize="12" Background="Beige" Margin="0,0,0,24" Grid.RowSpan="2"></Label>
-        <TextBlock Grid.Column="1" Grid.Row="1" Background="White" Text="{Binding Product_ID,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" />
-        <TextBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="3" Text="{Binding Description, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
-         <TextBox Grid.Row="3" Text="{Binding Price, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.Column="1"/>
-        <TextBox Grid.Row="4" Text="{Binding Tag1, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2" Grid.Column="1"/>
-        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding Tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged  }" />
-        <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding Tag3, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding Stock, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" />
-        <TextBox Grid.Row="8" Text="{Binding ImageUrl, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" Grid.Column="1"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Background="White" Text="{Binding product.p_id,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding product.product_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" />
+        <TextBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="3" Text="{Binding product.description, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+         <TextBox Grid.Row="3" Text="{Binding product.price, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.Column="1"/>
+        <TextBox Grid.Row="4" Text="{Binding product.tag1, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2" Grid.Column="1"/>
+    <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding  product.tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged  }" />
+    <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding  product.tag3, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2"/>
+        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding product.stock, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" />
+        <TextBox Grid.Row="8" Text="{Binding product.imageurl, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" Grid.Column="1"/>
         <TextBlock Grid.Column="3" Grid.RowSpan="4" Background="OldLace" Text="Image"/>
         <Button Content="Save" Grid.Column="0" Grid.Row="10" Command="{Binding SaveButton}" Margin="0,1,0,0"/>
         <Button Content="Reset" Grid.Column="1" Grid.Row="10" Command="{Binding ResetButton}" Margin="0,1,0,0"/>

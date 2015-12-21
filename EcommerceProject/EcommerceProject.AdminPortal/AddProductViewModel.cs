@@ -1,4 +1,6 @@
 ﻿using EcommerceProject.DatabaseModel;
+using EcommerceProject.DatabaseModel.Add;
+using EcommerceProject.DatabaseModel.Select;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +17,6 @@ namespace EcommerceProject.AdminPortal
   {
 
     private ProductData _product;
-
     public ProductData product
     {
       get { return _product; }
@@ -24,6 +25,14 @@ namespace EcommerceProject.AdminPortal
         _product = value;
         onPropertyChanged("product");
       }
+    }
+
+    public AddProductViewModel()
+    {
+      FindProduct findProduct = new FindProduct();
+      ProductData productFound = findProduct.GetAllProducts().Last();
+      product = new ProductData();
+      product.p_id = productFound.p_id + 1;
     }
 
     private ICommand _resetButton;
@@ -48,16 +57,10 @@ namespace EcommerceProject.AdminPortal
     {
       return true;
     }
+
     private void ResetAddPage()
     {
-      product.product_name = string.Empty;
-      product.description = string.Empty;
-      product.price = 0.00m;
-      product.tag1 = string.Empty;
-      product.tag2 = string.Empty;
-      product.tag3 = string.Empty;
-      product.stock = 0;
-      product.imageurl = string.Empty;
+      product = new ProductData();
     }
 
     private ICommand _saveButton;
@@ -85,13 +88,11 @@ namespace EcommerceProject.AdminPortal
 
     private void SaveAddPage()
     {
-      // yet to be implemented
+      NewProduct newProduct = new NewProduct();
+      newProduct.CreateNewProduct(product);
     }
 
-
-
     private string _bordercolor;
-
     public string BorderColor
     {
       get { return _bordercolor; }
