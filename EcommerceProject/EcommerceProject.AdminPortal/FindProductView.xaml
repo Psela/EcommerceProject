@@ -87,25 +87,25 @@
       HorizontalAlignment="Left"
       />
       <TextBlock
-        Text="{Binding Name}"
+        Text="{Binding productTemp.name}"
         Height="26"/>
       <TextBlock
-        Text="{Binding Description}"
+        Text="{Binding productTemp.description}"
         Height="26"/>
       <TextBlock
-        Text="{Binding Price}"
+        Text="{Binding productTemp.price}"
         Height="26"/>
       <TextBlock
-        Text="{Binding Tag1}"
+        Text="{Binding productTemp.tag1}"
         Height="26"/>
       <TextBlock
-        Text ="{Binding Tag2}"
+        Text ="{Binding productTemp.tag2}"
         Height="26"/>
       <TextBlock
-        Text="{Binding Tag3}"
+        Text="{Binding productTemp.tag3}"
         Height="26"/>
       <TextBlock
-        Text="{Binding Stock}"
+        Text="{Binding productTemp.stock}"
         Height="26"/>
 
     </StackPanel>
@@ -113,7 +113,7 @@
       Grid.Row="1"
       Grid.Column="1"
       Name="Image"
-      Source="{Binding imageurl}"
+      Source="{Binding productTemp.imageurl}"
       Height="50"
       Width="50"
       HorizontalAlignment="Left"

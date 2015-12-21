@@ -17,7 +17,6 @@ namespace EcommerceProject.AdminPortal
     public DatabaseReader dbReader { get; set; }
 
     RemoveProduct rm;
-    Product product;
 
     private ICommand _EditButton;
     public ICommand EditButton
@@ -81,94 +80,17 @@ namespace EcommerceProject.AdminPortal
       }
     }
 
-    private string _Name;
-    public string Name
+    private Product _productTemp;
+    public Product productTemp
     {
-      get { return _Name; }
-      set
-      {
-        _Name = value;
-        onPropertyChanged("Name");
+      get { return _productTemp; }
+      set 
+      { 
+        _productTemp = value;
+        onPropertyChanged("productTemp");
       }
     }
-
-    private string _Description;
-    public string Description
-    {
-      get { return _Description; }
-      set
-      {
-        _Description = value;
-        onPropertyChanged("Description");
-      }
-    }
-
-    private double _Price;
-    public double Price
-    {
-      get { return _Price; }
-      set
-      {
-        _Price = value;
-        onPropertyChanged("Price");
-      }
-    }
-
-    private string _Tag1;
-    public string Tag1
-    {
-      get { return _Tag1; }
-      set
-      {
-        _Tag1 = value;
-        onPropertyChanged("Tag1");
-      }
-    }
-
-    private string _Tag2;
-    public string Tag2
-    {
-      get { return _Tag2; }
-      set
-      {
-        _Tag2 = value;
-        onPropertyChanged("Tag2");
-      }
-    }
-
-    private string _Tag3;
-    public string Tag3
-    {
-      get { return _Tag3; }
-      set
-      {
-        _Tag3 = value;
-        onPropertyChanged("Tag3");
-      }
-    }
-
-    private string _imageurl;
-    public string imageurl
-    {
-      get { return _imageurl; }
-      set
-      {
-        _imageurl = value;
-        onPropertyChanged("imageurl");
-      }
-    }
-
-    private int _Stock;
-    public int Stock
-    {
-      get { return _Stock; }
-      set
-      {
-        _Stock = value;
-        onPropertyChanged("Stock");
-      }
-    }
-
+    
     public FindProductViewModel()
     {
       dbReader = new DatabaseReader(new DataRetrieverService());
@@ -191,9 +113,9 @@ namespace EcommerceProject.AdminPortal
       int id = 0;
       if (int.TryParse(SearchBox, out id))
       {
-        if (product.id == id)
+        if (productTemp.id == id)
         {
-          MessageBoxResult result = MessageBox.Show("You are about to remove " + product.name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
+          MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
           switch (result)
           {
             case MessageBoxResult.Cancel:
@@ -202,7 +124,7 @@ namespace EcommerceProject.AdminPortal
               return;
             case MessageBoxResult.Yes:
               rm.DeleteProductByID(Convert.ToInt32(SearchBox));
-              MessageBox.Show(product.name + " has been removed.");
+              MessageBox.Show(productTemp.name + " has been removed.");
               return;
           }
 
@@ -224,21 +146,11 @@ namespace EcommerceProject.AdminPortal
         int id = 0;
         if (int.TryParse(SearchBox, out id))
         {
-          product = new Product();
           List<Product> listOfFoundProducts = dbReader.GetAllProducts().Where<Product>(x => x.id == Convert.ToInt32(SearchBox)).ToList();
           if (listOfFoundProducts.Count == 1)
           {
-            product = listOfFoundProducts.First();
+            productTemp = listOfFoundProducts.First();
           }
-
-          Name = product.name;
-          Description = product.description;
-          Price = product.price;
-          Tag1 = product.tag1;
-          Tag2 = product.tag2;
-          Tag3 = product.tag3;
-          Stock = product.stock;
-          imageurl = product.imageurl;
         }
       }
     }
@@ -263,7 +175,5 @@ namespace EcommerceProject.AdminPortal
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-    private RemoveProduct removeProduct;
-    private DatabaseReader databaseReader;
   }
 }

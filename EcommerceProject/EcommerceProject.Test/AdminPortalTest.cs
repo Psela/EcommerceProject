@@ -104,14 +104,14 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      Assert.AreEqual(product1.description, viewModel.Description);
-      Assert.AreEqual(product1.name, viewModel.Name);
-      Assert.AreEqual(product1.price, viewModel.Price);
-      Assert.AreEqual(product1.stock, viewModel.Stock);
-      Assert.AreEqual(product1.tag1, viewModel.Tag1);
-      Assert.AreEqual(product1.tag2, viewModel.Tag2);
-      Assert.AreEqual(product1.tag3, viewModel.Tag3);
-      Assert.AreEqual(product1.imageurl, viewModel.imageurl);
+      Assert.AreEqual(product1.description, viewModel.productTemp.description);
+      Assert.AreEqual(product1.name, viewModel.productTemp.name);
+      Assert.AreEqual(product1.price, viewModel.productTemp.price);
+      Assert.AreEqual(product1.stock, viewModel.productTemp.stock);
+      Assert.AreEqual(product1.tag1, viewModel.productTemp.tag1);
+      Assert.AreEqual(product1.tag2, viewModel.productTemp.tag2);
+      Assert.AreEqual(product1.tag3, viewModel.productTemp.tag3);
+      Assert.AreEqual(product1.imageurl, viewModel.productTemp.imageurl);
     }
 
     [TestMethod]
@@ -124,14 +124,14 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      Assert.IsNull(viewModel.Description);
-      Assert.IsNull(viewModel.Name);
-      Assert.AreEqual(0.0, viewModel.Price);
-      Assert.AreEqual(0, viewModel.Stock);
-      Assert.IsNull(viewModel.Tag1);
-      Assert.IsNull(viewModel.Tag2);
-      Assert.IsNull(viewModel.Tag3);
-      Assert.IsNull(viewModel.imageurl);
+      Assert.IsNull(viewModel.productTemp.description);
+      Assert.IsNull(viewModel.productTemp.name);
+      Assert.AreEqual(0.0, viewModel.productTemp.price);
+      Assert.AreEqual(0, viewModel.productTemp.stock);
+      Assert.IsNull(viewModel.productTemp.tag1);
+      Assert.IsNull(viewModel.productTemp.tag2);
+      Assert.IsNull(viewModel.productTemp.tag3);
+      Assert.IsNull(viewModel.productTemp.imageurl);
     }
 
     [TestMethod]
@@ -144,14 +144,14 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      Assert.IsNull(viewModel.Description);
-      Assert.IsNull(viewModel.Name);
-      Assert.AreEqual(0.0, viewModel.Price);
-      Assert.AreEqual(0, viewModel.Stock);
-      Assert.IsNull(viewModel.Tag1);
-      Assert.IsNull(viewModel.Tag2);
-      Assert.IsNull(viewModel.Tag3);
-      Assert.IsNull(viewModel.imageurl);
+      Assert.IsNull(viewModel.productTemp.description);
+      Assert.IsNull(viewModel.productTemp.name);
+      Assert.AreEqual(0.0, viewModel.productTemp.price);
+      Assert.AreEqual(0, viewModel.productTemp.stock);
+      Assert.IsNull(viewModel.productTemp.tag1);
+      Assert.IsNull(viewModel.productTemp.tag2);
+      Assert.IsNull(viewModel.productTemp.tag3);
+      Assert.IsNull(viewModel.productTemp.imageurl);
     }
 
     [TestMethod]
@@ -164,14 +164,14 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      Assert.IsNull(viewModel.Description);
-      Assert.IsNull(viewModel.Name);
-      Assert.AreEqual(0.0, viewModel.Price);
-      Assert.AreEqual(0, viewModel.Stock);
-      Assert.IsNull(viewModel.Tag1);
-      Assert.IsNull(viewModel.Tag2);
-      Assert.IsNull(viewModel.Tag3);
-      Assert.IsNull(viewModel.imageurl);
+      Assert.IsNull(viewModel.productTemp.description);
+      Assert.IsNull(viewModel.productTemp.name);
+      Assert.AreEqual(0.0, viewModel.productTemp.price);
+      Assert.AreEqual(0, viewModel.productTemp.stock);
+      Assert.IsNull(viewModel.productTemp.tag1);
+      Assert.IsNull(viewModel.productTemp.tag2);
+      Assert.IsNull(viewModel.productTemp.tag3);
+      Assert.IsNull(viewModel.productTemp.imageurl);
     }
 
     [TestMethod]
