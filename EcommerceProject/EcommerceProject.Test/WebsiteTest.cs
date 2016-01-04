@@ -16,16 +16,19 @@ namespace EcommerceProject.Test
   [TestClass]
   public class WebsiteTest
   {
-    HomeController controller;
+    HomeController homeController;
+    ProductController productController;
     Mock<DataRetrieverService> mockDbReader;
 
     [TestInitialize]
     public void Setup()
     {
       mockDbReader = new Mock<DataRetrieverService>();
-      List<ProductData> listOfProduct = new List<ProductData>() { };
+      List<ProductData> listOfProduct = new List<ProductData>() { new ProductData() };
       mockDbReader.Setup(x => x.SearchData(It.IsAny<string>())).Returns(listOfProduct);
-      controller = new HomeController(mockDbReader.Object);
+      mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
+      homeController = new HomeController(mockDbReader.Object);
+      productController = new ProductController(mockDbReader.Object);
     }
 
     //[TestMethod]
@@ -41,16 +44,27 @@ namespace EcommerceProject.Test
     //}
 
     [TestMethod]
-    public void Test_SearchProducts_CallsUponSearchData_ExactlyOnce_WhenCalled()
+    public void Test_HomeController_SearchProducts_CallsUponSearchData_ExactlyOnce_WhenCalled()
     {
       //Arrange
 
       //Act
-      controller.SearchProducts("test");
+      homeController.SearchProducts("test");
 
       //Assert
       mockDbReader.Verify(x => x.SearchData(It.IsAny<string>()), Times.Once);
     }
 
+    [TestMethod]
+    public void Test_HomeController_GetAllProductsInList_CallsUponReadData_ExactlyOnce_WhenCalled()
+    {
+      //Arrange
+
+      //Act
+      homeController.GetAllProductsInList();
+
+      //Assert
+      mockDbReader.Verify(x => x.ReadData(), Times.Once);
+    }
   }
 }
