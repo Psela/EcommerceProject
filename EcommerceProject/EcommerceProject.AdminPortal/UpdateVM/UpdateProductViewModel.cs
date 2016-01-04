@@ -16,7 +16,7 @@ namespace EcommerceProject.AdminPortal.UpdateVM
     {
         private UpdateProductViewModel()
         {
-
+            ServerHost host = new ServiceHost(typeof(;
         }
 
         private ProductData _product;
