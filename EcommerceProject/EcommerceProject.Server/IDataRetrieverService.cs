@@ -15,6 +15,6 @@ namespace EcommerceProject.Server
         List<ProductData> ReadData();
 
         [OperationContract]
-        List<ProductData> SearchData();
+        List<ProductData> SearchData(string searchFor);
     }
 }
