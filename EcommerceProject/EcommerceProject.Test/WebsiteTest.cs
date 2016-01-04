@@ -17,7 +17,7 @@ namespace EcommerceProject.Test
   public class WebsiteTest
   {
     HomeController controller;
-    Mock<FindProduct> mockDbReader;
+    Mock<DataRetrieverService> mockDbReader;
     ProductData product1;
     ProductData product2;
     ProductData product10;
@@ -26,8 +26,7 @@ namespace EcommerceProject.Test
     [TestInitialize]
     public void Setup()
     {
-      Mock<ECommerceEntities> mockService = new Mock<ECommerceEntities>();
-      mockDbReader = new Mock<FindProduct>(mockService.Object);
+      mockDbReader = new Mock<DataRetrieverService>();
 
       product1 = new ProductData() { product_name = "product1", tag1 = "tag1", tag2 = "tag2", tag3 = "tag6", description = "description 1 is here",p_id=1 };
       product2 = new ProductData() { product_name = "product2", tag1 = "tag1", tag2 = "tag3", tag3 = "tag2", description = "description 2 not is here" };
@@ -52,7 +51,7 @@ namespace EcommerceProject.Test
         product9,
         product10
       };
-      mockDbReader.Setup(x => x.GetAllProducts()).Returns(listOfProduct);   
+      mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);   
       controller = new HomeController(mockDbReader.Object);
     }
 
@@ -77,7 +76,7 @@ namespace EcommerceProject.Test
       controller.SearchProducts("test");
 
       //Assert
-      mockDbReader.Verify(x => x.GetAllProducts(), Times.Once);
+      mockDbReader.Verify(x => x.ReadData(), Times.Once);
 
     }
 

@@ -11,16 +11,16 @@ namespace EcommerceProject.Website.Controllers
 {
   public class HomeController : Controller
   {
-    FindProduct reader;
+    DataRetrieverService reader;
     List<ProductData> listOfProducts;
 
     public HomeController()
     {
-        reader = new FindProduct(new ECommerceEntities());
+      reader = new DataRetrieverService();
       listOfProducts = GetAllProductsInList();
     }
 
-    public HomeController(FindProduct DbReader)
+    public HomeController(DataRetrieverService DbReader)
     {
       reader = DbReader;
       listOfProducts = GetAllProductsInList();
@@ -87,7 +87,7 @@ namespace EcommerceProject.Website.Controllers
 
     public List<ProductData> GetAllProductsInList()
     {
-      List<ProductData> listOfProducts = reader.GetAllProducts();
+      List<ProductData> listOfProducts = reader.ReadData();
 
       return listOfProducts;
     }
