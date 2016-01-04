@@ -65,7 +65,7 @@
     </ApplicationDefinition>
     <Compile Include="AddProductVM\AddProductViewModel.cs" />
     <Compile Include="FindVM\FindProductViewModel.cs" />
-    <Compile Include="ManageCustomerView.xaml.cs">
+    <Compile Include="ManageCustomerVM\ManageCustomerView.xaml.cs">
       <DependentUpon>ManageCustomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FindVM\FindProductView.xaml.cs">
@@ -79,12 +79,12 @@
     <Compile Include="UpdateProductView.xaml.cs">
       <DependentUpon>UpdateProductView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateProductViewModel.cs" />
+    <Compile Include="UpdateVM\UpdateProductViewModel.cs" />
     <Page Include="AddProductVM\AddProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HomeView.xaml">
+    <Page Include="HomeVM\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,15 +100,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command.cs" />
-    <Compile Include="HomeView.xaml.cs">
+    <Compile Include="HomeVM\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HomeViewModel.cs" />
+    <Compile Include="HomeVM\HomeViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ManageCustomerView.xaml">
+    <Page Include="ManageCustomerVM\ManageCustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,7 +116,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateProductView.xaml">
+    <Page Include="UpdateVM\UpdateProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using EcommerceProject.AdminPortal.UpdateVM;
+
 
 namespace EcommerceProject.AdminPortal.FindVM
 {
@@ -164,7 +166,7 @@ namespace EcommerceProject.AdminPortal.FindVM
     public void GoToUpdatePage()
     {
       MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
-      vm.source = "UpdateProductView.xaml";
+      vm.source = "UpdateVM/UpdateProductView.xaml";
     }
 
     public void onPropertyChanged(string propertyName)

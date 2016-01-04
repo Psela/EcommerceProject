@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EcommerceProject.AdminPortal
+namespace EcommerceProject.AdminPortal.HomeVM
 {
     /// <summary>
-    /// Interaction logic for ManageCustomerView.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class ManageCustomerView : Page
+    public partial class HomeView : Page
     {
-        public ManageCustomerView()
+        public HomeView()
         {
             InitializeComponent();
         }

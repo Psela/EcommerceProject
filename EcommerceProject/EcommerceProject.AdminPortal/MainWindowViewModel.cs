@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EcommerceProject.AdminPortal.HomeVM;
 
 namespace EcommerceProject.AdminPortal
 {
@@ -23,7 +24,7 @@ namespace EcommerceProject.AdminPortal
 
         public MainWindowViewModel()
         {
-            source = "HomeView.xaml";
+            source = "HomeVM/HomeView.xaml";
         }
 
         private void onPropertyChanged(string propertyName)
