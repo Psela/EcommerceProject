@@ -76,9 +76,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UpdateProductView.xaml.cs">
-      <DependentUpon>UpdateProductView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UpdateVM\UpdateProductViewModel.cs" />
     <Page Include="AddProductVM\AddProduct.xaml">
       <SubType>Designer</SubType>
@@ -176,10 +173,7 @@
       <Name>EcommerceProject.DatabaseModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HomeVM\" />
-    <Folder Include="UpdateVM\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
