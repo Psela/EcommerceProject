@@ -1,10 +1,12 @@
-﻿using EcommerceProject.DatabaseModel;
+﻿using EcommerceProject.AdminPortal.ServiceHostReference;
+using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Add;
 using EcommerceProject.DatabaseModel.Select;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +17,7 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 {
   public class AddProductViewModel : INotifyPropertyChanged
   {
+      IDataRetrieverService client;
 
     private ProductData _product;
     public ProductData product
@@ -29,6 +32,8 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
     public AddProductViewModel()
     {
+        var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+        client = factory.CreateChannel();
       FindProduct findProduct = new FindProduct();
       ProductData productFound = findProduct.GetAllProducts().Last();
       product = new ProductData();
@@ -95,11 +100,13 @@ namespace EcommerceProject.AdminPortal.AddProductVM
               break;
 
           case MessageBoxResult.Yes:
-              { 
-                    NewProduct newProduct = new NewProduct();
-                    validateInput();
-                    newProduct.CreateNewProduct(product);
-                    MessageBox.Show( "Success"+"The product:" + " "+ product.product_name +" "+product.p_id + "was added");
+              {
+                  //MessageBox.Show("hello");
+                  client.CreateNewProductItem(product);
+
+                  //NewProduct newProduct = new NewProduct();
+                  //newProduct.CreateNewProduct(product);
+                  MessageBox.Show("Success" + "The product:" + " " + product.product_name + " " + product.p_id + "was added");
               break;
               }
       }

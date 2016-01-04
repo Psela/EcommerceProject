@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using EcommerceProject.AdminPortal.UpdateVM;
+using System.ServiceModel;
 
 
 namespace EcommerceProject.AdminPortal.FindVM
 {
   public class FindProductViewModel : INotifyPropertyChanged
   {
-    public FindProduct dbReader { get; set; }
-
+    IDataRetrieverService client;
     RemoveProduct rm;
 
     private ICommand _EditButton;
@@ -87,23 +87,22 @@ namespace EcommerceProject.AdminPortal.FindVM
     public ProductData productTemp
     {
       get { return _productTemp; }
-      set 
-      { 
+      set
+      {
         _productTemp = value;
         onPropertyChanged("productTemp");
       }
     }
-    
+
     public FindProductViewModel()
     {
-      dbReader = new FindProduct(new ECommerceEntities());
-      rm = new RemoveProduct();
+      var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+      client = factory.CreateChannel();
     }
 
-    public FindProductViewModel(FindProduct databaseReader, RemoveProduct removeProduct)
+    public FindProductViewModel(IDataRetrieverService databaseReader)
     {
-      dbReader = databaseReader;
-      rm = removeProduct;
+      client = databaseReader;
     }
 
     public bool CanRemove()
@@ -146,15 +145,7 @@ namespace EcommerceProject.AdminPortal.FindVM
     {
       if (!string.IsNullOrWhiteSpace(SearchBox))
       {
-        int id = 0;
-        if (int.TryParse(SearchBox, out id))
-        {
-          List<ProductData> listOfFoundProducts = dbReader.GetAllProducts().Where<ProductData>(x => x.p_id == Convert.ToInt32(SearchBox)).ToList();
-          if (listOfFoundProducts.Count == 1)
-          {
-            productTemp = listOfFoundProducts.First();
-          }
-        }
+        productTemp = client.FindById(SearchBox);
       }
     }
 

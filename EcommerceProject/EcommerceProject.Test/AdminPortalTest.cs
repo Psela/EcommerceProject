@@ -20,13 +20,13 @@ namespace EcommerceProject.Test
   {
     FindProductViewModel viewModel;
     ProductData product1;
-    Mock<FindProduct> mockDbReader;
+    Mock<IDataRetrieverService> mockDbReader;
     Mock<RemoveProduct> mockRemoveProduct;
     [TestInitialize]
     public void Setup()
     {
       Mock<ECommerceEntities> mockService = new Mock<ECommerceEntities>();
-      mockDbReader = new Mock<FindProduct>(mockService.Object);
+      mockDbReader = new Mock<IDataRetrieverService>(mockService.Object);
 
       product1 = new ProductData()
       {
@@ -53,7 +53,7 @@ namespace EcommerceProject.Test
         product1,
         product2
       };
-      mockDbReader.Setup(x => x.GetAllProducts()).Returns(listOfProduct);
+      mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
       Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
       List<ProductData> productDataList = new List<ProductData>();
       Mock<ProductData> mockProductData = new Mock<ProductData>();
@@ -67,7 +67,7 @@ namespace EcommerceProject.Test
       context.Object.ProductDatas = mockedDataSet;
 
       mockRemoveProduct = new Mock<RemoveProduct>(context.Object);
-      viewModel = new FindProductViewModel(mockDbReader.Object, mockRemoveProduct.Object);
+      viewModel = new FindProductViewModel(mockDbReader.Object);
     }
 
     [TestMethod]
@@ -92,7 +92,7 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      mockDbReader.Verify(x => x.GetAllProducts(), Times.Once);
+      mockDbReader.Verify(x => x.ReadData(), Times.Once);
     }
 
     [TestMethod]
