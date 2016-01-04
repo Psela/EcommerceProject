@@ -1,15 +1,9 @@
 ﻿using EcommerceProject.DatabaseModel;
-using EcommerceProject.DatabaseModel.Select;
-using EcommerceProject.Server;
 using EcommerceProject.Website.Controllers;
+using EcommerceProject.Website.WebsiteServerHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace EcommerceProject.Test
 {
@@ -17,18 +11,16 @@ namespace EcommerceProject.Test
   public class WebsiteTest
   {
     HomeController homeController;
-    ProductController productController;
-    Mock<DataRetrieverService> mockDbReader;
+    Mock<IDataRetrieverService> mockDbReader;
 
     [TestInitialize]
     public void Setup()
     {
-      mockDbReader = new Mock<DataRetrieverService>();
+      mockDbReader = new Mock<IDataRetrieverService>();
       List<ProductData> listOfProduct = new List<ProductData>() { new ProductData() };
       mockDbReader.Setup(x => x.SearchData(It.IsAny<string>())).Returns(listOfProduct);
       mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
       homeController = new HomeController(mockDbReader.Object);
-      productController = new ProductController(mockDbReader.Object);
     }
 
     //[TestMethod]

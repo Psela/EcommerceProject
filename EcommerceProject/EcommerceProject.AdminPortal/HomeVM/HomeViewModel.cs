@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EcommerceProject.AdminPortal.ManageCustomerVM;
+using EcommerceProject.AdminPortal.AddProductVM;
 
 
 namespace EcommerceProject.AdminPortal
