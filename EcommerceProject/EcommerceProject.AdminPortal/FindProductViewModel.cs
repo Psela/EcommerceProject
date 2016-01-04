@@ -1,5 +1,6 @@
-﻿using EcommerceProject.DatabaseModel.Delete;
-using EcommerceProject.DataModel;
+﻿using EcommerceProject.DatabaseModel;
+using EcommerceProject.DatabaseModel.Delete;
+using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace EcommerceProject.AdminPortal
 {
   public class FindProductViewModel : INotifyPropertyChanged
   {
-    public DatabaseReader dbReader { get; set; }
+    public FindProduct dbReader { get; set; }
 
     RemoveProduct rm;
 
@@ -80,8 +81,8 @@ namespace EcommerceProject.AdminPortal
       }
     }
 
-    private Product _productTemp;
-    public Product productTemp
+    private ProductData _productTemp;
+    public ProductData productTemp
     {
       get { return _productTemp; }
       set 
@@ -93,11 +94,11 @@ namespace EcommerceProject.AdminPortal
     
     public FindProductViewModel()
     {
-      dbReader = new DatabaseReader(new DataRetrieverService());
+      dbReader = new FindProduct(new ECommerceEntities());
       rm = new RemoveProduct();
     }
 
-    public FindProductViewModel(DatabaseReader databaseReader, RemoveProduct removeProduct)
+    public FindProductViewModel(FindProduct databaseReader, RemoveProduct removeProduct)
     {
       dbReader = databaseReader;
       rm = removeProduct;
@@ -113,9 +114,9 @@ namespace EcommerceProject.AdminPortal
       int id = 0;
       if (int.TryParse(SearchBox, out id))
       {
-        if (productTemp.id == id)
+        if (productTemp.p_id == id)
         {
-          MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
+          MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.product_name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
           switch (result)
           {
             case MessageBoxResult.Cancel:
@@ -124,7 +125,7 @@ namespace EcommerceProject.AdminPortal
               return;
             case MessageBoxResult.Yes:
               rm.DeleteProductByID(Convert.ToInt32(SearchBox));
-              MessageBox.Show(productTemp.name + " has been removed.");
+              MessageBox.Show(productTemp.product_name + " has been removed.");
               return;
           }
 
@@ -146,7 +147,7 @@ namespace EcommerceProject.AdminPortal
         int id = 0;
         if (int.TryParse(SearchBox, out id))
         {
-          List<Product> listOfFoundProducts = dbReader.GetAllProducts().Where<Product>(x => x.id == Convert.ToInt32(SearchBox)).ToList();
+          List<ProductData> listOfFoundProducts = dbReader.GetAllProducts().Where<ProductData>(x => x.p_id == Convert.ToInt32(SearchBox)).ToList();
           if (listOfFoundProducts.Count == 1)
           {
             productTemp = listOfFoundProducts.First();

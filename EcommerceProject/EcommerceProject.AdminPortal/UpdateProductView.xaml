@@ -21,7 +21,7 @@
       <RowDefinition Height="50"/>
     </Grid.RowDefinitions>
 
-    <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Trebuchet MS Bold" FontSize="15" Foreground="Gray" Margin="122,4,123,16" Height="18" Width="110"> Update Product</TextBlock>
+    <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Trebuchet MS Bold" FontSize="15" Foreground="Gray" Margin="122,4,123,16" Height="18" Width="110"> Update ProductData</TextBlock>
 
     <Grid Grid.Row="1">
       <Label Margin="10,0" HorizontalAlignment="Left">ID:</Label>

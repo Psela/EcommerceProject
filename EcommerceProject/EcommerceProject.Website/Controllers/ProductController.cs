@@ -1,4 +1,4 @@
-﻿using EcommerceProject.DataModel;
+﻿using EcommerceProject.DatabaseModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace EcommerceProject.Website.Controllers
     {
       HomeController homeController = new HomeController();
 
-      Product product = homeController.SearchProducts(id)[0];
+      ProductData product = homeController.SearchProducts(id)[0];
 
       return View(product);
     }

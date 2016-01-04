@@ -7,14 +7,18 @@ using System.Text;
 
 namespace EcommerceProject.DataModel
 {
+    //1 tola = 11.66 grams
+
   public class DatabaseReader
   {
     DataRetrieverService reader;
+
 
     public DatabaseReader(DataRetrieverService dbReader)
     {
       reader = dbReader;
     }
+
 
     public virtual List<Product> GetAllProducts()
     {

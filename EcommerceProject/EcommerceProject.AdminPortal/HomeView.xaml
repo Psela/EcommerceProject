@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Content="Add Product" Height="70" Width="110" Command="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
+                <Button Grid.Row="0" Grid.Column="0" Content="Add ProductData" Height="70" Width="110" Command="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
                 <Button Grid.Row="0" Grid.Column="1" Content="Update/Remove" Height="70" Width="110" Command="{Binding removeButton}" />
             </Grid>
             
