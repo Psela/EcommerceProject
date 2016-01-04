@@ -19,6 +19,7 @@ namespace EcommerceProject.AdminPortal.FindVM
   public class FindProductViewModel : INotifyPropertyChanged
   {
     IDataRetrieverService client;
+    RemoveProduct rm;
 
     private ICommand _EditButton;
     public ICommand EditButton
