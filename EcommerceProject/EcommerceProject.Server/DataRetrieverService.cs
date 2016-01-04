@@ -59,7 +59,24 @@ namespace EcommerceProject.Server
       return foundProduct;
     }
 
+        public ProductData FindById(string id)
+        {
+            FindProduct findProduct = new FindProduct();
+            int a = 0;
+            if (int.TryParse(id, out a))
+            {
+                int ID = int.Parse(id ?? "1");
+                if (ID != 0)
+                {
+                    id = ID.ToString();
+                    ProductData product = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == ID).FirstOrDefault();
+                    return product;
+                }
+            }
 
+            ProductData p;
+            return p = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == 1).First();
+        }
 
 
     public void CreateNewProductItem(ProductData product)

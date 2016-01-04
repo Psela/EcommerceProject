@@ -27,6 +27,18 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/SearchData", ReplyAction="http://tempuri.org/IDataRetrieverService/SearchDataResponse")]
         System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/FindById", ReplyAction="http://tempuri.org/IDataRetrieverService/FindByIdResponse")]
+        EcommerceProject.DatabaseModel.ProductData FindById(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/FindById", ReplyAction="http://tempuri.org/IDataRetrieverService/FindByIdResponse")]
+        System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/SearchData", ReplyAction="http://tempuri.org/IDataRetrieverService/SearchDataResponse")]
+        EcommerceProject.DatabaseModel.ProductData[] SearchData(string searchFor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/SearchData", ReplyAction="http://tempuri.org/IDataRetrieverService/SearchDataResponse")]
+        System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/CreateNewProductItem", ReplyAction="http://tempuri.org/IDataRetrieverService/CreateNewProductItemResponse")]
         void CreateNewProductItem(EcommerceProject.DatabaseModel.ProductData product);
         
@@ -67,6 +79,22 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
         
         public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> ReadDataAsync() {
             return base.Channel.ReadDataAsync();
+        }
+        
+        public EcommerceProject.DatabaseModel.ProductData[] SearchData(string searchFor) {
+            return base.Channel.SearchData(searchFor);
+        }
+        
+        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor) {
+            return base.Channel.SearchDataAsync(searchFor);
+        }
+        
+        public EcommerceProject.DatabaseModel.ProductData FindById(string id) {
+            return base.Channel.FindById(id);
+        }
+        
+        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id) {
+            return base.Channel.FindByIdAsync(id);
         }
         
         public EcommerceProject.DatabaseModel.ProductData[] SearchData(string searchFor) {

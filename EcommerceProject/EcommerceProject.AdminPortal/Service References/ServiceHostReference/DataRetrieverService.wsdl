@@ -19,6 +19,18 @@
   <wsdl:message name="IDataRetrieverService_SearchData_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchDataResponse" />
   </wsdl:message>
+  <wsdl:message name="IDataRetrieverService_FindById_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindById" />
+  </wsdl:message>
+  <wsdl:message name="IDataRetrieverService_FindById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataRetrieverService_SearchData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchData" />
+  </wsdl:message>
+  <wsdl:message name="IDataRetrieverService_SearchData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDataResponse" />
+  </wsdl:message>
   <wsdl:message name="IDataRetrieverService_CreateNewProductItem_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewProductItem" />
   </wsdl:message>
@@ -34,6 +46,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/SearchData" message="tns:IDataRetrieverService_SearchData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/SearchDataResponse" message="tns:IDataRetrieverService_SearchData_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="FindById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/FindById" message="tns:IDataRetrieverService_FindById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/FindByIdResponse" message="tns:IDataRetrieverService_FindById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/SearchData" message="tns:IDataRetrieverService_SearchData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/SearchDataResponse" message="tns:IDataRetrieverService_SearchData_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateNewProductItem">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/CreateNewProductItem" message="tns:IDataRetrieverService_CreateNewProductItem_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/CreateNewProductItemResponse" message="tns:IDataRetrieverService_CreateNewProductItem_OutputMessage" />
@@ -43,6 +63,24 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ReadData">
       <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/ReadData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchData">
+      <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/SearchData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindById">
+      <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/FindById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
