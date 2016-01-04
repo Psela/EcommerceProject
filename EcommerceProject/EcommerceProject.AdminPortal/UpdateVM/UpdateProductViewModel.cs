@@ -14,9 +14,11 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 {
     public class UpdateProductViewModel : INotifyPropertyChanged
     {
+        ServiceHostReference.DataRetrieverServiceClient client;
+
         public UpdateProductViewModel()
         {
-            ServiceHostReference.DataRetrieverServiceClient client = new ServiceHostReference.DataRetrieverServiceClient();
+            client = new ServiceHostReference.DataRetrieverServiceClient();
         }
 
         private ProductData _product;
@@ -77,18 +79,8 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 
         private void findProduct(string id)
         {
-            int a = 0;
-            if (int.TryParse(id, out a))
-            {
-                int ID = int.Parse(id ?? "1");
-                if (ID != 0)
-                {
-                    FindProduct findProduct = new FindProduct();
-
-                    id = ID.ToString();
-                    product = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == ID).First();
-                }
-            }
+            //product = 
+                client.FindById(id);
         }
 
         private bool CanUpdateDetails()

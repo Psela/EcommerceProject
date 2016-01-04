@@ -7,57 +7,74 @@ using System.Text;
 
 namespace EcommerceProject.Server
 {
-  public class DataRetrieverService : IDataRetrieverService
-  {
-    FindProduct dbFind;
-
-    public DataRetrieverService(FindProduct findProduct)
+    public class DataRetrieverService : IDataRetrieverService
     {
-      dbFind = findProduct;
-    }
+        FindProduct dbFind;
 
-    public DataRetrieverService()
-    {
-      dbFind = new FindProduct();
-    }
-
-    public virtual List<ProductData> ReadData()
-    {
-      List<ProductData> products = dbFind.GetAllProducts();
-      return products;
-    }
-
-    public virtual List<ProductData> SearchData(string searchFor)
-    {
-      List<ProductData> listOfProducts = ReadData();
-      List<ProductData> foundProduct = new List<ProductData>();
-
-      foreach (ProductData product in listOfProducts)
-      {
-        int id = 0;
-        if (int.TryParse(searchFor, out id))
+        public DataRetrieverService(FindProduct findProduct)
         {
-          if (product.p_id == id)
-          {
-            foundProduct.Clear();
-            foundProduct.Add(product);
-            break;
-          }
+            dbFind = findProduct;
         }
-        if (
-          product.product_name.Contains(searchFor) ||
-          product.tag1 == searchFor ||
-          product.tag2 == searchFor ||
-          product.tag3 == searchFor ||
-          product.description.Contains(searchFor))
+
+        public DataRetrieverService()
         {
-          foundProduct.Add(product);
+            dbFind = new FindProduct();
         }
-      }
 
-      return foundProduct;
+        public virtual List<ProductData> ReadData()
+        {
+            List<ProductData> products = dbFind.GetAllProducts();
+            return products;
+        }
+
+        public virtual List<ProductData> SearchData(string searchFor)
+        {
+            List<ProductData> listOfProducts = ReadData();
+            List<ProductData> foundProduct = new List<ProductData>();
+
+            foreach (ProductData product in listOfProducts)
+            {
+                int id = 0;
+                if (int.TryParse(searchFor, out id))
+                {
+                    if (product.p_id == id)
+                    {
+                        foundProduct.Clear();
+                        foundProduct.Add(product);
+                        break;
+                    }
+                }
+                if (
+                  product.product_name.Contains(searchFor) ||
+                  product.tag1 == searchFor ||
+                  product.tag2 == searchFor ||
+                  product.tag3 == searchFor ||
+                  product.description.Contains(searchFor))
+                {
+                    foundProduct.Add(product);
+                }
+            }
+
+            return foundProduct;
+        }
+
+        public ProductData FindById(string id)
+        {
+            FindProduct findProduct = new FindProduct();
+            int a = 0;
+            if (int.TryParse(id, out a))
+            {
+                int ID = int.Parse(id ?? "1");
+                if (ID != 0)
+                {
+                    id = ID.ToString();
+                    ProductData product = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == ID).FirstOrDefault();
+                    return product;
+                }
+            }
+
+            ProductData p;
+            return p = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == 1).First();
+        }
     }
-
-
-  }
 }
