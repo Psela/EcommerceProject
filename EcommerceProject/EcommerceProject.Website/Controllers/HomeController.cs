@@ -1,9 +1,10 @@
 ﻿using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
-using EcommerceProject.Server;
+using EcommerceProject.Website.WebsiteServerHost;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,18 +12,19 @@ namespace EcommerceProject.Website.Controllers
 {
   public class HomeController : Controller
   {
-    DataRetrieverService reader;
+    IDataRetrieverService client;
     List<ProductData> listOfProducts;
-
+    
     public HomeController()
     {
-      reader = new DataRetrieverService();
+      var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+      client = factory.CreateChannel();
       listOfProducts = GetAllProductsInList();
     }
 
-    public HomeController(DataRetrieverService DbReader)
+    public HomeController(IDataRetrieverService DbReader)
     {
-      reader = DbReader;
+      client = DbReader;
     }
 
 
@@ -56,13 +58,13 @@ namespace EcommerceProject.Website.Controllers
 
     public List<ProductData> SearchProducts(string searchFor)
     {
-      List<ProductData> foundProducts = reader.SearchData(searchFor);
+      List<ProductData> foundProducts = client.SearchData(searchFor);
       return foundProducts;
     }
 
     public List<ProductData> GetAllProductsInList()
     {
-      List<ProductData> listOfProducts = reader.ReadData();
+      List<ProductData> listOfProducts = client.ReadData();
 
       return listOfProducts;
     }

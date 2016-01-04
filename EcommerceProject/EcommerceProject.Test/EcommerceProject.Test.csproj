@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -83,6 +84,10 @@
       <Project>{d53a1d8e-25e8-4c9e-8420-d1cbb356826a}</Project>
       <Name>EcommerceProject.AdminPortal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EcommerceProject.ServerHost\EcommerceProject.ServerHost.csproj">
+      <Project>{816f509c-d797-4bc7-a6d8-1e02f0c36f43}</Project>
+      <Name>EcommerceProject.ServerHost</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EcommerceProject.Server\EcommerceProject.Server.csproj">
       <Project>{3fc48c3f-8c50-4af9-aa66-0a057f6f9a42}</Project>
       <Name>EcommerceProject.Server</Name>
@@ -95,9 +100,6 @@
       <Project>{9097d3ac-e0bd-452b-a580-e9417ac0cbae}</Project>
       <Name>EcommerceProject.DatabaseModel</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
