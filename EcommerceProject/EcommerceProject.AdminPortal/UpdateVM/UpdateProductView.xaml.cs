@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EcommerceProject.AdminPortal
+namespace EcommerceProject.AdminPortal.UpdateVM
 {
     /// <summary>
     /// Interaction logic for UpdateProductView.xaml
