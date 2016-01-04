@@ -1,7 +1,7 @@
 ﻿using EcommerceProject.AdminPortal;
 using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Delete;
-using EcommerceProject.DataModel;
+using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.Server;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -18,36 +18,36 @@ namespace EcommerceProject.Test
   public class AdminPortalTest
   {
     FindProductViewModel viewModel;
-    Product product1;
-    Mock<DatabaseReader> mockDbReader;
+    ProductData product1;
+    Mock<FindProduct> mockDbReader;
     Mock<RemoveProduct> mockRemoveProduct;
     [TestInitialize]
     public void Setup()
     {
-      Mock<DataRetrieverService> mockService = new Mock<DataRetrieverService>();
-      mockDbReader = new Mock<DatabaseReader>(mockService.Object);
+      Mock<ECommerceEntities> mockService = new Mock<ECommerceEntities>();
+      mockDbReader = new Mock<FindProduct>(mockService.Object);
 
-      product1 = new Product()
+      product1 = new ProductData()
       {
-        name = "product1",
+        product_name = "product1",
         tag1 = "tag1",
         tag2 = "tag2",
         tag3 = "tag6",
         description = "description 1 is here",
-        id = 1,
+        p_id = 1,
         imageurl = "imageurlhere"
       };
-      Product product2 = new Product()
+      ProductData product2 = new ProductData()
       {
-        name = "product2",
+          product_name = "product2",
         tag1 = "tag1",
         tag2 = "tag3",
         tag3 = "tag2",
         description = "description 2 not is here",
-        id = 2,
+        p_id = 2,
         imageurl = "imageurlfor2"
       };
-      List<Product> listOfProduct = new List<Product>() 
+      List<ProductData> listOfProduct = new List<ProductData>() 
       { 
         product1,
         product2

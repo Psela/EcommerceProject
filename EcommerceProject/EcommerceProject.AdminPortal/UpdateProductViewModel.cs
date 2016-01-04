@@ -1,7 +1,6 @@
 ﻿using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.DatabaseModel.Update;
-using EcommerceProject.DataModel;
 using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;

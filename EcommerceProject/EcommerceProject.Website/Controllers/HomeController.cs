@@ -1,4 +1,5 @@
-﻿using EcommerceProject.DataModel;
+﻿using EcommerceProject.DatabaseModel;
+using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace EcommerceProject.Website.Controllers
 {
   public class HomeController : Controller
   {
-    DatabaseReader reader;
-    List<Product> listOfProducts;
+    FindProduct reader;
+    List<ProductData> listOfProducts;
 
     public HomeController()
     {
-      reader = new DatabaseReader(new DataRetrieverService());
+        reader = new FindProduct(new ECommerceEntities());
       listOfProducts = GetAllProductsInList();
     }
 
-    public HomeController(DatabaseReader DbReader)
+    public HomeController(FindProduct DbReader)
     {
       reader = DbReader;
       listOfProducts = GetAllProductsInList();
@@ -38,7 +39,7 @@ namespace EcommerceProject.Website.Controllers
 
     public PartialViewResult ShowResults(string searchInput)
     {
-      List<Product> listOfResultProducts = SearchProducts(searchInput);
+      List<ProductData> listOfResultProducts = SearchProducts(searchInput);
 
       return PartialView("_ProductListView", listOfResultProducts);
     }
@@ -55,15 +56,15 @@ namespace EcommerceProject.Website.Controllers
       return View();
     }
 
-    public List<Product> SearchProducts(string searchFor)
+    public List<ProductData> SearchProducts(string searchFor)
     {
-      List<Product> foundProduct = new List<Product>();
-      foreach (Product product in listOfProducts)
+      List<ProductData> foundProduct = new List<ProductData>();
+      foreach (ProductData product in listOfProducts)
       {
         int id = 0;
         if (int.TryParse(searchFor, out id))
         {
-          if (product.id == id)
+          if (product.p_id == id)
           {
             foundProduct.Clear();
             foundProduct.Add(product);
@@ -71,7 +72,7 @@ namespace EcommerceProject.Website.Controllers
           }
         }
         if (
-          product.name.Contains(searchFor) ||
+          product.product_name.Contains(searchFor) ||
           product.tag1 == searchFor ||
           product.tag2 == searchFor ||
           product.tag3 == searchFor ||
@@ -84,10 +85,10 @@ namespace EcommerceProject.Website.Controllers
       return foundProduct;
     }
 
-    public List<Product> GetAllProductsInList()
+    public List<ProductData> GetAllProductsInList()
     {
       DataRetrieverService service = new DataRetrieverService();
-      List<Product> listOfProducts = reader.GetAllProducts();
+      List<ProductData> listOfProducts = reader.GetAllProducts();
 
       return listOfProducts;
     }
