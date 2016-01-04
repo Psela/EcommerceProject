@@ -84,7 +84,7 @@
       <Name>EcommerceProject.AdminPortal</Name>
     </ProjectReference>
     <ProjectReference Include="..\EcommerceProject.Server\EcommerceProject.Server.csproj">
-      <Project>{f82d341a-4d9e-4fc6-b136-6479c88f9a01}</Project>
+      <Project>{3fc48c3f-8c50-4af9-aa66-0a057f6f9a42}</Project>
       <Name>EcommerceProject.Server</Name>
     </ProjectReference>
     <ProjectReference Include="..\EcommerceProject.Website\EcommerceProject.Website.csproj">

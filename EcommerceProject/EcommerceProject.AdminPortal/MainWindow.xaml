@@ -9,7 +9,5 @@
     </Window.DataContext>
     
     <Frame Source="{Binding source}"/>
-
-
-
+    
 </Window>
