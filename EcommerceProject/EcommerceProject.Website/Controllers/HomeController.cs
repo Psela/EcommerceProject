@@ -23,13 +23,11 @@ namespace EcommerceProject.Website.Controllers
     public HomeController(DataRetrieverService DbReader)
     {
       reader = DbReader;
-      listOfProducts = GetAllProductsInList();
     }
 
 
     public ActionResult Index(string searchInput)
     {
-
       if (Request.IsAjaxRequest())
       {
         return ShowResults(searchInput);

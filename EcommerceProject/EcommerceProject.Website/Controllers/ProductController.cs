@@ -1,4 +1,5 @@
 ﻿using EcommerceProject.DatabaseModel;
+using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,21 @@ namespace EcommerceProject.Website.Controllers
 {
   public class ProductController : Controller
   {
+    DataRetrieverService dbService;
+
+    public ProductController()
+    {
+      dbService = new DataRetrieverService();
+    }
+
+    public ProductController(DataRetrieverService dataRetrieverService)
+    {
+      dbService = dataRetrieverService;
+    }
+
     public ActionResult Index(string id)
     {
-      HomeController homeController = new HomeController();
-
-      ProductData product = homeController.SearchProducts(id)[0];
+      ProductData product = dbService.SearchData(id)[0];
 
       return View(product);
     }
