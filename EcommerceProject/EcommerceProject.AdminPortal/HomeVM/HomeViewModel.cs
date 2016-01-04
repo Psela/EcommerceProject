@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EcommerceProject.AdminPortal.ManageCustomerVM;
 
 namespace EcommerceProject.AdminPortal
 {
@@ -65,7 +66,7 @@ namespace EcommerceProject.AdminPortal
         private void GoToManageCustomerPage()
         {
             MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
-            vm.source = "ManageCustomerView.xaml";
+            vm.source = "ManageCustomerVM/ManageCustomerView.xaml";
         }
 
         private bool CanGoToManageCustomerPage()
