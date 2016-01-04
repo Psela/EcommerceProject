@@ -76,6 +76,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="UpdateVM\UpdateProductView.xaml.cs">
+      <DependentUpon>UpdateProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateVM\UpdateProductViewModel.cs" />
     <Page Include="AddProductVM\AddProduct.xaml">
       <SubType>Designer</SubType>

@@ -14,7 +14,7 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 {
     public class UpdateProductViewModel : INotifyPropertyChanged
     {
-        private UpdateProductViewModel()
+        public UpdateProductViewModel()
         {
             ServiceHostReference.DataRetrieverServiceClient client = new ServiceHostReference.DataRetrieverServiceClient();
         }
