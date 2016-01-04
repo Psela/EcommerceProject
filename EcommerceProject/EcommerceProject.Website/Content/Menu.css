@@ -92,6 +92,7 @@ div.relative {
     left: 300px;
     top: 50px;
     z-index: 10;
+   
 }
 
 div.static {
@@ -101,6 +102,7 @@ div.static {
     left: 50px;
     top: 10px;
     width: 160px;
+   
 }
 
 div.absolute-centre {
