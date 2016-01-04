@@ -59,28 +59,30 @@ namespace EcommerceProject.Server
       return foundProduct;
     }
 
-    public ProductData FindById(string id)
-    {
-      FindProduct findProduct = new FindProduct();
-      ProductData product = new ProductData();
-      int a = 0;
-      if (int.TryParse(id, out a))
-      {
-        int ID = int.Parse(id ?? "1");
-        if (ID != 0)
+        public ProductData FindById(string id)
         {
+            FindProduct findProduct = new FindProduct();
+      ProductData product = new ProductData();
+            int a = 0;
+            if (int.TryParse(id, out a))
+            {
+                int ID = int.Parse(id ?? "1");
+                if (ID != 0)
+                {
           product = findProduct.GetProductByID(ID);
-        }
-      }
+                }
+            }
 
       return product;
-    }
+        }
 
     public void CreateNewProductItem(ProductData product)
     {
-      NewProduct newProduct = new NewProduct();
-      // validateInput();
-      newProduct.CreateNewProduct(product);
+        NewProduct newProduct = new NewProduct();
+        // validateInput();
+        newProduct.CreateNewProduct(product);
     }
+
+
   }
 }
