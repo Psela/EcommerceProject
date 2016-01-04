@@ -20,7 +20,7 @@ namespace EcommerceProject.Server
 
         [OperationContract]
         void CreateNewProductItem(ProductData product);
-     
+      
         [OperationContract]
         ProductData FindById(string id);
     }
