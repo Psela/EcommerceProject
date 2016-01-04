@@ -1,9 +1,9 @@
 ﻿<link href='https://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
-@model EcommerceProject.DataModel.ProductData
+@model EcommerceProject.DatabaseModel.ProductData
 
 <img id="img" src=@Model.imageurl style=" height:300px;width:300px" />
 <div id="product">
-  <h2>@Model.name</h2><br />
+  <h2>@Model.product_name</h2><br />
   <h4>£@Model.price</h4>
   <h5>@Model.stock left in stock</h5>
 </div>

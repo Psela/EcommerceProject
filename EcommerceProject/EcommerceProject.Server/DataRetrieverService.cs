@@ -45,11 +45,11 @@ namespace EcommerceProject.Server
           }
         }
         if (
-          product.product_name.Contains(searchFor) ||
-          product.tag1 == searchFor ||
-          product.tag2 == searchFor ||
-          product.tag3 == searchFor ||
-          product.description.Contains(searchFor))
+          product.product_name.ToLower().Contains(searchFor.ToLower()) ||
+          product.tag1.ToLower() == searchFor.ToLower() ||
+          product.tag2.ToLower() == searchFor.ToLower() ||
+          product.tag3.ToLower() == searchFor.ToLower() ||
+          product.description.ToLower().Contains(searchFor.ToLower()))
         {
           foundProduct.Add(product);
         }
