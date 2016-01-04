@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace EcommerceProject.AdminPortal
+namespace EcommerceProject.AdminPortal.AddProductVM
 {
   public class AddProductViewModel : INotifyPropertyChanged
   {

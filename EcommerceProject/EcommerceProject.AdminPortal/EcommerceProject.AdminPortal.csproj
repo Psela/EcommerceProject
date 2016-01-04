@@ -44,6 +44,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,19 +63,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddProductViewModel.cs" />
-    <Compile Include="FindProductViewModel.cs" />
+    <Compile Include="AddProductVM\AddProductViewModel.cs" />
+    <Compile Include="FindVM\FindProductViewModel.cs" />
     <Compile Include="ManageCustomerView.xaml.cs">
       <DependentUpon>ManageCustomerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FindProductView.xaml.cs">
+    <Compile Include="FindVM\FindProductView.xaml.cs">
       <DependentUpon>FindProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="UpdateProductView.xaml.cs">
       <DependentUpon>UpdateProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateProductViewModel.cs" />
-    <Page Include="AddProduct.xaml">
+    <Page Include="AddProductVM\AddProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,7 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddProduct.xaml.cs">
+    <Compile Include="AddProductVM\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -105,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FindProductView.xaml">
+    <Page Include="FindVM\FindProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,21 +141,34 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\EcommerceProject.DatabaseModel.ProductData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReference1\DataRetrieverService.wsdl" />
+    <None Include="Service References\ServiceReference1\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlainLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EcommerceProject.Server\EcommerceProject.Server.csproj">
-      <Project>{f82d341a-4d9e-4fc6-b136-6479c88f9a01}</Project>
+      <Project>{3fc48c3f-8c50-4af9-aa66-0a057f6f9a42}</Project>
       <Name>EcommerceProject.Server</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityFramework\EcommerceProject.DatabaseModel.csproj">
@@ -157,7 +177,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="HomeVM\" />
+    <Folder Include="UpdateVM\" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Service.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

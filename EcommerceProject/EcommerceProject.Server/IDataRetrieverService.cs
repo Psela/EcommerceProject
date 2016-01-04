@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EcommerceProject.Server
 {
     [ServiceContract]
-   public interface IDataRetrieverService
+    public interface IDataRetrieverService
     {
         [OperationContract]
         List<ProductData> ReadData();

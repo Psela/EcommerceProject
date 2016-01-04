@@ -13,16 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EcommerceProject.AdminPortal
+namespace EcommerceProject.AdminPortal.AddProductVM
 {
     /// <summary>
-    /// Interaction logic for FindProductView.xaml
+    /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class FindProductView : Page
+    public partial class AddProduct : Page
     {
-        public FindProductView()
+        public AddProduct()
         {
             InitializeComponent();
         }
+
+
     }
 }
