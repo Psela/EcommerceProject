@@ -90,15 +90,7 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
         public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id) {
             return base.Channel.FindByIdAsync(id);
         }
-        
-        public EcommerceProject.DatabaseModel.ProductData[] SearchData(string searchFor) {
-            return base.Channel.SearchData(searchFor);
-        }
-        
-        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor) {
-            return base.Channel.SearchDataAsync(searchFor);
-        }
-        
+                
         public void CreateNewProductItem(EcommerceProject.DatabaseModel.ProductData product) {
             base.Channel.CreateNewProductItem(product);
         }
