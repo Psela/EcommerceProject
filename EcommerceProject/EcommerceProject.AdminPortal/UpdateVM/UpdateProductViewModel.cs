@@ -16,6 +16,7 @@ namespace EcommerceProject.AdminPortal.UpdateVM
     {
         public UpdateProductViewModel()
         {
+           
         }
 
         private ProductData _product;
