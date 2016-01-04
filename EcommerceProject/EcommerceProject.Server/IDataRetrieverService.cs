@@ -16,5 +16,9 @@ namespace EcommerceProject.Server
 
         [OperationContract]
         List<ProductData> SearchData(string searchFor);
+
+        [OperationContract]
+        void CreateNewProductItem(ProductData product);
+      
     }
 }

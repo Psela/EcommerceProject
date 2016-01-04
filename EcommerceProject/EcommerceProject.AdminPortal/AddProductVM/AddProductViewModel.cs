@@ -1,4 +1,5 @@
-﻿using EcommerceProject.DatabaseModel;
+﻿using EcommerceProject.AdminPortal.ServiceHostReference;
+using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Add;
 using EcommerceProject.DatabaseModel.Select;
 using System;
@@ -95,11 +96,10 @@ namespace EcommerceProject.AdminPortal.AddProductVM
               break;
 
           case MessageBoxResult.Yes:
-              { 
-                    NewProduct newProduct = new NewProduct();
-                    validateInput();
-                    newProduct.CreateNewProduct(product);
-                    MessageBox.Show( "Success"+"The product:" + " "+ product.product_name +" "+product.p_id + "was added");
+              {
+                  DataRetrieverServiceClient client = new DataRetrieverServiceClient();
+                  client.CreateNewProductItem(product);
+                  MessageBox.Show("Success" + "The product:" + " " + product.product_name + " " + product.p_id + "was added");
               break;
               }
       }

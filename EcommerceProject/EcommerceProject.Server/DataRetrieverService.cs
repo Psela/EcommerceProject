@@ -1,4 +1,5 @@
 ﻿using EcommerceProject.DatabaseModel;
+using EcommerceProject.DatabaseModel.Add;
 using EcommerceProject.DatabaseModel.Select;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,16 @@ namespace EcommerceProject.Server
       }
 
       return foundProduct;
+    }
+
+
+
+
+    public void CreateNewProductItem(ProductData product)
+    {
+        NewProduct newProduct = new NewProduct();
+        // validateInput();
+        newProduct.CreateNewProduct(product);
     }
 
 
