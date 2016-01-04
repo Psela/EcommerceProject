@@ -88,8 +88,39 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
     private void SaveAddPage()
     {
-      NewProduct newProduct = new NewProduct();
-      newProduct.CreateNewProduct(product);
+      MessageBoxResult result = MessageBox.Show("Would you like to add the product", "Save",MessageBoxButton.YesNoCancel);
+      switch (result)
+      {
+          case MessageBoxResult.No: ResetAddPageExceptId();
+              break;
+
+          case MessageBoxResult.Yes:
+              { 
+                    NewProduct newProduct = new NewProduct();
+                    validateInput();
+                    newProduct.CreateNewProduct(product);
+                    MessageBox.Show( "Success"+"The product:" + " "+ product.product_name +" "+product.p_id + "was added");
+              break;
+              }
+      }
+
+    }
+
+    private void ResetAddPageExceptId()
+    {
+        product.price = 0.00m;
+        product.product_name = "";
+        product.stock = 0;
+        product.tag1 = "";
+        product.tag2 = "";
+        product.tag3 = "";
+
+    }
+
+    private bool validateInput()
+    {
+        return true;
+      
     }
 
     private string _bordercolor;
@@ -102,7 +133,6 @@ namespace EcommerceProject.AdminPortal.AddProductVM
         onPropertyChanged("BorderColor");
       }
     }
-
 
     public event PropertyChangedEventHandler PropertyChanged;
     private void onPropertyChanged(string propertyName)
