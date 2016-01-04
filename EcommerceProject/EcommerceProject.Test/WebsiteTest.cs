@@ -26,7 +26,7 @@ namespace EcommerceProject.Test
     [TestInitialize]
     public void Setup()
     {
-      Mock<DataRetrieverService> mockService = new Mock<DataRetrieverService>();
+      Mock<ECommerceEntities> mockService = new Mock<ECommerceEntities>();
       mockDbReader = new Mock<FindProduct>(mockService.Object);
 
       product1 = new ProductData() { product_name = "product1", tag1 = "tag1", tag2 = "tag2", tag3 = "tag6", description = "description 1 is here",p_id=1 };

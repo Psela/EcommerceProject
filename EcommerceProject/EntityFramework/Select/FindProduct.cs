@@ -20,7 +20,7 @@ namespace EcommerceProject.DatabaseModel.Select
             context = eCommerceEntities;
         }
 
-        public List<ProductData> GetAllProducts()
+        public virtual List<ProductData> GetAllProducts()
         {
             using (context)
             {

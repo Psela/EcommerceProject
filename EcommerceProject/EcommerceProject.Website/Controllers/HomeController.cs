@@ -87,7 +87,6 @@ namespace EcommerceProject.Website.Controllers
 
     public List<ProductData> GetAllProductsInList()
     {
-      DataRetrieverService service = new DataRetrieverService();
       List<ProductData> listOfProducts = reader.GetAllProducts();
 
       return listOfProducts;

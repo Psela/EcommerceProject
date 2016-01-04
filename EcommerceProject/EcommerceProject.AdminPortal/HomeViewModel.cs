@@ -10,17 +10,6 @@ namespace EcommerceProject.AdminPortal
 {
     public class HomeViewModel : INotifyPropertyChanged
     {
-        private string _source;
-        public string source
-        {
-            get { return _source; }
-            set
-            {
-                _source = value;
-                onPropertyChanged("source");
-            }
-        }
-
         private ICommand _addButton;
         public ICommand addButton
         {
