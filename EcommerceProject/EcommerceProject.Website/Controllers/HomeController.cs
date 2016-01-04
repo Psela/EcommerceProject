@@ -58,31 +58,8 @@ namespace EcommerceProject.Website.Controllers
 
     public List<ProductData> SearchProducts(string searchFor)
     {
-      List<ProductData> foundProduct = new List<ProductData>();
-      foreach (ProductData product in listOfProducts)
-      {
-        int id = 0;
-        if (int.TryParse(searchFor, out id))
-        {
-          if (product.p_id == id)
-          {
-            foundProduct.Clear();
-            foundProduct.Add(product);
-            break;
-          }
-        }
-        if (
-          product.product_name.Contains(searchFor) ||
-          product.tag1 == searchFor ||
-          product.tag2 == searchFor ||
-          product.tag3 == searchFor ||
-          product.description.Contains(searchFor))
-        {
-          foundProduct.Add(product);
-        }
-      }
-
-      return foundProduct;
+      List<ProductData> foundProducts = reader.SearchData(searchFor);
+      return foundProducts;
     }
 
     public List<ProductData> GetAllProductsInList()
