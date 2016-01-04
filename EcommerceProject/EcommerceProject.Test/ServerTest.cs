@@ -1,4 +1,5 @@
-﻿using EcommerceProject.DatabaseModel;
+﻿using EcommerceProject.AdminPortal.UpdateVM;
+using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.Server;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -181,18 +182,14 @@ namespace EcommerceProject.Test
         public void Test_FindById_ReturnsOneProduct_WhenPassesAnIdAsString()
         {
             //Arrange
-            DataRetrieverService dataRetriever = new DataRetrieverService();
-            FindProduct find = new FindProduct();
-            string input = "1";
-            ProductData p = new ProductData();
-            ProductData pr = find.GetAllProducts().Where<ProductData>(x => x.p_id == 1).First();
+            string input = "1";      
             
-
             //Act
-            p = dataRetriever.FindById(input);
-
+            dbService.FindById(input);
+            
             //Assert
             
+            mockFind.Verify(dr => dr.GetAllProducts(),Times.Once());
         }
     }
 }

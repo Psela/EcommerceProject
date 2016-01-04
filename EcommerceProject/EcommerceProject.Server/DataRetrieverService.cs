@@ -7,74 +7,81 @@ using System.Text;
 
 namespace EcommerceProject.Server
 {
-  public class DataRetrieverService : IDataRetrieverService
-  {
-    FindProduct dbFind;
-
-    public DataRetrieverService(FindProduct findProduct)
+    public class DataRetrieverService : IDataRetrieverService
     {
-      dbFind = findProduct;
-    }
+        FindProduct dbFind;
 
-    public DataRetrieverService()
-    {
-      dbFind = new FindProduct();
-    }
-
-    public virtual List<ProductData> ReadData()
-    {
-      List<ProductData> products = dbFind.GetAllProducts();
-      return products;
-    }
-
-    public virtual List<ProductData> SearchData(string searchFor)
-    {
-      List<ProductData> listOfProducts = ReadData();
-      List<ProductData> foundProduct = new List<ProductData>();
-
-      foreach (ProductData product in listOfProducts)
-      {
-        int id = 0;
-        if (int.TryParse(searchFor, out id))
+        public DataRetrieverService(FindProduct findProduct)
         {
-          if (product.p_id == id)
-          {
-            foundProduct.Clear();
-            foundProduct.Add(product);
-            break;
-          }
+            dbFind = findProduct;
         }
-        if (
-          product.product_name.ToLower().Contains(searchFor.ToLower()) ||
-          product.tag1.ToLower() == searchFor.ToLower() ||
-          product.tag2.ToLower() == searchFor.ToLower() ||
-          product.tag3.ToLower() == searchFor.ToLower() ||
-          product.description.ToLower().Contains(searchFor.ToLower()))
+
+        public DataRetrieverService()
         {
-          foundProduct.Add(product);
+            dbFind = new FindProduct();
         }
-      }
 
-      return foundProduct;
-    }
-
-        public ProductData FindById(string id)
+        public virtual List<ProductData> ReadData()
         {
-            FindProduct findProduct = new FindProduct();
-            int a = 0;
-            if (int.TryParse(id, out a))
+            List<ProductData> products = dbFind.GetAllProducts();
+            return products;
+        }
+
+        public virtual List<ProductData> SearchData(string searchFor)
+        {
+            List<ProductData> listOfProducts = ReadData();
+            List<ProductData> foundProduct = new List<ProductData>();
+
+            foreach (ProductData product in listOfProducts)
             {
-                int ID = int.Parse(id ?? "1");
-                if (ID != 0)
+                int id = 0;
+                if (int.TryParse(searchFor, out id))
                 {
-                    id = ID.ToString();
-                    ProductData product = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == ID).FirstOrDefault();
-                    return product;
+                    if (product.p_id == id)
+                    {
+                        foundProduct.Clear();
+                        foundProduct.Add(product);
+                        break;
+                    }
+                }
+                if (
+                  product.product_name.ToLower().Contains(searchFor.ToLower()) ||
+                  product.tag1.ToLower() == searchFor.ToLower() ||
+                  product.tag2.ToLower() == searchFor.ToLower() ||
+                  product.tag3.ToLower() == searchFor.ToLower() ||
+                  product.description.ToLower().Contains(searchFor.ToLower()))
+                {
+                    foundProduct.Add(product);
                 }
             }
 
-            ProductData p;
-            return p = findProduct.GetAllProducts().Where<ProductData>(x => x.p_id == 1).First();
+            return foundProduct;
         }
-  }
+
+        public ProductData FindById(string id)
+        {
+            try
+            {
+                int a = 0;
+                if (int.TryParse(id, out a))
+                {
+                    int ID = int.Parse(id ?? "1");
+                    if (ID != 0)
+                    {
+                        id = ID.ToString();
+                        ProductData product = dbFind.GetAllProducts().Where<ProductData>(x => x.p_id == ID).FirstOrDefault();
+                        return product;
+                    }
+                }
+
+                ProductData p;
+                return p = dbFind.GetAllProducts().Where<ProductData>(x => x.p_id == 1).First();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+    }
 }
