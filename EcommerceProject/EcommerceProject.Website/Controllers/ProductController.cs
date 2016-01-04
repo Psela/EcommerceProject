@@ -10,21 +10,16 @@ namespace EcommerceProject.Website.Controllers
 {
   public class ProductController : Controller
   {
-    DataRetrieverService dbService;
+    WebsiteServerHost.DataRetrieverServiceClient client;
 
     public ProductController()
     {
-      dbService = new DataRetrieverService();
-    }
-
-    public ProductController(DataRetrieverService dataRetrieverService)
-    {
-      dbService = dataRetrieverService;
+      client = new WebsiteServerHost.DataRetrieverServiceClient();
     }
 
     public ActionResult Index(string id)
     {
-      ProductData product = dbService.SearchData(id)[0];
+      ProductData product = client.SearchData(id)[0];
 
       return View(product);
     }

@@ -174,7 +174,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\WebsiteServer\Reference.cs">
+    <Compile Include="Service References\WebsiteServerHost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -202,6 +202,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Properties\DataSources\EcommerceProject.DatabaseModel.ProductData.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Banner.png" />
     <Content Include="Images\logo.png" />
@@ -223,11 +224,11 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\WebsiteServer\DataRetrieverService.wsdl" />
-    <None Include="Service References\WebsiteServer\Service.disco" />
-    <None Include="Service References\WebsiteServer\configuration91.svcinfo" />
-    <None Include="Service References\WebsiteServer\configuration.svcinfo" />
-    <None Include="Service References\WebsiteServer\Reference.svcmap">
+    <None Include="Service References\WebsiteServerHost\DataRetrieverService.wsdl" />
+    <None Include="Service References\WebsiteServerHost\Service.disco" />
+    <None Include="Service References\WebsiteServerHost\configuration91.svcinfo" />
+    <None Include="Service References\WebsiteServerHost\configuration.svcinfo" />
+    <None Include="Service References\WebsiteServerHost\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -272,13 +273,13 @@
     <Content Include="Views\Shared\_PartialProductView.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\_ProductListView.cshtml" />
-    <None Include="Service References\WebsiteServer\Service.xsd">
+    <None Include="Service References\WebsiteServerHost\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebsiteServer\Service1.xsd">
+    <None Include="Service References\WebsiteServerHost\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WebsiteServer\Service2.xsd">
+    <None Include="Service References\WebsiteServerHost\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -303,7 +304,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WebsiteServer\" />
+    <WCFMetadataStorage Include="Service References\WebsiteServerHost\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
