@@ -94,8 +94,11 @@ namespace EcommerceProject.AdminPortal
     private void UpdateDetails()
     {
       EditProduct dbUpdate = new EditProduct();
+      FindProduct dbFind = new FindProduct();
 
-      dbUpdate.UpdateProduct(product);
+      ProductData foundProduct = dbFind.GetProductByID(product.p_id);
+
+      dbUpdate.UpdateProduct(foundProduct, product);
     }
 
 

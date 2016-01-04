@@ -20,13 +20,11 @@ namespace EcommerceProject.DatabaseModel.Update
       context = eCommerceEntities;
     }
 
-    public void UpdateProduct(ProductData productWithChanges)
+    public void UpdateProduct(ProductData Original, ProductData productWithChanges)
     {
       using (context)
       {
-        ProductData product = context.ProductDatas.Where(p => p.p_id == productWithChanges.p_id).First();
-
-        product = productWithChanges;
+        Original = productWithChanges;
         context.SaveChanges();
       }
     }
