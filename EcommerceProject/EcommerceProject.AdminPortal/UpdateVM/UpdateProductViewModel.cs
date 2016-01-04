@@ -79,8 +79,7 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 
         private void findProduct(string id)
         {
-            //product = 
-                client.FindById(id);
+            product = client.FindById(id);
         }
 
         private bool CanUpdateDetails()
