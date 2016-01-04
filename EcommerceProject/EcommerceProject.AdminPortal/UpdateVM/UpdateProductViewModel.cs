@@ -14,9 +14,8 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 {
     public class UpdateProductViewModel : INotifyPropertyChanged
     {
-        private UpdateProductViewModel()
+        public UpdateProductViewModel()
         {
-            ServerHost host = new ServiceHost(typeof(;
         }
 
         private ProductData _product;
