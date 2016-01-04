@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EcommerceProject.AdminPortal.ServiceReference1 {
+namespace EcommerceProject.AdminPortal.ServiceHostReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IDataRetrieverService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceHostReference.IDataRetrieverService")]
     public interface IDataRetrieverService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/ReadData", ReplyAction="http://tempuri.org/IDataRetrieverService/ReadDataResponse")]
@@ -23,12 +23,12 @@ namespace EcommerceProject.AdminPortal.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDataRetrieverServiceChannel : EcommerceProject.AdminPortal.ServiceReference1.IDataRetrieverService, System.ServiceModel.IClientChannel {
+    public interface IDataRetrieverServiceChannel : EcommerceProject.AdminPortal.ServiceHostReference.IDataRetrieverService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DataRetrieverServiceClient : System.ServiceModel.ClientBase<EcommerceProject.AdminPortal.ServiceReference1.IDataRetrieverService>, EcommerceProject.AdminPortal.ServiceReference1.IDataRetrieverService {
+    public partial class DataRetrieverServiceClient : System.ServiceModel.ClientBase<EcommerceProject.AdminPortal.ServiceHostReference.IDataRetrieverService>, EcommerceProject.AdminPortal.ServiceHostReference.IDataRetrieverService {
         
         public DataRetrieverServiceClient() {
         }
