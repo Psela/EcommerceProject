@@ -11,6 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.AdminPorta
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.Website", "EcommerceProject.Website\EcommerceProject.Website.csproj", "{D08DCA2C-AE8C-45CD-B62A-751F59F89295}"
+	ProjectSection(ProjectDependencies) = postProject
+		{816F509C-D797-4BC7-A6D8-1E02F0C36F43} = {816F509C-D797-4BC7-A6D8-1E02F0C36F43}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artifacts", "Artifacts", "{2C88F062-0F75-41F8-81A6-19D05BBFC8A3}"
 	ProjectSection(SolutionItems) = preProject

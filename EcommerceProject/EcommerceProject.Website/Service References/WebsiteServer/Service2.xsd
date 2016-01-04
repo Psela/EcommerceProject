@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:58525/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" />
+  <xs:element name="ReadData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" minOccurs="0" name="ReadDataResult" nillable="true" type="q1:ArrayOfProductData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" minOccurs="0" name="SearchDataResult" nillable="true" type="q2:ArrayOfProductData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
