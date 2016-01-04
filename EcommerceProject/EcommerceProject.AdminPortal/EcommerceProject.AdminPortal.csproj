@@ -61,7 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddProductViewModel.cs" />
+    <Compile Include="AddProductVM\AddProductViewModel.cs" />
     <Compile Include="FindProductViewModel.cs" />
     <Compile Include="ManageCustomerView.xaml.cs">
       <DependentUpon>ManageCustomerView.xaml</DependentUpon>
@@ -73,7 +73,7 @@
       <DependentUpon>UpdateProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateProductViewModel.cs" />
-    <Page Include="AddProduct.xaml">
+    <Page Include="AddProductVM\AddProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,7 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddProduct.xaml.cs">
+    <Compile Include="AddProductVM\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -155,6 +155,11 @@
       <Project>{9097d3ac-e0bd-452b-a580-e9417ac0cbae}</Project>
       <Name>EcommerceProject.DatabaseModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FindVM\" />
+    <Folder Include="HomeVM\" />
+    <Folder Include="UpdateVM\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
