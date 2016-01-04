@@ -90,7 +90,7 @@ namespace EcommerceProject.AdminPortal
         private void GoToRemovePage()
         {
             MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
-            vm.source = "FindProductView.xaml";
+            vm.source = "FindVM/FindProductView.xaml";
         }
 
 
