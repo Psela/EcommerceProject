@@ -1,9 +1,9 @@
 ﻿using EcommerceProject.AdminPortal;
 using EcommerceProject.AdminPortal.FindVM;
+using EcommerceProject.AdminPortal.ServiceHostReference;
 using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Delete;
 using EcommerceProject.DatabaseModel.Select;
-using EcommerceProject.Server;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
