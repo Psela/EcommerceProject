@@ -1,5 +1,6 @@
 ﻿using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Add;
+using EcommerceProject.DatabaseModel.Delete;
 using EcommerceProject.DatabaseModel.Select;
 using System;
 using System.Collections.Generic;
@@ -59,29 +60,34 @@ namespace EcommerceProject.Server
       return foundProduct;
     }
 
-        public ProductData FindById(string id)
+    public virtual ProductData FindById(string id)
+    {
+      ProductData product = new ProductData();
+      int a = 0;
+      if (int.TryParse(id, out a))
+      {
+        int ID = int.Parse(id ?? "1");
+        if (ID != 0)
         {
-            ProductData product = new ProductData();
-            FindProduct findProduct = new FindProduct();
-            int a = 0;
-            if (int.TryParse(id, out a))
-            {
-                int ID = int.Parse(id ?? "1");
-                if (ID != 0)
-                {
-          product = findProduct.GetProductByID(ID);
-                }
-            }
+          product = dbFind.GetProductByID(ID);
+        }
+      }
 
-                    return product;
-                }
+      return product;
+    }
+
+    public void RemoveById(int id)
+    {
+      RemoveProduct remove = new RemoveProduct();
+      remove.DeleteProductByID(id);
+    }
 
     public void CreateNewProductItem(ProductData product)
     {
-        NewProduct newProduct = new NewProduct();
-        // validateInput();
-        newProduct.CreateNewProduct(product);
-            }
+      NewProduct newProduct = new NewProduct();
+      // validateInput();
+      newProduct.CreateNewProduct(product);
+    }
 
 
   }

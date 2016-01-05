@@ -9,19 +9,22 @@ using System.Threading.Tasks;
 
 namespace EcommerceProject.Server
 {
-    [ServiceContract]
-    public interface IDataRetrieverService
-    {
-        [OperationContract]
-        List<ProductData> ReadData();
+  [ServiceContract]
+  public interface IDataRetrieverService
+  {
+    [OperationContract]
+    List<ProductData> ReadData();
 
-        [OperationContract]
-        List<ProductData> SearchData(string searchFor);
+    [OperationContract]
+    List<ProductData> SearchData(string searchFor);
 
-        [OperationContract]
-        void CreateNewProductItem(ProductData product);
-      
-        [OperationContract]
-        ProductData FindById(string id);
-    }
+    [OperationContract]
+    void CreateNewProductItem(ProductData product);
+
+    [OperationContract]
+    ProductData FindById(string id);
+
+    [OperationContract]
+    void RemoveById(int id);
+  }
 }

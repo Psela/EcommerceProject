@@ -17,7 +17,7 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 {
   public class AddProductViewModel : INotifyPropertyChanged
   {
-      IDataRetrieverService client;
+    IDataRetrieverService client;
 
     private ProductData _product;
     public ProductData product
@@ -32,10 +32,9 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
     public AddProductViewModel()
     {
-        var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
-        client = factory.CreateChannel();
-      FindProduct findProduct = new FindProduct();
-      ProductData productFound = findProduct.GetAllProducts().Last();
+      var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+      client = factory.CreateChannel();
+      ProductData productFound = client.ReadData().Last();
       product = new ProductData();
       product.p_id = productFound.p_id + 1;
     }
@@ -93,41 +92,41 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
     private void SaveAddPage()
     {
-      MessageBoxResult result = MessageBox.Show("Would you like to add the product", "Save",MessageBoxButton.YesNoCancel);
+      MessageBoxResult result = MessageBox.Show("Would you like to add the product", "Save", MessageBoxButton.YesNoCancel);
       switch (result)
       {
-          case MessageBoxResult.No: ResetAddPageExceptId();
-              break;
+        case MessageBoxResult.No: ResetAddPageExceptId();
+          break;
 
-          case MessageBoxResult.Yes:
-              {
-                  //MessageBox.Show("hello");
-                  client.CreateNewProductItem(product);
+        case MessageBoxResult.Yes:
+          {
+            //MessageBox.Show("hello");
+            client.CreateNewProductItem(product);
 
-                  //NewProduct newProduct = new NewProduct();
-                  //newProduct.CreateNewProduct(product);
-                  MessageBox.Show("Success" + "The product:" + " " + product.product_name + " " + product.p_id + "was added");
-              break;
-              }
+            //NewProduct newProduct = new NewProduct();
+            //newProduct.CreateNewProduct(product);
+            MessageBox.Show("Success" + "The product:" + " " + product.product_name + " " + product.p_id + "was added");
+            break;
+          }
       }
 
     }
 
     private void ResetAddPageExceptId()
     {
-        product.price = 0.00m;
-        product.product_name = "";
-        product.stock = 0;
-        product.tag1 = "";
-        product.tag2 = "";
-        product.tag3 = "";
+      product.price = 0.00m;
+      product.product_name = "";
+      product.stock = 0;
+      product.tag1 = "";
+      product.tag2 = "";
+      product.tag3 = "";
 
     }
 
     private bool validateInput()
     {
-        return true;
-      
+      return true;
+
     }
 
     private string _bordercolor;

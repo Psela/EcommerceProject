@@ -28,7 +28,7 @@ namespace EcommerceProject.DatabaseModel.Select
                 return products;
             }
         }
-        public ProductData GetProductByID(int ID)
+        public virtual ProductData GetProductByID(int ID)
         {
             using (context)
             {
