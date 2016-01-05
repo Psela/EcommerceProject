@@ -18,6 +18,7 @@ namespace EcommerceProject.DatabaseModel
         public ECommerceEntities()
             : base("name=ECommerceEntities")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
