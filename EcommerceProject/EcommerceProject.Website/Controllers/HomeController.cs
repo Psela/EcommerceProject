@@ -17,7 +17,7 @@ namespace EcommerceProject.Website.Controllers
     
     public HomeController()
     {
-      var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+      var factory = new ChannelFactory<IDataRetrieverService>("TheService");
       client = factory.CreateChannel();
       listOfProducts = GetAllProductsInList();
     }
