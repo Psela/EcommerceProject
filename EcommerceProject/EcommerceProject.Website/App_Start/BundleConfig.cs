@@ -30,6 +30,7 @@ namespace EcommerceProject.Website
                 "~/Content/bootstrap.css",
                 "~/Content/Menu.css",
                 "~/Content/HomePage.css",
+                "~/Content/Confirmation.css",
                 "~/Content/site.css"));
     }
   }
