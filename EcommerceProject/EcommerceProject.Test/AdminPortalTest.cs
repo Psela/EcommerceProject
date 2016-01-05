@@ -1,5 +1,4 @@
-﻿using EcommerceProject.AdminPortal;
-using EcommerceProject.AdminPortal.FindVM;
+﻿using EcommerceProject.AdminPortal.FindVM;
 using EcommerceProject.AdminPortal.ServiceHostReference;
 using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Delete;
@@ -21,7 +20,7 @@ namespace EcommerceProject.Test
     FindProductViewModel viewModel;
     ProductData product1;
     Mock<IDataRetrieverService> mockDbReader;
-    Mock<RemoveProduct> mockRemoveProduct;
+
     [TestInitialize]
     public void Setup()
     {
@@ -52,20 +51,9 @@ namespace EcommerceProject.Test
         product1,
         product2
       };
+
       mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
-      Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
-      List<ProductData> productDataList = new List<ProductData>();
-      Mock<ProductData> mockProductData = new Mock<ProductData>();
-      mockProductData.SetupAllProperties();
-      mockProductData.Object.p_id = 1;
 
-      productDataList.Add(mockProductData.Object);
-
-      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
-      context.SetupAllProperties();
-      context.Object.ProductDatas = mockedDataSet;
-
-      mockRemoveProduct = new Mock<RemoveProduct>(context.Object);
       viewModel = new FindProductViewModel(mockDbReader.Object);
     }
 

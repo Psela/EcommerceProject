@@ -30,7 +30,7 @@
       Grid.ColumnSpan="2"
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
-      Content="Search ProductData"  
+      Content="Search Product"  
       FontSize="16"
     />
     <Image 
@@ -131,7 +131,7 @@
       Margin="10"
      >
       <Button.Content>
-        <TextBlock TextWrapping="Wrap" Text="Edit ProductData"/>
+        <TextBlock TextWrapping="Wrap" Text="Edit Product"/>
       </Button.Content>
     </Button>
     <Button
@@ -145,7 +145,7 @@
       Margin="10"
     >
       <Button.Content>
-        <TextBlock TextWrapping="Wrap" Text="Remove ProductData"/>
+        <TextBlock TextWrapping="Wrap" Text="Remove Product"/>
       </Button.Content>
     </Button>
   </Grid>
