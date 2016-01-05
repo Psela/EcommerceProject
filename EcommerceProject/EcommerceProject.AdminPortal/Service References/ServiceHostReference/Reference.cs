@@ -27,17 +27,17 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/SearchData", ReplyAction="http://tempuri.org/IDataRetrieverService/SearchDataResponse")]
         System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/FindById", ReplyAction="http://tempuri.org/IDataRetrieverService/FindByIdResponse")]
-        EcommerceProject.DatabaseModel.ProductData FindById(string id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/FindById", ReplyAction="http://tempuri.org/IDataRetrieverService/FindByIdResponse")]
-        System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/CreateNewProductItem", ReplyAction="http://tempuri.org/IDataRetrieverService/CreateNewProductItemResponse")]
         void CreateNewProductItem(EcommerceProject.DatabaseModel.ProductData product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/CreateNewProductItem", ReplyAction="http://tempuri.org/IDataRetrieverService/CreateNewProductItemResponse")]
         System.Threading.Tasks.Task CreateNewProductItemAsync(EcommerceProject.DatabaseModel.ProductData product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/FindById", ReplyAction="http://tempuri.org/IDataRetrieverService/FindByIdResponse")]
+        EcommerceProject.DatabaseModel.ProductData FindById(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/FindById", ReplyAction="http://tempuri.org/IDataRetrieverService/FindByIdResponse")]
+        System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,20 +83,20 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
             return base.Channel.SearchDataAsync(searchFor);
         }
         
-        public EcommerceProject.DatabaseModel.ProductData FindById(string id) {
-            return base.Channel.FindById(id);
-        }
-        
-        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id) {
-            return base.Channel.FindByIdAsync(id);
-        }
-                
         public void CreateNewProductItem(EcommerceProject.DatabaseModel.ProductData product) {
             base.Channel.CreateNewProductItem(product);
         }
         
         public System.Threading.Tasks.Task CreateNewProductItemAsync(EcommerceProject.DatabaseModel.ProductData product) {
             return base.Channel.CreateNewProductItemAsync(product);
+        }
+        
+        public EcommerceProject.DatabaseModel.ProductData FindById(string id) {
+            return base.Channel.FindById(id);
+        }
+        
+        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData> FindByIdAsync(string id) {
+            return base.Channel.FindByIdAsync(id);
         }
     }
 }
