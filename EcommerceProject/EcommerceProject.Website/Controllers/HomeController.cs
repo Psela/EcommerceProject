@@ -68,7 +68,5 @@ namespace EcommerceProject.Website.Controllers
 
       return listOfProducts;
     }
-
-
   }
 }
