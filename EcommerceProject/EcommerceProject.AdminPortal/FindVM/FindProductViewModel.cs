@@ -19,7 +19,6 @@ namespace EcommerceProject.AdminPortal.FindVM
   public class FindProductViewModel : INotifyPropertyChanged
   {
     IDataRetrieverService client;
-    RemoveProduct rm;
 
     private ICommand _EditButton;
     public ICommand EditButton
@@ -125,7 +124,7 @@ namespace EcommerceProject.AdminPortal.FindVM
             case MessageBoxResult.No:
               return;
             case MessageBoxResult.Yes:
-              rm.DeleteProductByID(Convert.ToInt32(SearchBox));
+              client.RemoveById(Convert.ToInt32(SearchBox));
               MessageBox.Show(productTemp.product_name + " has been removed.");
               return;
           }

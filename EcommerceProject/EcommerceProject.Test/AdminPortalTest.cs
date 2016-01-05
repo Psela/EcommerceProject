@@ -25,8 +25,7 @@ namespace EcommerceProject.Test
     [TestInitialize]
     public void Setup()
     {
-      Mock<ECommerceEntities> mockService = new Mock<ECommerceEntities>();
-      mockDbReader = new Mock<IDataRetrieverService>(mockService.Object);
+      mockDbReader = new Mock<IDataRetrieverService>();
 
       product1 = new ProductData()
       {
@@ -40,7 +39,7 @@ namespace EcommerceProject.Test
       };
       ProductData product2 = new ProductData()
       {
-          product_name = "product2",
+        product_name = "product2",
         tag1 = "tag1",
         tag2 = "tag3",
         tag3 = "tag2",
@@ -83,7 +82,7 @@ namespace EcommerceProject.Test
     }
 
     [TestMethod]
-    public void Test_Search_CallsGetAllProductsFromDatabaseReader_WhenCalledWithIntInSearchBox()
+    public void Test_Search_CallsFIndByIDFromDataRetriever_WhenCalledWithIntInSearchBox()
     {
       //Arrange
       viewModel.SearchBox = "2";
@@ -92,20 +91,7 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      mockDbReader.Verify(x => x.ReadData(), Times.Once);
-    }
-
-    [TestMethod]
-    public void Test_Search_OutputsCorrectValue_WhenSearchBoxSetToId1()
-    {
-      //Arrange
-      viewModel.SearchBox = "1";
-
-      //Act
-      viewModel.Search();
-
-      //Assert
-      Assert.AreEqual(product1, viewModel.productTemp);
+      mockDbReader.Verify(x => x.FindById(It.IsAny<string>()), Times.Once);
     }
 
     [TestMethod]
@@ -158,19 +144,6 @@ namespace EcommerceProject.Test
       //Assert
       Assert.IsTrue(actualresult);
     }
-
-    //[TestMethod]
-    //public void Test_Remove_DoesntCallDeleteProductById_WhenSearchBoxStringNotInt()
-    //{
-    //  //Arrange
-    //  viewModel.SearchBox = "Fail";
-
-    //  //Act
-    //  viewModel.Remove();
-
-    //  //Assert
-    //  mockRemoveProduct.Verify(x => x.DeleteProductByID(It.IsAny<int>()), Times.Never);
-    //}
 
     [TestMethod]
     public void Test_CanRemove_ReturnsTrue_WhenCalled()
