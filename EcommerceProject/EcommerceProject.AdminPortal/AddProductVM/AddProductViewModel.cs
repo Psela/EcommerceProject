@@ -32,7 +32,7 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
     public AddProductViewModel()
     {
-      var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+        var factory = new ChannelFactory<IDataRetrieverService>("TheService");
       client = factory.CreateChannel();
       ProductData productFound = client.ReadData().Last();
       product = new ProductData();

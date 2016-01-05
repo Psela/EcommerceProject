@@ -1,6 +1,8 @@
 ﻿using EcommerceProject.AdminPortal.FindVM;
+using EcommerceProject.AdminPortal.ServiceHostReference;
 using EcommerceProject.DatabaseModel;
-using EcommerceProject.Server;
+using EcommerceProject.DatabaseModel.Delete;
+using EcommerceProject.DatabaseModel.Select;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -51,7 +53,7 @@ namespace EcommerceProject.Test
       };
 
       mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
-      
+
       viewModel = new FindProductViewModel(mockDbReader.Object);
     }
 

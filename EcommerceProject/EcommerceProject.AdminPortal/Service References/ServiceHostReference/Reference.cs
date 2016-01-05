@@ -16,16 +16,16 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
     public interface IDataRetrieverService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/ReadData", ReplyAction="http://tempuri.org/IDataRetrieverService/ReadDataResponse")]
-        EcommerceProject.DatabaseModel.ProductData[] ReadData();
+        System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData> ReadData();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/ReadData", ReplyAction="http://tempuri.org/IDataRetrieverService/ReadDataResponse")]
-        System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> ReadDataAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData>> ReadDataAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/SearchData", ReplyAction="http://tempuri.org/IDataRetrieverService/SearchDataResponse")]
-        EcommerceProject.DatabaseModel.ProductData[] SearchData(string searchFor);
+        System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData> SearchData(string searchFor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/SearchData", ReplyAction="http://tempuri.org/IDataRetrieverService/SearchDataResponse")]
-        System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData>> SearchDataAsync(string searchFor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/CreateNewProductItem", ReplyAction="http://tempuri.org/IDataRetrieverService/CreateNewProductItemResponse")]
         void CreateNewProductItem(EcommerceProject.DatabaseModel.ProductData product);
@@ -73,19 +73,19 @@ namespace EcommerceProject.AdminPortal.ServiceHostReference {
                 base(binding, remoteAddress) {
         }
         
-        public EcommerceProject.DatabaseModel.ProductData[] ReadData() {
+        public System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData> ReadData() {
             return base.Channel.ReadData();
         }
         
-        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> ReadDataAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData>> ReadDataAsync() {
             return base.Channel.ReadDataAsync();
         }
         
-        public EcommerceProject.DatabaseModel.ProductData[] SearchData(string searchFor) {
+        public System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData> SearchData(string searchFor) {
             return base.Channel.SearchData(searchFor);
         }
         
-        public System.Threading.Tasks.Task<EcommerceProject.DatabaseModel.ProductData[]> SearchDataAsync(string searchFor) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<EcommerceProject.DatabaseModel.ProductData>> SearchDataAsync(string searchFor) {
             return base.Channel.SearchDataAsync(searchFor);
         }
         

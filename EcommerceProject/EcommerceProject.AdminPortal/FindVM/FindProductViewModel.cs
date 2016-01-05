@@ -1,10 +1,17 @@
 ﻿using EcommerceProject.DatabaseModel;
-using EcommerceProject.Server;
+using EcommerceProject.DatabaseModel.Delete;
+using EcommerceProject.DatabaseModel.Select;
 using System;
 using System.ComponentModel;
-using System.ServiceModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using EcommerceProject.AdminPortal.UpdateVM;
+using System.ServiceModel;
+using EcommerceProject.AdminPortal.ServiceHostReference;
+
 
 namespace EcommerceProject.AdminPortal.FindVM
 {
@@ -87,7 +94,7 @@ namespace EcommerceProject.AdminPortal.FindVM
 
     public FindProductViewModel()
     {
-      var factory = new ChannelFactory<IDataRetrieverService>("BasicHttpBinding_IDataRetrieverService");
+            var factory = new ChannelFactory<IDataRetrieverService>("TheService");
       client = factory.CreateChannel();
     }
 

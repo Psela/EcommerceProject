@@ -291,10 +291,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EcommerceProject.Server\EcommerceProject.Server.csproj">
-      <Project>{3fc48c3f-8c50-4af9-aa66-0a057f6f9a42}</Project>
-      <Name>EcommerceProject.Server</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EntityFramework\EcommerceProject.DatabaseModel.csproj">
       <Project>{9097d3ac-e0bd-452b-a580-e9417ac0cbae}</Project>
       <Name>EcommerceProject.DatabaseModel</Name>

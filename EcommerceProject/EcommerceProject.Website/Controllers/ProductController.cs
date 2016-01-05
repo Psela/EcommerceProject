@@ -1,5 +1,4 @@
 ﻿using EcommerceProject.DatabaseModel;
-using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,7 @@
-﻿using EcommerceProject.DatabaseModel;
+﻿using EcommerceProject.AdminPortal.ServiceHostReference;
+using EcommerceProject.DatabaseModel;
 using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.DatabaseModel.Update;
-using EcommerceProject.Server;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +14,11 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 {
     public class UpdateProductViewModel : INotifyPropertyChanged
     {
-        ServiceHostReference.DataRetrieverServiceClient client;
+        DataRetrieverServiceClient client;
 
         public UpdateProductViewModel()
         {
-            client = new ServiceHostReference.DataRetrieverServiceClient("EcommerceProject.Server.DataRetrieverService");
+            client = new ServiceHostReference.DataRetrieverServiceClient("TheService");
         }
 
         private ProductData _product;
