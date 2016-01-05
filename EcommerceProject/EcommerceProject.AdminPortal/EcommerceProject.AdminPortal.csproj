@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddProductPriceValidation.cs" />
     <Compile Include="AddProductVM\AddProductViewModel.cs" />
     <Compile Include="FindVM\FindProductViewModel.cs" />
     <Compile Include="ManageCustomerVM\ManageCustomerView.xaml.cs">

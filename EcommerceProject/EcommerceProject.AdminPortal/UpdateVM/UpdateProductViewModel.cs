@@ -18,7 +18,7 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 
         public UpdateProductViewModel()
         {
-            client = new ServiceHostReference.DataRetrieverServiceClient();
+            client = new ServiceHostReference.DataRetrieverServiceClient("EcommerceProject.Server.DataRetrieverService");
         }
 
         private ProductData _product;

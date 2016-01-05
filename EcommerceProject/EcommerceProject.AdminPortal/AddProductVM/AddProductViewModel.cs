@@ -100,13 +100,14 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
         case MessageBoxResult.Yes:
           {
-            //MessageBox.Show("hello");
+              if (validateInput()) { 
             client.CreateNewProductItem(product);
 
             //NewProduct newProduct = new NewProduct();
             //newProduct.CreateNewProduct(product);
             MessageBox.Show("Success" + "The product:" + " " + product.product_name + " " + product.p_id + "was added");
-            break;
+           } 
+        break;
           }
       }
 
@@ -125,8 +126,11 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
     private bool validateInput()
     {
-      return true;
-
+        if (product.stock.HasValue && product.price.HasValue &&
+            product.tag3!="" && product.tag1!="" &&product.tag3!="" && product.imageurl!="" ) { 
+            return true;
+        }
+        return false;
     }
 
     private string _bordercolor;
