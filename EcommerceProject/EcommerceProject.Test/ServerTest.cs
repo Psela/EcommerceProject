@@ -21,6 +21,7 @@ namespace EcommerceProject.Test
     ProductData product1;
     ProductData product2;
     ProductData product10;
+    Dictionary<ProductData, int> Basket;
 
     [TestInitialize]
     public void Setup()
@@ -48,10 +49,11 @@ namespace EcommerceProject.Test
         product9,
         product10
       };
+      Basket = new Dictionary<ProductData, int>(); 
       mockFind = new Mock<FindProduct>();
       mockFind.Setup(x => x.GetAllProducts()).Returns(listOfProduct);
       mockFind.Setup(x => x.GetProductByID(1)).Returns(product1);
-      dbService = new DataRetrieverService(mockFind.Object);
+      dbService = new DataRetrieverService(mockFind.Object, Basket);
     }
 
     [TestMethod]
@@ -190,6 +192,32 @@ namespace EcommerceProject.Test
 
       //Assert
       mockFind.Verify(dr => dr.GetProductByID(It.IsAny<int>()), Times.Once());
+    }
+
+    [TestMethod]
+    public void Test_GetBasket_ReturnsBasket()
+    {
+      //Arrange
+
+      //Act
+      Dictionary<ProductData,int> result = dbService.GetBasket();
+
+      //Assert
+      CollectionAssert.AreEqual(Basket, result);
+    }
+
+    [TestMethod]
+    public void Test_AddToBasket_AddsItemToBasket()
+    {
+      //Arrange
+      Dictionary<ProductData, int> expectedBasket = new Dictionary<ProductData, int>();
+      expectedBasket.Add(product1, 1);
+
+      //Act
+      dbService.AddToBasket(product1,1);
+
+      //Assert
+      CollectionAssert.AreEqual(expectedBasket, Basket);
     }
   }
 }
