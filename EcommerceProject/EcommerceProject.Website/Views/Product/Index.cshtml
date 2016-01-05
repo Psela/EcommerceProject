@@ -6,7 +6,9 @@
   <h2>@Model.product_name</h2><br />
   <h4>£@Model.price</h4>
   <h5>@Model.stock left in stock</h5>
+    <a href="~/Basket"><input type="button" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Add to the Basket" data-placement="right" value="Add to Basket" /></a>
 </div>
+<br />
 <div id="product_description">
   <h2>Description</h2>
   @Model.description

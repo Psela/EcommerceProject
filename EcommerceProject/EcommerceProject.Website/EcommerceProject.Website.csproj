@@ -283,13 +283,14 @@
     <None Include="Service References\WebsiteServerHost\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\Basket\ConfirmationPage.cshtml" />
     <None Include="Service References\WebsiteServerHost\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

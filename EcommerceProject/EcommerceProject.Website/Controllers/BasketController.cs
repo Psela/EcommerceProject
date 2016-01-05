@@ -13,5 +13,11 @@ namespace EcommerceProject.Website.Controllers
         {
             return View();
         }
+
+        // confirmation view
+        public ActionResult ConfirmationPage()
+        {
+            return View();
+        }
     }
 }
