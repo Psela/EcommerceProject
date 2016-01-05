@@ -1,8 +1,23 @@
-﻿
+﻿@model List<EcommerceProject.DatabaseModel.ProductData>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Basket</h2>
+<div>
+<div id="displayProducts">
+@* Perhaps use partial view to display products *@
+    abc
+</div>
 
+        <button id="buttons">
+            Update Basket
+        </button> <br />
+        <button id="buttons">
+            Checkout
+        </button>
+
+</div>
+
+@Styles.Render("~/Content/Basket.css")
