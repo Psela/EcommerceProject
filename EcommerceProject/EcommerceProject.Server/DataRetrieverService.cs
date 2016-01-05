@@ -5,17 +5,21 @@ using EcommerceProject.DatabaseModel.Select;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 
 namespace EcommerceProject.Server
 {
+  [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
   public class DataRetrieverService : IDataRetrieverService
   {
     FindProduct dbFind;
+    private Dictionary<ProductData, int> _basket;
 
-    public DataRetrieverService(FindProduct findProduct)
+    public DataRetrieverService(FindProduct findProduct,Dictionary<ProductData, int> Basket )
     {
       dbFind = findProduct;
+      _basket = Basket;
     }
 
     public DataRetrieverService()
@@ -61,20 +65,20 @@ namespace EcommerceProject.Server
     }
 
     public virtual ProductData FindById(string id)
+    {
+      ProductData product = new ProductData();
+      int a = 0;
+      if (int.TryParse(id, out a))
+      {
+        int ID = int.Parse(id ?? "1");
+        if (ID != 0)
         {
-            ProductData product = new ProductData();
-            int a = 0;
-            if (int.TryParse(id, out a))
-            {
-                int ID = int.Parse(id ?? "1");
-                if (ID != 0)
-                {
           product = dbFind.GetProductByID(ID);
-                }
-            }
+        }
+      }
 
-                    return product;
-                }
+      return product;
+    }
 
     public void RemoveById(int id)
     {
@@ -84,11 +88,24 @@ namespace EcommerceProject.Server
 
     public void CreateNewProductItem(ProductData product)
     {
-        NewProduct newProduct = new NewProduct();
-        // validateInput();
-        newProduct.CreateNewProduct(product);
-            }
+      NewProduct newProduct = new NewProduct();
+      // validateInput();
+      newProduct.CreateNewProduct(product);
+    }
 
+    public Dictionary<ProductData, int> GetBasket()
+    {
+      if (_basket == null)
+      {
+        _basket = new Dictionary<ProductData, int>();
+      }
+      return _basket;
+    }
+
+    public void AddToBasket(ProductData product, int amount)
+    {
+      _basket.Add(product, amount);
+    }
 
   }
 }
