@@ -1,18 +1,10 @@
 ﻿using EcommerceProject.DatabaseModel;
-using EcommerceProject.DatabaseModel.Delete;
-using EcommerceProject.DatabaseModel.Select;
 using EcommerceProject.Server;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
-using EcommerceProject.AdminPortal.UpdateVM;
-using System.ServiceModel;
-
 
 namespace EcommerceProject.AdminPortal.FindVM
 {
@@ -168,5 +160,6 @@ namespace EcommerceProject.AdminPortal.FindVM
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
+    private ServiceHostReference.IDataRetrieverService dataRetrieverService;
   }
 }
