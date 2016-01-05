@@ -3,15 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:addProductvm="clr-namespace:EcommerceProject.AdminPortal.AddProductVM"
+      xmlns:addProductvmodel="clr-namespace:EcommerceProject.AdminPortal.AddProductVM"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="AddProduct">
 
     <Page.DataContext>
-        <addProductvm:AddProductViewModel/>
+        <addProductvmodel:AddProductViewModel/>
     </Page.DataContext>
+    
     <Grid Background="Beige">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="27*"></RowDefinition>
             <RowDefinition Height="27*"></RowDefinition>
@@ -48,15 +50,15 @@
         <TextBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="3" Text="{Binding product.description, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
          <TextBox Grid.Row="3" Text="{Binding product.price, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.Column="1"/>
         <TextBox Grid.Row="4" Text="{Binding product.tag1, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2" Grid.Column="1"/>
-    <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding  product.tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged  }" />
-    <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding  product.tag3, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding  product.tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged  }" />
+       <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding  product.tag3, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2"/>
         <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding product.stock, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" />
         <TextBox Grid.Row="8" Text="{Binding product.imageurl, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" Grid.Column="1"/>
         <TextBlock Grid.Column="3" Grid.RowSpan="4" Background="OldLace" Text="Image"/>
         <Button Content="Save" Grid.Column="0" Grid.Row="10" Command="{Binding SaveButton}" Margin="0,1,0,0"/>
         <Button Content="Reset" Grid.Column="1" Grid.Row="10" Command="{Binding ResetButton}" Margin="0,1,0,0"/>
         <Button Content="Preview Image" Grid.Column="3" Grid.Row="4" Margin="0,2,0,0"/>
-
+      
 
     </Grid>
 </Page>
