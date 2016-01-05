@@ -9,27 +9,27 @@
 
 namespace EcommerceProject.DatabaseModel
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class ECommerceEntities : DbContext
+  using System;
+  using System.Data.Entity;
+  using System.Data.Entity.Infrastructure;
+
+  public partial class ECommerceEntities : DbContext
+  {
+    public ECommerceEntities()
+      : base("name=ECommerceEntities")
     {
-        public ECommerceEntities()
-            : base("name=ECommerceEntities")
-        {
-          this.Configuration.ProxyCreationEnabled = false; // ADD THIS LINE !
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<CustomerData> CustomerDatas { get; set; }
-        public virtual DbSet<ProductData> ProductDatas { get; set; }
-        public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<PaymentInfo> PaymentInfoes { get; set; }
-        public virtual DbSet<OrderHistory> OrderHistories { get; set; }
+      this.Configuration.ProxyCreationEnabled = false;
     }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+      throw new UnintentionalCodeFirstException();
+    }
+
+    public virtual DbSet<CustomerData> CustomerDatas { get; set; }
+    public virtual DbSet<ProductData> ProductDatas { get; set; }
+    public virtual DbSet<Address> Addresses { get; set; }
+    public virtual DbSet<PaymentInfo> PaymentInfoes { get; set; }
+    public virtual DbSet<OrderHistory> OrderHistories { get; set; }
+  }
 }
