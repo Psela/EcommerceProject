@@ -4,20 +4,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Basket</h2>
+<center><h2>Basket</h2></center>
+
 <div>
 <div id="displayProducts">
-@* Perhaps use partial view to display products *@
-    abc
-</div>
 
-        <button id="buttons">
+    <center><h3>Display Products here</h3></center>
+    <br />
+    
+    <br />
+    If no products say "Basket is empty!"
+    <br /><br />
+    Otherwise show products<br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+</div>
+    <div id="buttons">
+        <button class="buttonsize">
             Update Basket
-        </button> <br />
-        <button id="buttons">
+        </button>
+        <br/>
+       
+        <button class="buttonsize">
             Checkout
         </button>
-
+    </div>
 </div>
 
 @Styles.Render("~/Content/Basket.css")
