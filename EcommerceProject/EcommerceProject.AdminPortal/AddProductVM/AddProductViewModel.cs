@@ -107,10 +107,14 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
         case MessageBoxResult.Yes:
           {
-        
-            client.CreateNewProductItem(product);
-            MessageBox.Show("Success:" + " " +"The product:" + "  " + product.product_name + "   " + product.p_id + " " +"was added");
-           } 
+              if (validateInput())
+              {
+                  client.CreateNewProductItem(product);
+                  MessageBox.Show("Success:" + " " + "The product:" + "  " + product.product_name + "   " + product.p_id + " " + "was added");
+              }
+              else
+                  MessageBox.Show("Failed!" + " " + "A Field/Some Fields are missing");
+          } 
         break;
           
       }
@@ -131,7 +135,7 @@ namespace EcommerceProject.AdminPortal.AddProductVM
     private bool validateInput()
     {
         if (product.stock.HasValue && product.price.HasValue &&
-            product.tag3!="" && product.tag1!="" &&product.tag3!="" && product.imageurl!="" ) { 
+            product.tag3!="" && product.tag1!="" &&product.tag3!="" && product.imageurl!="" && product.description!=null ) { 
             return true;
         }
         return false;
