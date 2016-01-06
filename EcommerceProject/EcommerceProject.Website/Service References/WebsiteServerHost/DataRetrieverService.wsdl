@@ -38,6 +38,12 @@
   <wsdl:message name="IDataRetrieverService_RemoveById_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IDataRetrieverService_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IDataRetrieverService_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
   <wsdl:message name="IDataRetrieverService_GetBasket_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBasket" />
   </wsdl:message>
@@ -70,6 +76,10 @@
     <wsdl:operation name="RemoveById">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/RemoveById" message="tns:IDataRetrieverService_RemoveById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/RemoveByIdResponse" message="tns:IDataRetrieverService_RemoveById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/UpdateProduct" message="tns:IDataRetrieverService_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/UpdateProductResponse" message="tns:IDataRetrieverService_UpdateProduct_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBasket">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/GetBasket" message="tns:IDataRetrieverService_GetBasket_InputMessage" />
@@ -120,6 +130,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveById">
       <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/RemoveById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/UpdateProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

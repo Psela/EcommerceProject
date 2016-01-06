@@ -45,6 +45,12 @@ namespace EcommerceProject.Website.WebsiteServerHost {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/RemoveById", ReplyAction="http://tempuri.org/IDataRetrieverService/RemoveByIdResponse")]
         System.Threading.Tasks.Task RemoveByIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/UpdateProduct", ReplyAction="http://tempuri.org/IDataRetrieverService/UpdateProductResponse")]
+        void UpdateProduct(EcommerceProject.DatabaseModel.ProductData newProduct);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/UpdateProduct", ReplyAction="http://tempuri.org/IDataRetrieverService/UpdateProductResponse")]
+        System.Threading.Tasks.Task UpdateProductAsync(EcommerceProject.DatabaseModel.ProductData newProduct);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/GetBasket", ReplyAction="http://tempuri.org/IDataRetrieverService/GetBasketResponse")]
         System.Collections.Generic.Dictionary<EcommerceProject.DatabaseModel.ProductData, int> GetBasket();
         
@@ -123,6 +129,14 @@ namespace EcommerceProject.Website.WebsiteServerHost {
         
         public System.Threading.Tasks.Task RemoveByIdAsync(int id) {
             return base.Channel.RemoveByIdAsync(id);
+        }
+        
+        public void UpdateProduct(EcommerceProject.DatabaseModel.ProductData newProduct) {
+            base.Channel.UpdateProduct(newProduct);
+        }
+        
+        public System.Threading.Tasks.Task UpdateProductAsync(EcommerceProject.DatabaseModel.ProductData newProduct) {
+            return base.Channel.UpdateProductAsync(newProduct);
         }
         
         public System.Collections.Generic.Dictionary<EcommerceProject.DatabaseModel.ProductData, int> GetBasket() {

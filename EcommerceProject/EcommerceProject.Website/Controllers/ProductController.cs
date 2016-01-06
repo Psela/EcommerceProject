@@ -34,6 +34,7 @@ namespace EcommerceProject.Website.Controllers
     public void AddToBasket(ProductData productToAdd)
     {
       client.AddToBasket(productToAdd, 1);
+      Response.Redirect("~/Basket/Index");
     }
   }
 }

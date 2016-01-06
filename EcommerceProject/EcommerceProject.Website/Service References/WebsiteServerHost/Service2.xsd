@@ -66,6 +66,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" minOccurs="0" name="newProduct" nillable="true" type="q5:ProductData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProductResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBasket">
     <xs:complexType>
       <xs:sequence />
@@ -74,14 +86,14 @@
   <xs:element name="GetBasketResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBasketResult" nillable="true" type="q5:ArrayOfKeyValueOfProductDataintJ9o_SbuEh" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBasketResult" nillable="true" type="q6:ArrayOfKeyValueOfProductDataintJ9o_SbuEh" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddToBasket">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" minOccurs="0" name="product" nillable="true" type="q6:ProductData" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" minOccurs="0" name="product" nillable="true" type="q7:ProductData" />
         <xs:element minOccurs="0" name="amount" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

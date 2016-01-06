@@ -15,7 +15,7 @@ namespace EcommerceProject.Server
   public class DataRetrieverService : IDataRetrieverService
   {
     FindProduct dbFind;
-    private Dictionary<ProductData, int> _basket;
+    public Dictionary<ProductData, int> _basket;
 
     public DataRetrieverService(FindProduct findProduct,Dictionary<ProductData, int> Basket )
     {
@@ -110,6 +110,7 @@ namespace EcommerceProject.Server
 
     public void AddToBasket(ProductData product, int amount)
     {
+      GetBasket();
       _basket.Add(product, amount);
     }
 

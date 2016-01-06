@@ -1,14 +1,17 @@
 ﻿<link href='https://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
 @model EcommerceProject.DatabaseModel.ProductData
 
-@{ EcommerceProject.Website.Controllers.BasketController obj = new EcommerceProject.Website.Controllers.BasketController();}
+@{ EcommerceProject.Website.Controllers.ProductController obj = new EcommerceProject.Website.Controllers.ProductController();}
 
 <img id="img" src=@Model.imageurl style=" height:300px;width:300px" />
 <div id="product">
   <h2>@Model.product_name</h2><br />
   <h4>£@Model.price</h4>
   <h5>@Model.stock left in stock</h5>
-    <a href="~/Basket" onclick="addToBasket"><input type="button" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Add to the Basket" data-placement="right" value="Add to Basket" /></a>
+  @using (Html.BeginForm("AddToBasket", "Product",Model))
+  {
+    <a href="~/Basket"><input type="submit" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Add to the Basket" data-placement="right" value="Add to Basket" /></a>
+  }
 </div>
 <br />
 <div id="product_description">
@@ -17,9 +20,9 @@
 </div>
 
 <script>
-    function addToBasket() {
-        @obj.AddProductToBasket(Model, 1);
-    }
+  function addToBasket() {
+    obj.AddToBasket(Model);
+  }
 </script>
 
 @Styles.Render("~/Content/ProductPage.css")

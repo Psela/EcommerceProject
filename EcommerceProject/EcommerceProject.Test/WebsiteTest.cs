@@ -63,17 +63,17 @@ namespace EcommerceProject.Test
       mockDbReader.Verify(x => x.ReadData(), Times.Once);
     }
 
-    [TestMethod]
-    public void Test_ProductController_AddToBasket_CallsAddToBasket_ExactlyOnce()
-    {
-      //Arrange
-      ProductData product1 = new ProductData();
+    //[TestMethod]
+    //public void Test_ProductController_AddToBasket_CallsAddToBasket_ExactlyOnce()
+    //{
+    //  //Arrange
+    //  ProductData product1 = new ProductData();
 
-      //Act
-      productController.AddToBasket(product1);
+    //  //Act
+    //  productController.AddToBasket(product1);
 
-      //Assert
-      mockDbReader.Verify(x => x.AddToBasket(It.IsAny<ProductData>(), 1));
-    }
+    //  //Assert
+    //  mockDbReader.Verify(x => x.AddToBasket(It.IsAny<ProductData>(), 1));
+    //}
   }
 }
