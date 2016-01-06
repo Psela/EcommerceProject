@@ -1,0 +1,27 @@
+﻿@model List<EcommerceProject.DatabaseModel.ProductData>
+
+<center>
+  <div>
+    @* This is for the search bar *@
+    @using (Ajax.BeginForm(
+                new AjaxOptions
+                {
+                  HttpMethod = "GET",
+                  UpdateTargetId = "midPage",
+                  InsertionMode = InsertionMode.Replace
+
+                }))
+    {
+      <p>
+        Search:@Html.TextBox("searchInput")
+        <input type="submit" value="Search" />
+
+      </p>
+    }
+  </div>
+</center>
+
+
+<div id="midPage">
+  @Html.Partial("_ProductListView", Model)
+</div>

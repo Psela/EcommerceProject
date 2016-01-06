@@ -1,16 +1,22 @@
 ﻿@model List<EcommerceProject.DatabaseModel.ProductData>
 
 @if (Model.Count == 0)
-{
-  <h1>No products have been found.</h1>
+{  <div class="alert alert-warning" style="background-color: #D43943;">
+    <span class="fontcolorclass fontface">Products</span>
+    <h1 class="fontcolorclass">No products have been found.</h1>
+  </div>
 }
 else
 {
-  <div class="row productsview">
-    @foreach (EcommerceProject.DatabaseModel.ProductData product in Model)
-    {      <div class="col-md-3">
-      @Html.Partial("_PartialProductView", product)
+  <div class="alert alert-warning" style="background-color: #D43943;">
+    <span class="fontcolorclass fontface">Products</span>
+    <div class="row productsview">
+      @foreach (EcommerceProject.DatabaseModel.ProductData product in Model)
+      {
+        <div class="col-md-4">
+          @Html.Partial("_PartialProductView", product)
+        </div>
+      }
     </div>
-    }
   </div>
 }

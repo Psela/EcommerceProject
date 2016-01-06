@@ -1,5 +1,5 @@
 ﻿@model List<EcommerceProject.DatabaseModel.ProductData>
-          
+
 
 <center>
   <div>
@@ -41,8 +41,5 @@
   </div>
 
   <br />
-  <div class="alert alert-warning" style="background-color: #D43943;">
-    <span class="fontcolorclass fontface">Products</span>
-    @Html.Partial("_ProductListView", Model)
-  </div>
+  @Html.Partial("_ProductListView", Model)
 </div>
