@@ -26,5 +26,11 @@ namespace EcommerceProject.Server
 
     [OperationContract]
     void RemoveById(int id);
+
+    [OperationContract]
+    Dictionary<ProductData, int> GetBasket();
+
+    [OperationContract]
+    void AddToBasket(ProductData product, int amount);
   }
 }

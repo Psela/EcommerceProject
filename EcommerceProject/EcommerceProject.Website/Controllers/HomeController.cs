@@ -14,7 +14,7 @@ namespace EcommerceProject.Website.Controllers
   {
     IDataRetrieverService client;
     List<ProductData> listOfProducts;
-    
+
     public HomeController()
     {
       var factory = new ChannelFactory<IDataRetrieverService>("TheService");
@@ -26,7 +26,6 @@ namespace EcommerceProject.Website.Controllers
     {
       client = DbReader;
     }
-
 
     public ActionResult Index(string searchInput)
     {
