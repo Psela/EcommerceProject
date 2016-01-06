@@ -27,8 +27,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li id="firstLink">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li id="hover" onmouseover="$('#displaydropdownmenu').show(1000); " 
-                        onmouseout="$('#displaydropdownmenu').hide();">
+                    <li id="hover" onmouseover=" $('#displaydropdownmenu').css('display', 'inline-block');">
                     @Html.ActionLink("Categories", "About", "Home")</li>
                     <li id="thirdLink">@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li id="fourthLink">@Html.ActionLink("Basket","Index","Basket")</li>
@@ -63,7 +62,7 @@
                             <a href="#"><span>Partywear</span></a><br />
                             <a href="#"><span>Partywear</span></a><br />
                         </div>
-                        <img id="babytoys" src="http://localhost:55805/babytoys.jpg" width="190" />
+                        <img id="babytoys" src="babytoys.jpg" width="190" />
 </div>
         <div class="verticalline1"></div>
 
@@ -86,7 +85,7 @@
                 <a href="#"><span>Partywear</span></a><br />
                 <a href="#"><span>Partywear</span></a><br />
         </div>
-            <img class="menswear" src="http://localhost:55805/menswear.jpg"></div>
+            <img class="menswear" src="menswear.jpg"></div>
 
         <div class="verticalline2"></div>
         <div class="absolute-right">
@@ -95,8 +94,8 @@
             <a href="#"><span>Partywear</span></a><br />
             <a href="#"><span>Partywear</span></a><br />
             <a href="#"><span>Partywear</span></a><br />
-            <img id="img2" src="http://localhost:55805/women.jpg">
-            <img class="img1" src="http://localhost:55805/gowns.jpg"></div>
+            <img id="img2" src="women.jpg">
+            <img class="img1" src="gowns.jpg"></div>
 
        
 
@@ -120,17 +119,11 @@
 
 
     <script type="text/javascript">
+        window.onclick = function () {
+            var theDropdown = document.querySelector("#displaydropdownmenu")
+            theDropdown.style.display = "none";
+        }
 
-    /*    alert("javascript is working");
-        $('#hover').popover({
-            trigger: "focus",
-            html: true, content: function () {
-
-                return $('#displaydropdownmenu').html()
-
-            }
-        })
-        */
     </script>
 </body>
 </html>
