@@ -1,0 +1,30 @@
+﻿
+#delivery
+{
+    background-color:GrayText;
+    font-size:large;
+    /*font-style:oblique;*/
+    color:black;
+}
+
+#toplayer
+{
+ border:2px dashed grey;
+}
+
+.tablestyle{
+   width:70%;
+}
+
+td
+{
+ color:black;
+}
+
+#bottomlayer
+{
+    border-top:2px solid black;
+    position:absolute;
+    right:230px;
+    width:250px;
+}
