@@ -107,15 +107,12 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
         case MessageBoxResult.Yes:
           {
-              if (validateInput()) { 
+        
             client.CreateNewProductItem(product);
-
-            //NewProduct newProduct = new NewProduct();
-            //newProduct.CreateNewProduct(product);
             MessageBox.Show("Success:" + " " +"The product:" + "  " + product.product_name + "   " + product.p_id + " " +"was added");
            } 
         break;
-          }
+          
       }
 
     }
@@ -138,6 +135,31 @@ namespace EcommerceProject.AdminPortal.AddProductVM
             return true;
         }
         return false;
+    }
+
+    private ICommand _goBack;
+    public ICommand goBack
+    {
+        get
+        {
+            if (_goBack == null)
+            {
+                _goBack = new Command(GoBack, CanGoBack);
+            }
+            return _goBack;
+        }
+        set { _goBack = value; }
+    }
+
+    private bool CanGoBack()
+    {
+        return true;
+    }
+
+    private void GoBack()
+    {
+        MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
+        vm.source = "HomeVM/HomeView.xaml";
     }
 
     private string _bordercolor;
