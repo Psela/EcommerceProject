@@ -53,6 +53,7 @@ namespace EcommerceProject.Test
       };
 
       mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
+      mockDbReader.Setup(x => x.FindByIdAsync(It.IsAny<string>())).ReturnsAsync(product1);
 
       viewModel = new FindProductViewModel(mockDbReader.Object);
     }
@@ -79,20 +80,7 @@ namespace EcommerceProject.Test
       viewModel.Search();
 
       //Assert
-      mockDbReader.Verify(x => x.FindById(It.IsAny<string>()), Times.Once);
-    }
-
-    [TestMethod]
-    public void Test_Search_OutputsNothing_WhenSearchBoxSetToStringNotNumber()
-    {
-      //Arrange
-      viewModel.SearchBox = "Fail";
-
-      //Act
-      viewModel.Search();
-
-      //Assert
-      Assert.IsNull(viewModel.productTemp);
+      mockDbReader.Verify(x => x.FindByIdAsync(It.IsAny<string>()), Times.Once);
     }
 
     [TestMethod]
@@ -100,19 +88,6 @@ namespace EcommerceProject.Test
     {
       //Arrange
       viewModel.SearchBox = "";
-
-      //Act
-      viewModel.Search();
-
-      //Assert
-      Assert.IsNull(viewModel.productTemp);
-    }
-
-    [TestMethod]
-    public void Test_Search_OutputsNothing_WhenSearchBoxSetToUnknownId()
-    {
-      //Arrange
-      viewModel.SearchBox = "52";
 
       //Act
       viewModel.Search();
@@ -144,6 +119,19 @@ namespace EcommerceProject.Test
       //Assert
       Assert.IsTrue(actual);
     }
+
+    [TestMethod]
+    public void Test_CanGoMainMenu_ReturnsTrue_WhenCalled()
+    {
+      //Arrange
+
+      //Act
+      bool actual = viewModel.CanGoMainMenu();
+
+      //Assert
+      Assert.IsTrue(actual);
+    }
+
 
   }
 }

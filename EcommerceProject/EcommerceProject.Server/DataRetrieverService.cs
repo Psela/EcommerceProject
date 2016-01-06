@@ -2,6 +2,7 @@
 using EcommerceProject.DatabaseModel.Add;
 using EcommerceProject.DatabaseModel.Delete;
 using EcommerceProject.DatabaseModel.Select;
+using EcommerceProject.DatabaseModel.Update;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,10 +87,15 @@ namespace EcommerceProject.Server
       remove.DeleteProductByID(id);
     }
 
+    public void UpdateProduct(ProductData newProduct)
+    {
+      EditProduct edit = new EditProduct();
+      edit.UpdateProduct(newProduct);
+    }
+
     public void CreateNewProductItem(ProductData product)
     {
       NewProduct newProduct = new NewProduct();
-      // validateInput();
       newProduct.CreateNewProduct(product);
     }
 

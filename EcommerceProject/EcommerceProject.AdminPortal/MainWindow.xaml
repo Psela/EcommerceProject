@@ -8,6 +8,6 @@
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
     
-    <Frame Source="{Binding source}"/>
+    <Frame Source="{Binding source}" NavigationUIVisibility="Hidden"/>
     
 </Window>

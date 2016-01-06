@@ -70,6 +70,23 @@ namespace EcommerceProject.AdminPortal.FindVM
       }
     }
 
+    private ICommand _MainMenu;
+    public ICommand MainMenu
+    {
+      get
+      {
+        if (_MainMenu == null)
+        {
+          _MainMenu = new Command(GoMainMenu, CanGoMainMenu);
+        }
+        return _MainMenu;
+      }
+      set
+      {
+        _MainMenu = value;
+      }
+    }
+
     private string _SearchBox;
     public string SearchBox
     {
@@ -94,13 +111,24 @@ namespace EcommerceProject.AdminPortal.FindVM
 
     public FindProductViewModel()
     {
-            var factory = new ChannelFactory<IDataRetrieverService>("TheService");
+      var factory = new ChannelFactory<IDataRetrieverService>("TheService");
       client = factory.CreateChannel();
     }
 
     public FindProductViewModel(IDataRetrieverService databaseReader)
     {
       client = databaseReader;
+    }
+
+    public bool CanGoMainMenu()
+    {
+      return true;
+    }
+
+    public void GoMainMenu()
+    {
+      MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
+      vm.source = "HomeVM/HomeView.xaml";
     }
 
     public bool CanRemove()
@@ -113,21 +141,25 @@ namespace EcommerceProject.AdminPortal.FindVM
       int id = 0;
       if (int.TryParse(SearchBox, out id))
       {
-        if (productTemp.p_id == id)
+        if (productTemp != null)
         {
-          MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.product_name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
-          switch (result)
+          if (productTemp.p_id == id)
           {
-            case MessageBoxResult.Cancel:
-              return;
-            case MessageBoxResult.No:
-              return;
-            case MessageBoxResult.Yes:
-              client.RemoveById(Convert.ToInt32(SearchBox));
-              MessageBox.Show(productTemp.product_name + " has been removed.");
-              return;
+            MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.product_name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
+            switch (result)
+            {
+              case MessageBoxResult.Cancel:
+                return;
+              case MessageBoxResult.No:
+                return;
+              case MessageBoxResult.Yes:
+                client.RemoveById(Convert.ToInt32(SearchBox));
+                MessageBox.Show(productTemp.product_name + " has been removed.");
+                productTemp = null;
+                SearchBox = null;
+                return;
+            }
           }
-
         }
       }
 
@@ -139,11 +171,15 @@ namespace EcommerceProject.AdminPortal.FindVM
       return true;
     }
 
-    public void Search()
+    public async void Search()
     {
       if (!string.IsNullOrWhiteSpace(SearchBox))
       {
-        productTemp = client.FindById(SearchBox);
+        productTemp = await client.FindByIdAsync(SearchBox);
+        if (productTemp == null)
+        {
+          MessageBox.Show("The product with id " + SearchBox + " cannot be found.");
+        }
       }
     }
 
