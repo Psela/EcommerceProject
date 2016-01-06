@@ -10,7 +10,7 @@ using System.Text;
 
 namespace EcommerceProject.Server
 {
-  [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+  //[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
   public class DataRetrieverService : IDataRetrieverService
   {
     FindProduct dbFind;
