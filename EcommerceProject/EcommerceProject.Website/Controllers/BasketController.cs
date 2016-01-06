@@ -39,7 +39,11 @@ namespace EcommerceProject.Website.Controllers
             //Temporary test products
             ProductsInBasket.Add(new ProductData() { product_name = "newItem", description = "a", price=100 }, 1);
             ProductsInBasket.Add(new ProductData() { product_name = "newItem2", description = "b", price= 9000}, 2);
+        }
 
+        public void AddProductToBasket(ProductData product, int quantity)
+        {
+            client.AddToBasket(product, quantity );
         }
 
         public PartialViewResult ShowBasketProducts()
