@@ -8,13 +8,15 @@
     if (products.Values.Count == 0)
     {
         <div>
-            <h1>There are no products in your basket!</h1>
+            <h1 class="header">There are no products in your basket!</h1>
+            <br/>
+            <br/>
         </div>
     }
     else
     {
         
-            <h1>Products in Basket</h1>
+            <h2 class="header">Products In Basket:</h2><br/>
 
         foreach (var product in products)
         {
@@ -22,10 +24,11 @@
             <div class="displayProducts">
                 <div id="products">
                     @Html.Partial("_PartialProductView", product.Key)
-                    <span>
+                    <div id="quantity">
                         Quantity: @product.Value.ToString()
-                    </span>
+                    </div>
                 </div>
+                <br/>
                 <br />
             </div>
         }
