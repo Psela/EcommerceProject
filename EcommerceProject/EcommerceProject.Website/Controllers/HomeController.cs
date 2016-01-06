@@ -43,11 +43,13 @@ namespace EcommerceProject.Website.Controllers
       return PartialView("_ProductListView", listOfResultProducts);
     }
 
-    public ActionResult About()
+    public ActionResult Categories(string searchInput)
     {
-      ViewBag.Message = "Your application description page.";
-
-      return View();
+      if (Request.IsAjaxRequest())
+      {
+        return ShowResults(searchInput);
+      }
+      return View(listOfProducts);
     }
 
     public ActionResult Contact()
