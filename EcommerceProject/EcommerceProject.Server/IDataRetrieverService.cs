@@ -28,6 +28,9 @@ namespace EcommerceProject.Server
     void RemoveById(int id);
 
     [OperationContract]
+    void UpdateProduct(ProductData newProduct);
+
+    [OperationContract]
     Dictionary<ProductData, int> GetBasket();
 
     [OperationContract]

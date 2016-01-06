@@ -1,13 +1,12 @@
 ﻿using EcommerceProject.AdminPortal.ServiceHostReference;
 using EcommerceProject.DatabaseModel;
-using EcommerceProject.DatabaseModel.Select;
-using EcommerceProject.DatabaseModel.Update;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EcommerceProject.AdminPortal.UpdateVM
@@ -101,9 +100,16 @@ namespace EcommerceProject.AdminPortal.UpdateVM
       return true;
     }
 
-    private void findProduct(string id)
+    private async void findProduct(string id)
     {
-      product = client.FindById(id);
+      if (!string.IsNullOrWhiteSpace(id))
+      {
+        product = await client.FindByIdAsync(id);
+        if (product == null)
+        {
+          MessageBox.Show("The product with id " + id + " cannot be found.");
+        }
+      }
     }
 
     private bool CanUpdateDetails()
@@ -113,13 +119,8 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 
     private void UpdateDetails()
     {
-
-      EditProduct dbUpdate = new EditProduct();
-      FindProduct dbFind = new FindProduct();
-
-      ProductData foundProduct = dbFind.GetProductByID(product.p_id);
-
-      dbUpdate.UpdateProduct(foundProduct, product);
+      client.UpdateProduct(product);
+      MessageBox.Show("The product " + product.product_name + " has been updated");
     }
 
 

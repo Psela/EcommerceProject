@@ -19,22 +19,34 @@ namespace EcommerceProject.Test
   [TestClass]
   public class EntityFrameworkTest
   {
+    Mock<ECommerceEntities> context;
+    FindProduct findProduct;
+    List<ProductData> productDataList;
+    Mock<ProductData> mockProductData;
+
+    [TestInitialize]
+    public void Setup()
+    {
+      context = new Mock<ECommerceEntities>();
+      context.SetupAllProperties();   
+      productDataList = new List<ProductData>();
+      mockProductData = new Mock<ProductData>();
+      mockProductData.SetupAllProperties();
+      mockProductData.Object.p_id = 1;
+      mockProductData.Object.product_name = "product1";
+      productDataList.Add(mockProductData.Object);
+
+      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
+
+      context.Object.ProductDatas = mockedDataSet;
+
+      findProduct = new FindProduct(context.Object);
+    }
+
     [TestMethod]
     public void test_thatGetAllProducts_returnsAListOfProductData_whenCalled()
     {
       //Arrange
-      Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
-      List<ProductData> productDataList = new List<ProductData>();
-      Mock<ProductData> mockProductData = new Mock<ProductData>();
-      mockProductData.SetupAllProperties();
-
-      productDataList.Add(mockProductData.Object);
-
-      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
-      context.SetupAllProperties();
-      context.Object.ProductDatas = mockedDataSet;
-
-      FindProduct findProduct = new FindProduct(context.Object);
 
       //Act
       List<ProductData> list = findProduct.GetAllProducts();
@@ -47,7 +59,6 @@ namespace EcommerceProject.Test
     public void test_thatGetAllOrders_returnsOrderHistory_whenCalled()
     {
       //Arrange
-      Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
       List<OrderHistory> orderHistoryList = new List<OrderHistory>();
       Mock<OrderHistory> mockOrderHistory = new Mock<OrderHistory>();
       mockOrderHistory.SetupAllProperties();
@@ -55,7 +66,6 @@ namespace EcommerceProject.Test
       orderHistoryList.Add(mockOrderHistory.Object);
 
       DbSet<OrderHistory> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<OrderHistory>(orderHistoryList);
-      context.SetupAllProperties();
       context.Object.OrderHistories = mockedDataSet;
 
       FindOrder findOrder = new FindOrder(context.Object);
@@ -71,7 +81,6 @@ namespace EcommerceProject.Test
     public void test_thatGetAllCustomers_returnsAListOfAllCustomers_whenCalled()
     {
       //Arrange
-      Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
       List<CustomerData> customerList = new List<CustomerData>();
       Mock<CustomerData> mockCustomers = new Mock<CustomerData>();
       mockCustomers.SetupAllProperties();
@@ -79,7 +88,6 @@ namespace EcommerceProject.Test
       customerList.Add(mockCustomers.Object);
 
       DbSet<CustomerData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<CustomerData>(customerList);
-      context.SetupAllProperties();
       context.Object.CustomerDatas = mockedDataSet;
 
       FindCustomer findCustomers = new FindCustomer(context.Object);
@@ -95,7 +103,6 @@ namespace EcommerceProject.Test
     public void test_thatGetCustomerByID_returnsACustomerDataObject_whenCalledWithAValidID()
     {
       //Arrange
-      Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
       List<CustomerData> mockCustomerList = new List<CustomerData>();
       Mock<CustomerData> mockCustomers = new Mock<CustomerData>();
       mockCustomers.SetupAllProperties();
@@ -103,10 +110,9 @@ namespace EcommerceProject.Test
       mockCustomerList.Add(mockCustomers.Object);
 
       DbSet<CustomerData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<CustomerData>(mockCustomerList);
-      mockContext.SetupAllProperties();
-      mockContext.Object.CustomerDatas = mockedDataSet;
+      context.Object.CustomerDatas = mockedDataSet;
 
-      FindCustomer findCustomerByID = new FindCustomer(mockContext.Object);
+      FindCustomer findCustomerByID = new FindCustomer(context.Object);
 
       //Act
       CustomerData returnedCustomer = findCustomerByID.GetCustomerByID(1);
@@ -119,31 +125,18 @@ namespace EcommerceProject.Test
     public void test_thatGetProductByID_returnsAProductDataObject_whenCalledWithAValidID()
     {
       //Arrange
-      Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
-      List<ProductData> mockProductList = new List<ProductData>();
-      Mock<ProductData> mockProducts = new Mock<ProductData>();
-      mockProducts.SetupAllProperties();
-      mockProducts.Object.p_id = 1;
-      mockProductList.Add(mockProducts.Object);
-
-      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(mockProductList);
-      mockContext.SetupAllProperties();
-      mockContext.Object.ProductDatas = mockedDataSet;
-
-      FindProduct findProductByID = new FindProduct(mockContext.Object);
 
       //Act
-      ProductData returnedProduct = findProductByID.GetProductByID(1);
+      ProductData returnedProduct = findProduct.GetProductByID(1);
 
       //Assert
-      Assert.AreEqual(mockProducts.Object, returnedProduct);
+      Assert.AreEqual(mockProductData.Object, returnedProduct);
     }
 
     [TestMethod]
     public void test_thatGetOrderByID_returnsAnOrderHistoryObject_whenCalledWithAValidID()
     {
       //Arrange
-      Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
       List<OrderHistory> mockOrderList = new List<OrderHistory>();
       Mock<OrderHistory> mockOrders = new Mock<OrderHistory>();
       mockOrders.SetupAllProperties();
@@ -151,10 +144,9 @@ namespace EcommerceProject.Test
       mockOrderList.Add(mockOrders.Object);
 
       DbSet<OrderHistory> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<OrderHistory>(mockOrderList);
-      mockContext.SetupAllProperties();
-      mockContext.Object.OrderHistories = mockedDataSet;
+      context.Object.OrderHistories = mockedDataSet;
 
-      FindOrder findOrderByID = new FindOrder(mockContext.Object);
+      FindOrder findOrderByID = new FindOrder(context.Object);
 
       //Act
       OrderHistory returnedOrder = findOrderByID.GetOrderByID(1);
@@ -167,17 +159,6 @@ namespace EcommerceProject.Test
     public void test_thatAddNewProduct_addsANewProductToTheDatabase_whenCalledWithValidParameters()
     {
       //Arrange
-      Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
-      List<ProductData> productDataList = new List<ProductData>();
-      Mock<ProductData> mockProductData = new Mock<ProductData>();
-      mockProductData.SetupAllProperties();
-
-      productDataList.Add(mockProductData.Object);
-
-      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
-      context.SetupAllProperties();
-      context.Object.ProductDatas = mockedDataSet;
-
       NewProduct addProduct = new NewProduct(context.Object);
       ProductData product = new ProductData()
       {
@@ -203,13 +184,6 @@ namespace EcommerceProject.Test
     public void test_thatAddNewProduct_PassesCorrectParametersToDatabase_whenCalledWithValidParameters()
     {
       //Arrange
-      Mock<ECommerceEntities> context = new Mock<ECommerceEntities>();
-      List<ProductData> productDataList = new List<ProductData>();
-
-      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
-      context.SetupAllProperties();
-      context.Object.ProductDatas = mockedDataSet;
-
       NewProduct addProduct = new NewProduct(context.Object);
       ProductData product = new ProductData()
       {
@@ -222,20 +196,13 @@ namespace EcommerceProject.Test
         stock = 1,
         imageurl = ""
       };
+
       //Act
       addProduct.CreateNewProduct(product);
 
 
       //Assert
-      Assert.AreEqual(product, productDataList[0]);
-      //Assert.AreEqual(product.product_name, productDataList[0].product_name);
-      //Assert.AreEqual(product.description, productDataList[0].description);
-      //Assert.AreEqual(product.imageurl, productDataList[0].imageurl);
-      //Assert.AreEqual(product.price, productDataList[0].price);
-      //Assert.AreEqual(product.stock, productDataList[0].stock);
-      //Assert.AreEqual(product.tag1, productDataList[0].tag1);
-      //Assert.AreEqual(product.tag2, productDataList[0].tag2);
-      //Assert.AreEqual(product.tag3, productDataList[0].tag3);
+      Assert.AreEqual(product, productDataList[1]);
     }
 
     [TestMethod]
@@ -268,47 +235,43 @@ namespace EcommerceProject.Test
     public void test_thatUpdateProduct_CallsSaveChangesOnce_whenCalled()
     {
       //Arrange
-      Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
-      List<ProductData> productDataList = new List<ProductData>();
+      EditProduct updateProduct = new EditProduct(context.Object);
 
-      DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
-
-      mockContext.SetupAllProperties();
-      mockContext.Object.ProductDatas = mockedDataSet;
-
-      EditProduct updateProduct = new EditProduct(mockContext.Object);
+      Mock<ProductData> mockProduct = new Mock<ProductData>();
+      mockProduct.SetupAllProperties();
+      mockProduct.Object.p_id = 1;
 
       //Act
-      updateProduct.UpdateProduct(null,null);
+      updateProduct.UpdateProduct(mockProduct.Object);
 
       //Assert
-      mockContext.Verify(c => c.SaveChanges(), Times.Once);
+      context.Verify(c => c.SaveChanges(), Times.Once);
     }
 
-    //[TestMethod]
-    //public void test_thatUpdateProduct_ChangesProductDetails_WhenGivenProductToChangeAndProductWithNewDetails()
-    //{
-    //  //Arrange
-    //  ProductData originalProduct = new ProductData() { p_id = 1 };
+    [TestMethod]
+    public void test_thatUpdateProduct_ChangesProductDetails_WhenGivenProductToChangeAndProductWithNewDetails()
+    {
+      //Arrange
+      EditProduct updateProduct = new EditProduct(context.Object);
 
-    //  Mock<ECommerceEntities> mockContext = new Mock<ECommerceEntities>();
-    //  List<ProductData> productDataList = new List<ProductData>();
-    //  productDataList.Add(originalProduct);
+      Mock<ProductData> expectedChanges = new Mock<ProductData>();
+      expectedChanges.SetupAllProperties();
+      expectedChanges.Object.p_id = 1;
+      expectedChanges.Object.product_name = "Updated Product";
+      
+      //Act
+      updateProduct.UpdateProduct(expectedChanges.Object);
 
-    //  DbSet<ProductData> mockedDataSet = GetQueryableMockSet.GetQueryableMockDbSet<ProductData>(productDataList);
-
-    //  mockContext.SetupAllProperties();
-    //  mockContext.Object.ProductDatas = mockedDataSet;
-
-    //  EditProduct updateProduct = new EditProduct(mockContext.Object);
-
-    //  ProductData expectedChanges = new ProductData() { p_id = 1, product_name="UpdatedProduct" };
-
-    //  //Act
-    //  updateProduct.UpdateProduct(originalProduct,expectedChanges);
-
-    //  //Assert
-    //  Assert.AreEqual(expectedChanges, originalProduct);
-    //}
+      //Assert
+      Assert.AreEqual(expectedChanges.Object.p_id, productDataList[0].p_id);
+      Assert.AreEqual(expectedChanges.Object.description, productDataList[0].description);
+      Assert.AreEqual(expectedChanges.Object.imageurl, productDataList[0].imageurl);
+      Assert.AreEqual(expectedChanges.Object.price, productDataList[0].price);
+      Assert.AreEqual(expectedChanges.Object.product_name, productDataList[0].product_name);
+      Assert.AreEqual(expectedChanges.Object.stock, productDataList[0].stock);
+      Assert.AreEqual(expectedChanges.Object.tag1, productDataList[0].tag1);
+      Assert.AreEqual(expectedChanges.Object.tag2, productDataList[0].tag2);
+      Assert.AreEqual(expectedChanges.Object.tag3, productDataList[0].tag3);
+    }
   }
 }

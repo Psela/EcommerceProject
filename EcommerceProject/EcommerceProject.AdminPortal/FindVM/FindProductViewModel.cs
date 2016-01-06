@@ -87,8 +87,6 @@ namespace EcommerceProject.AdminPortal.FindVM
       }
     }
 
-
-
     private string _SearchBox;
     public string SearchBox
     {
@@ -155,6 +153,7 @@ namespace EcommerceProject.AdminPortal.FindVM
             case MessageBoxResult.Yes:
               client.RemoveById(Convert.ToInt32(SearchBox));
               MessageBox.Show(productTemp.product_name + " has been removed.");
+              productTemp = null;
               return;
           }
 
@@ -169,11 +168,15 @@ namespace EcommerceProject.AdminPortal.FindVM
       return true;
     }
 
-    public void Search()
+    public async void Search()
     {
       if (!string.IsNullOrWhiteSpace(SearchBox))
       {
-        productTemp = client.FindById(SearchBox);
+        productTemp = await client.FindByIdAsync(SearchBox);
+        if (productTemp == null)
+        {
+          MessageBox.Show("The product with id " + SearchBox + " cannot be found.");
+        }
       }
     }
 
