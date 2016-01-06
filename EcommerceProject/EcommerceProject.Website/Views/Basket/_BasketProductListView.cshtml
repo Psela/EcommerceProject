@@ -1,0 +1,36 @@
+﻿@model EcommerceProject.Website.Controllers.BasketController
+
+
+@{
+    EcommerceProject.Website.Controllers.BasketController obj = new EcommerceProject.Website.Controllers.BasketController();
+    obj.GetBasketProducts();
+    var products = obj.ProductsInBasket;
+    if (products.Values.Count == 0)
+    {
+        <div>
+            <h1>There are no products in your basket!</h1>
+        </div>
+    }
+    else
+    {
+        
+            <h1>Products in Basket</h1>
+
+        foreach (var product in products)
+        {
+
+            <div class="displayProducts">
+                <div id="products">
+                    @Html.Partial("_PartialProductView", product.Key)
+                    <span>
+                        Quantity: @product.Value.ToString()
+                    </span>
+                </div>
+                <br />
+            </div>
+        }
+
+
+    }
+}
+@Styles.Render("~/Content/Basket.css")

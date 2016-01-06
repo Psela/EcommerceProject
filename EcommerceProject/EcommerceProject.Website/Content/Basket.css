@@ -1,31 +1,58 @@
 ﻿body {
 }
 
-#buttons{
-    
-    right:5px;
-    position:absolute;
-    right:10%;
-    top:125px;
+#buttons {
+    right: 5px;
+    position: absolute;
+    right: 10%;
+    top: 125px;
     margin: 5px;
 }
 
-#displayProducts {
+.displayProducts {
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
     width: 60%;
-    background-color: aqua;
 }
 
-.buttonsize
-{
+/*.displayProducts:before {
+  content: "";
+  position: absolute;
+-webkit-border-image: 
+      -webkit-gradient(linear, 0 50%, 0 0, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+  top: 125px;
+  bottom: 150px;
+  width: 3px;
+    }*/
 
-     border: 3px solid black;
-    -webkit-border-image: 
-        -webkit-linear-gradient( rgba(0, 0, 0, 0),black, rgba(0, 0, 0, 0)) 1 80%;
+
+#products{
+    margin:20px
+}
+
+/*#products:before{
+      content: "";
+  position: absolute;
+-webkit-border-image: 
+      -webkit-gradient(linear, 0 50%, 0 0, from(black), to(rgba(0, 0, 0, 0))) 1 50%;
+
+  right:30%;
+  top: 125px;
+  bottom: 150px;
+
+  width: 2px;
+}*/
+
+.buttonsize {
+    border: 3px solid black;
+    -webkit-border-image: -webkit-linear-gradient( rgba(0, 0, 0, 0),black, rgba(0, 0, 0, 0)) 1 80%;
     background-color: #62615C;
     border-radius: 5px;
     margin: 2px;
-    color: black;
-        height: 50px;
+    color: #E0E0E0;
+    height: 50px;
     width: 100px;
 }
 

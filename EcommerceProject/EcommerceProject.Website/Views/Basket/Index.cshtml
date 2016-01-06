@@ -1,31 +1,25 @@
-﻿@model List<EcommerceProject.DatabaseModel.ProductData>
+﻿@model Dictionary<EcommerceProject.DatabaseModel.ProductData, int>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<center><h2>Basket</h2></center>
+<center><h2 >Shopping Basket</h2></center>
 
 <div>
-<div id="displayProducts">
+    <div >
+        <div >
 
-    <center><h3>Display Products here</h3></center>
-    <br />
-    
-    <br />
-    If no products say "Basket is empty!"
-    <br /><br />
-    Otherwise show products<br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-</div>
+            @Html.Partial("_BasketProductListView")
+
+        </div>
+    </div>
     <div id="buttons">
         <button class="buttonsize">
             Update Basket
         </button>
-        <br/>
-       
+        <br />
+
         <button class="buttonsize">
             Checkout
         </button>
