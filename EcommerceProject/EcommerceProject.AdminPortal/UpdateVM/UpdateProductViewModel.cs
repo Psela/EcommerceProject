@@ -119,8 +119,18 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 
     private void UpdateDetails()
     {
-      client.UpdateProduct(product);
-      MessageBox.Show("The product " + product.product_name + " has been updated");
+      if (product != null)
+      {
+        if (product.product_name == "")
+        {
+          MessageBox.Show("Please enter a Product Name");
+        }
+        else
+        {
+          client.UpdateProduct(product);
+          MessageBox.Show("The product " + product.product_name + " has been updated");
+        }
+      }
     }
 
 

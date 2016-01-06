@@ -141,22 +141,25 @@ namespace EcommerceProject.AdminPortal.FindVM
       int id = 0;
       if (int.TryParse(SearchBox, out id))
       {
-        if (productTemp.p_id == id)
+        if (productTemp != null)
         {
-          MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.product_name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
-          switch (result)
+          if (productTemp.p_id == id)
           {
-            case MessageBoxResult.Cancel:
-              return;
-            case MessageBoxResult.No:
-              return;
-            case MessageBoxResult.Yes:
-              client.RemoveById(Convert.ToInt32(SearchBox));
-              MessageBox.Show(productTemp.product_name + " has been removed.");
-              productTemp = null;
-              return;
+            MessageBoxResult result = MessageBox.Show("You are about to remove " + productTemp.product_name + ". \n Do you want to continue", "RemoveWarning", MessageBoxButton.YesNoCancel);
+            switch (result)
+            {
+              case MessageBoxResult.Cancel:
+                return;
+              case MessageBoxResult.No:
+                return;
+              case MessageBoxResult.Yes:
+                client.RemoveById(Convert.ToInt32(SearchBox));
+                MessageBox.Show(productTemp.product_name + " has been removed.");
+                productTemp = null;
+                SearchBox = null;
+                return;
+            }
           }
-
         }
       }
 

@@ -96,7 +96,6 @@ namespace EcommerceProject.Server
     public void CreateNewProductItem(ProductData product)
     {
       NewProduct newProduct = new NewProduct();
-      // validateInput();
       newProduct.CreateNewProduct(product);
     }
 
