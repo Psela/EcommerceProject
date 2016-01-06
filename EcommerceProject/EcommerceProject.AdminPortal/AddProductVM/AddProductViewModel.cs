@@ -33,10 +33,17 @@ namespace EcommerceProject.AdminPortal.AddProductVM
     public AddProductViewModel()
     {
         var factory = new ChannelFactory<IDataRetrieverService>("TheService");
-      client = factory.CreateChannel();
-      ProductData productFound = client.ReadData().Last();
-      product = new ProductData();
-      product.p_id = productFound.p_id + 1;
+        client = factory.CreateChannel();
+        //Made the Id generator Async
+        Task.Run(() => GetProductLastID()).Wait();
+    }
+
+    private async void GetProductLastID()
+    {
+        ProductData productFound = await Task.Run(() => client.ReadData().Last());
+        product = new ProductData();
+        product.p_id = productFound.p_id + 1;
+
     }
 
     private ICommand _resetButton;
@@ -105,7 +112,7 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
             //NewProduct newProduct = new NewProduct();
             //newProduct.CreateNewProduct(product);
-            MessageBox.Show("Success" + "The product:" + " " + product.product_name + " " + product.p_id + "was added");
+            MessageBox.Show("Success:" + " " +"The product:" + "  " + product.product_name + "   " + product.p_id + " " +"was added");
            } 
         break;
           }
