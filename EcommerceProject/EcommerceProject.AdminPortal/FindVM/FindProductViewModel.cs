@@ -70,6 +70,25 @@ namespace EcommerceProject.AdminPortal.FindVM
       }
     }
 
+    private ICommand _MainMenu;
+    public ICommand MainMenu
+    {
+      get
+      {
+        if (_MainMenu == null)
+        {
+          _MainMenu = new Command(GoMainMenu, CanGoMainMenu);
+        }
+        return _MainMenu;
+      }
+      set
+      {
+        _MainMenu = value;
+      }
+    }
+
+
+
     private string _SearchBox;
     public string SearchBox
     {
@@ -94,13 +113,24 @@ namespace EcommerceProject.AdminPortal.FindVM
 
     public FindProductViewModel()
     {
-            var factory = new ChannelFactory<IDataRetrieverService>("TheService");
+      var factory = new ChannelFactory<IDataRetrieverService>("TheService");
       client = factory.CreateChannel();
     }
 
     public FindProductViewModel(IDataRetrieverService databaseReader)
     {
       client = databaseReader;
+    }
+
+    public bool CanGoMainMenu()
+    {
+      return true;
+    }
+
+    public void GoMainMenu()
+    {
+      MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
+      vm.source = "HomeVM/HomeView.xaml";
     }
 
     public bool CanRemove()

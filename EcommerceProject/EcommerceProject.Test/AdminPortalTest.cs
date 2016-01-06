@@ -145,5 +145,18 @@ namespace EcommerceProject.Test
       Assert.IsTrue(actual);
     }
 
+    [TestMethod]
+    public void Test_CanGoMainMenu_ReturnsTrue_WhenCalled()
+    {
+      //Arrange
+
+      //Act
+      bool actual = viewModel.CanGoMainMenu();
+
+      //Assert
+      Assert.IsTrue(actual);
+    }
+
+
   }
 }
