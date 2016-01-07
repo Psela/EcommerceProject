@@ -1,6 +1,7 @@
 ﻿using EcommerceProject.DatabaseModel;
 using EcommerceProject.Website;
 using EcommerceProject.Website.Controllers;
+using EcommerceProject.Website.WebsiteBasketHost;
 using EcommerceProject.Website.WebsiteServerHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -13,6 +14,7 @@ namespace EcommerceProject.Test
   {
     HomeController homeController;
     Mock<IDataRetrieverService> mockDbReader;
+    Mock<IBasket> mockBasketReader;
     ProductController productController;
 
     [TestInitialize]
@@ -22,9 +24,10 @@ namespace EcommerceProject.Test
       List<ProductData> listOfProduct = new List<ProductData>() { new ProductData() };
       mockDbReader.Setup(x => x.SearchData(It.IsAny<string>())).Returns(listOfProduct);
       mockDbReader.Setup(x => x.ReadData()).Returns(listOfProduct);
-      mockDbReader.Setup(x => x.AddToBasket(It.IsAny<ProductData>(), 1));
+      mockBasketReader = new Mock<IBasket>();
+      mockBasketReader.Setup(x => x.AddToBasket(It.IsAny<ProductData>(), 1));
       homeController = new HomeController(mockDbReader.Object);
-      productController = new ProductController(mockDbReader.Object);
+      productController = new ProductController(mockDbReader.Object, mockBasketReader.Object);
     }
 
     //[TestMethod]

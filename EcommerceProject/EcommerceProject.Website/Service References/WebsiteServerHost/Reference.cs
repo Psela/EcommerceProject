@@ -50,18 +50,6 @@ namespace EcommerceProject.Website.WebsiteServerHost {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/UpdateProduct", ReplyAction="http://tempuri.org/IDataRetrieverService/UpdateProductResponse")]
         System.Threading.Tasks.Task UpdateProductAsync(EcommerceProject.DatabaseModel.ProductData newProduct);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/GetBasket", ReplyAction="http://tempuri.org/IDataRetrieverService/GetBasketResponse")]
-        System.Collections.Generic.Dictionary<EcommerceProject.DatabaseModel.ProductData, int> GetBasket();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/GetBasket", ReplyAction="http://tempuri.org/IDataRetrieverService/GetBasketResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<EcommerceProject.DatabaseModel.ProductData, int>> GetBasketAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/AddToBasket", ReplyAction="http://tempuri.org/IDataRetrieverService/AddToBasketResponse")]
-        void AddToBasket(EcommerceProject.DatabaseModel.ProductData product, int amount);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataRetrieverService/AddToBasket", ReplyAction="http://tempuri.org/IDataRetrieverService/AddToBasketResponse")]
-        System.Threading.Tasks.Task AddToBasketAsync(EcommerceProject.DatabaseModel.ProductData product, int amount);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -137,22 +125,6 @@ namespace EcommerceProject.Website.WebsiteServerHost {
         
         public System.Threading.Tasks.Task UpdateProductAsync(EcommerceProject.DatabaseModel.ProductData newProduct) {
             return base.Channel.UpdateProductAsync(newProduct);
-        }
-        
-        public System.Collections.Generic.Dictionary<EcommerceProject.DatabaseModel.ProductData, int> GetBasket() {
-            return base.Channel.GetBasket();
-        }
-        
-        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<EcommerceProject.DatabaseModel.ProductData, int>> GetBasketAsync() {
-            return base.Channel.GetBasketAsync();
-        }
-        
-        public void AddToBasket(EcommerceProject.DatabaseModel.ProductData product, int amount) {
-            base.Channel.AddToBasket(product, amount);
-        }
-        
-        public System.Threading.Tasks.Task AddToBasketAsync(EcommerceProject.DatabaseModel.ProductData product, int amount) {
-            return base.Channel.AddToBasketAsync(product, amount);
         }
     }
 }

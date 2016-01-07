@@ -1,27 +1,33 @@
 ﻿using EcommerceProject.DatabaseModel;
 using EcommerceProject.Website.WebsiteServerHost;
 using System;
+using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Web;
-using System.Web.Mvc;
+using EcommerceProject.Website.WebsiteBasketHost;
 
 namespace EcommerceProject.Website.Controllers
 {
   public class ProductController : Controller
   {
     IDataRetrieverService client;
+    IBasket basket;
+    private IDataRetrieverService dataRetrieverService;
 
     public ProductController()
     {
       var factory = new ChannelFactory<IDataRetrieverService>("TheService");
       client = factory.CreateChannel();
+      var factory2 = new ChannelFactory<IBasket>("BasketService");
+      basket = factory2.CreateChannel();
     }
 
-    public ProductController(IDataRetrieverService DbReader)
+    public ProductController(IDataRetrieverService DbReader, IBasket Basket)
     {
       client = DbReader;
+      basket = Basket;
     }
 
     public ActionResult Index(string id)
@@ -33,7 +39,7 @@ namespace EcommerceProject.Website.Controllers
 
     public void AddToBasket(ProductData productToAdd)
     {
-      client.AddToBasket(productToAdd, 1);
+      basket.AddToBasket(productToAdd, 1);
       Response.Redirect("~/Basket/Index");
     }
   }

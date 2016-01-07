@@ -13,6 +13,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.Website", "EcommerceProject.Website\EcommerceProject.Website.csproj", "{D08DCA2C-AE8C-45CD-B62A-751F59F89295}"
 	ProjectSection(ProjectDependencies) = postProject
 		{816F509C-D797-4BC7-A6D8-1E02F0C36F43} = {816F509C-D797-4BC7-A6D8-1E02F0C36F43}
+		{CE366BF7-D396-47BD-8CB0-2837CFEAC7B3} = {CE366BF7-D396-47BD-8CB0-2837CFEAC7B3}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artifacts", "Artifacts", "{2C88F062-0F75-41F8-81A6-19D05BBFC8A3}"
@@ -30,6 +31,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.Server", "EcommerceProject.Server\EcommerceProject.Server.csproj", "{3FC48C3F-8C50-4AF9-AA66-0A057F6F9A42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.ServerHost", "EcommerceProject.ServerHost\EcommerceProject.ServerHost.csproj", "{816F509C-D797-4BC7-A6D8-1E02F0C36F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.ServerBasket", "EcommerceProject.ServerBasket\EcommerceProject.ServerBasket.csproj", "{B2D5954B-5CC6-4D95-8165-B6162AFAC286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceProject.ServerHostBasket", "WebApplication1\EcommerceProject.ServerHostBasket.csproj", "{CE366BF7-D396-47BD-8CB0-2837CFEAC7B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +66,14 @@ Global
 		{816F509C-D797-4BC7-A6D8-1E02F0C36F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{816F509C-D797-4BC7-A6D8-1E02F0C36F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{816F509C-D797-4BC7-A6D8-1E02F0C36F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2D5954B-5CC6-4D95-8165-B6162AFAC286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D5954B-5CC6-4D95-8165-B6162AFAC286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D5954B-5CC6-4D95-8165-B6162AFAC286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D5954B-5CC6-4D95-8165-B6162AFAC286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE366BF7-D396-47BD-8CB0-2837CFEAC7B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE366BF7-D396-47BD-8CB0-2837CFEAC7B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE366BF7-D396-47BD-8CB0-2837CFEAC7B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE366BF7-D396-47BD-8CB0-2837CFEAC7B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
