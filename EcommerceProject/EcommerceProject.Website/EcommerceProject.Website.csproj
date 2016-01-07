@@ -175,6 +175,11 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WebsiteBasketHost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WebsiteServerHost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,11 +232,34 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\WebsiteBasketHost\Basket.wsdl" />
+    <None Include="Service References\WebsiteBasketHost\BasketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBasketHost\BasketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBasketHost\BasketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBasketHost\BasketService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\WebsiteBasketHost\EcommerceProject.Website.WebsiteBasketHost.BasketItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\WebsiteServerHost\DataRetrieverService.wsdl" />
     <None Include="Service References\WebsiteServerHost\Service.disco" />
     <None Include="Service References\WebsiteServerHost\configuration91.svcinfo" />
     <None Include="Service References\WebsiteServerHost\configuration.svcinfo" />
     <None Include="Service References\WebsiteServerHost\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WebsiteBasketHost\BasketService.disco" />
+    <None Include="Service References\WebsiteBasketHost\configuration91.svcinfo" />
+    <None Include="Service References\WebsiteBasketHost\configuration.svcinfo" />
+    <None Include="Service References\WebsiteBasketHost\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -286,9 +314,6 @@
     </None>
     <Content Include="Views\Basket\Index.cshtml" />
     <Content Include="Views\Basket\ConfirmationPage.cshtml" />
-    <None Include="Service References\WebsiteServerHost\Service3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Basket\_BasketProductListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +333,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebsiteBasketHost\" />
     <WCFMetadataStorage Include="Service References\WebsiteServerHost\" />
   </ItemGroup>
   <PropertyGroup>

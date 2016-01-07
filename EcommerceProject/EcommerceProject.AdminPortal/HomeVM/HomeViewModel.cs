@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using EcommerceProject.AdminPortal.ManageCustomerVM;
 using EcommerceProject.AdminPortal.AddProductVM;
 
 
@@ -46,34 +45,6 @@ namespace EcommerceProject.AdminPortal
             {
                 _removeButton = value;
             }
-        }
-
-        private ICommand _manageCustomerButton;
-        public ICommand manageCustomerButton
-        {
-            get 
-            {
-                if (_manageCustomerButton == null)
-                {
-                    _manageCustomerButton = new Command(GoToManageCustomerPage, CanGoToManageCustomerPage);
-                }
-                return _manageCustomerButton; 
-            }
-            set
-            {
-                _manageCustomerButton = value;
-            }
-        }
-
-        private void GoToManageCustomerPage()
-        {
-            MainWindowViewModel vm = App.Current.MainWindow.DataContext as MainWindowViewModel;
-            vm.source = "ManageCustomerVM/ManageCustomerView.xaml";
-        }
-
-        private bool CanGoToManageCustomerPage()
-        {
-            return true;
         }
 
         private bool CanGoToAddPage()

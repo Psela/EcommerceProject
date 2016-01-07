@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3FC48C3F-8C50-4AF9-AA66-0A057F6F9A42}</ProjectGuid>
+    <ProjectGuid>{B2D5954B-5CC6-4D95-8165-B6162AFAC286}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EcommerceProject.Server</RootNamespace>
-    <AssemblyName>EcommerceProject.Server</AssemblyName>
+    <RootNamespace>EcommerceProject.ServerBasket</RootNamespace>
+    <AssemblyName>EcommerceProject.ServerBasket</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -35,13 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,9 +45,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDataRetrieverService.cs" />
+    <Compile Include="BasketItem.cs" />
+    <Compile Include="IBasket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataRetrieverService.cs" />
+    <Compile Include="Basket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

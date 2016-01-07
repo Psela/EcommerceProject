@@ -1,4 +1,5 @@
 ﻿using EcommerceProject.DatabaseModel;
+using EcommerceProject.Website.WebsiteBasketHost;
 using EcommerceProject.Website.WebsiteServerHost;
 using System;
 using System.Collections.Generic;
@@ -9,46 +10,38 @@ using System.Web.Mvc;
 
 namespace EcommerceProject.Website.Controllers
 {
-    public class BasketController : Controller
+  public class BasketController : Controller
+  {
+    IBasket basket;
+    public List<BasketItem> ProductsInBasket = new List<BasketItem>();
+
+    public BasketController()
     {
-        IDataRetrieverService client;
-       public Dictionary<ProductData, int> ProductsInBasket= new Dictionary<ProductData, int>() ;
-
-        public BasketController()
-        {
-            var factory = new ChannelFactory<IDataRetrieverService>("TheService");
-            client = factory.CreateChannel();
-        }
-
-        // GET: Basket
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // confirmation view
-        public ActionResult ConfirmationPage()
-        {
-            return View();
-        }
-
-        public void GetBasketProducts()
-        {
-            ProductsInBasket = client.GetBasket();
-
-            //Temporary test products
-            ProductsInBasket.Add(new ProductData() { product_name = "newItem", description = "a", price=100 }, 1);
-            ProductsInBasket.Add(new ProductData() { product_name = "newItem2", description = "b", price= 9000}, 2);
-        }
-
-        public void AddProductToBasket(ProductData product, int quantity)
-        {
-            client.AddToBasket(product, quantity );
-        }
-
-        public PartialViewResult ShowBasketProducts()
-        {
-            return PartialView("_ProductListView", ProductsInBasket);
-        }
+      var factory = new ChannelFactory<IBasket>("BasketService");
+      basket = factory.CreateChannel();
     }
+
+    // GET: Basket
+    public ActionResult Index()
+    {
+      return View();
+    }
+
+    // confirmation view
+    public ActionResult ConfirmationPage()
+    {
+      basket.EmptyBasket();
+      return View();
+    }
+
+    public void GetBasketProducts()
+    {
+      ProductsInBasket = basket.GetBasket();
+    }
+
+    public PartialViewResult ShowBasketProducts()
+    {
+      return PartialView("_ProductListView", ProductsInBasket);
+    }
+  }
 }

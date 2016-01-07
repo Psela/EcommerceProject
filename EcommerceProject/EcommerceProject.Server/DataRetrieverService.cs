@@ -11,16 +11,14 @@ using System.Text;
 
 namespace EcommerceProject.Server
 {
-  //[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+
   public class DataRetrieverService : IDataRetrieverService
   {
     FindProduct dbFind;
-    public Dictionary<ProductData, int> _basket;
 
-    public DataRetrieverService(FindProduct findProduct,Dictionary<ProductData, int> Basket )
+    public DataRetrieverService(FindProduct findProduct )
     {
       dbFind = findProduct;
-      _basket = Basket;
     }
 
     public DataRetrieverService()
@@ -98,21 +96,5 @@ namespace EcommerceProject.Server
       NewProduct newProduct = new NewProduct();
       newProduct.CreateNewProduct(product);
     }
-
-    public Dictionary<ProductData, int> GetBasket()
-    {
-      if (_basket == null)
-      {
-        _basket = new Dictionary<ProductData, int>();
-      }
-      return _basket;
-    }
-
-    public void AddToBasket(ProductData product, int amount)
-    {
-      GetBasket();
-      _basket.Add(product, amount);
-    }
-
   }
 }

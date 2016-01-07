@@ -6,13 +6,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EcommerceProject.Server
+namespace EcommerceProject.ServerBasket
 {
-  [DataContract]
-  public class Basket
+  public class BasketItem
   {
-    //Might not be needed
-
     [DataMember]
     private ProductData _product;
     public ProductData product
@@ -22,11 +19,11 @@ namespace EcommerceProject.Server
     }
     
     [DataMember]
-    private int _amount;
-    public int amount
+    private int _itemCount;
+    public int itemCount
     {
-      get { return _amount; }
-      set { _amount = value; }
+      get { return _itemCount; }
+      set { _itemCount = value; }
     }
     
   }

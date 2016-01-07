@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EcommerceProject.ServerBasket" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EcommerceProject.ServerBasket" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:56946/BasketService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" />
+  <xs:complexType name="ArrayOfBasketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BasketItem" nillable="true" type="tns:BasketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBasketItem" nillable="true" type="tns:ArrayOfBasketItem" />
+  <xs:complexType name="BasketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="itemCount" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" minOccurs="0" name="product" nillable="true" type="q1:ProductData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasketItem" nillable="true" type="tns:BasketItem" />
+</xs:schema>

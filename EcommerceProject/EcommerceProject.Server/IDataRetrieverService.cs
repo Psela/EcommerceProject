@@ -29,11 +29,5 @@ namespace EcommerceProject.Server
 
     [OperationContract]
     void UpdateProduct(ProductData newProduct);
-
-    [OperationContract]
-    Dictionary<ProductData, int> GetBasket();
-
-    [OperationContract]
-    void AddToBasket(ProductData product, int amount);
   }
 }
