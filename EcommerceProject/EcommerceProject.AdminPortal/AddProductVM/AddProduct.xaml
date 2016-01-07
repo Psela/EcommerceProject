@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:addProductvmodel="clr-namespace:EcommerceProject.AdminPortal.AddProductVM"
+      xmlns:local="clr-namespace:EcommerceProject.AdminPortal.TextboxesValidation"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="AddProduct">
@@ -13,7 +14,69 @@
     </Page.DataContext>
     
     <Grid Background="Beige">
-        
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                        <Setter Property="ToolTip"  Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                            Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <DockPanel DockPanel.Dock="Right">
+                                <AdornedElementPlaceholder>
+                                    <Border BorderThickness="2" BorderBrush="Red"></Border>
+                                </AdornedElementPlaceholder>
+                                <TextBlock Margin="3" Text="*" Foreground="Red" ToolTip="{Binding Path=AdornedElement.ToolTip,
+                                    
+                                    RelativeSource= {RelativeSource Mode=FindAncestor, AncestorType={x:Type Adorner}}}"/>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                    
+                </Setter>
+                
+            </Style>
+            <Style x:Key="ButtonClick" TargetType="Button">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=txtDescription, Path=(Validation.HasError)}" Value="True">
+                    <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                
+
+                    <DataTrigger Binding="{Binding ElementName=txtName, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+
+
+                    <DataTrigger Binding="{Binding ElementName=txtPrice, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+
+
+                    <DataTrigger Binding="{Binding ElementName=txtStock, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+           
+         
+                    <DataTrigger Binding="{Binding ElementName=txtImageurl, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding ElementName=txtTag1, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=txtTag2, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=txtTag3, Path=(Validation.HasError)}" Value="True">
+                        <Setter  Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="27*"></RowDefinition>
             <RowDefinition Height="27*"></RowDefinition>
@@ -35,6 +98,7 @@
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Label Grid.ColumnSpan="2" Grid.Row="0" Content="Signed in as User" />
         <Label Grid.Column="0" Grid.Row="1" Content="Product Id"/>
         <Label Grid.Column="0" Grid.Row="2" Content="Product Name" FontSize="12" Background="Beige"></Label>
@@ -46,16 +110,66 @@
         <Label Grid.Column="0" Grid.Row="7" Content="Stock" FontSize="12" Background="Beige" Margin="0,0,0,1"></Label>
         <Label Grid.Column="0" Grid.Row="8" Content="Image Url" FontSize="12" Background="Beige" Margin="0,0,0,24" Grid.RowSpan="2"></Label>
         <TextBlock Grid.Column="1" Grid.Row="1" Background="White" Text="{Binding product.p_id,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding product.product_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" />
-        <TextBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="3" Text="{Binding product.description, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
-         <TextBox Grid.Row="3" Text="{Binding product.price, Mode=TwoWay , UpdateSourceTrigger=LostFocus, StringFormat=n  }"  Grid.Column="1"/>
-        <TextBox Grid.Row="4" Text="{Binding product.tag1, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2" Grid.Column="1"/>
-        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding  product.tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged  }" />
-       <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding  product.tag3, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged  }"  Grid.RowSpan="2"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding product.stock, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" />
-        <TextBox Grid.Row="8" Text="{Binding product.imageurl, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged }" Grid.Column="1"/>
+        <TextBox  Name="txtName" Grid.Column="1" Grid.Row="2" ToolTip="{Binding ToolTipMessageName}" BorderBrush="{Binding BorderColorName}">
+            <Binding Path="product.product_name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding.ValidationRules>
+                    <local:NameValidation/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <TextBox  Name="txtPrice" Grid.Row="3"  Grid.Column="1" BorderBrush="{Binding BorderColorPrice}" ToolTip="{Binding ToolTipMessagePrice}">
+            <Binding Path="product.price" Mode="TwoWay"  UpdateSourceTrigger="LostFocus" StringFormat="n" ValidatesOnDataErrors="True">
+                <Binding.ValidationRules>
+                    <local:PriceValidation/>
+                </Binding.ValidationRules>    
+            </Binding>
+        </TextBox>
+        <TextBox Name="txtTag1"   Grid.Column="1"  Grid.Row="4"  BorderBrush="{Binding BorderColorTag1}" ToolTip="{Binding ToolTipMessageTag1}">
+            <Binding Path="product.tag1" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding.ValidationRules>
+                    <local:Tag1Validation></local:Tag1Validation>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBox Name="txtTag2" Grid.Column="1" Grid.Row="5"  BorderBrush="{Binding BorderColorTag2}" ToolTip="{Binding ToolTipMessageTag2}">
+            <Binding Path="product.tag2" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
+                <Binding.ValidationRules>
+                    <local:Tag2Validation></local:Tag2Validation>
+                </Binding.ValidationRules>
+            </Binding>        
+        </TextBox>
+        <TextBox  Name="txtTag3" Grid.Column="1" Grid.Row="6" BorderBrush="{Binding BorderColorTag3}" ToolTip="{Binding ToolTipMessageTag3}">
+            <Binding  Path="product.tag3" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
+                <Binding.ValidationRules>
+                    <local:Tag3Validation></local:Tag3Validation>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBox  Name="txtStock" Grid.Column="1" Grid.Row="7"  BorderBrush="{Binding BorderColorStock}" ToolTip="{Binding ToolTipMessageStock}">
+            <Binding Path="product.stock" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding.ValidationRules>
+                    <local:StockValidation></local:StockValidation>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBox  Name="txtImageurl"   Grid.Row="8"  Grid.Column="1" BorderBrush="{Binding BorderColorImg}" ToolTip="{Binding ToolTipMessageImageurl}" >
+            <Binding Path="product.imageurl" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding.ValidationRules>
+                    <local:ImageurlValidation/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
         <TextBlock Grid.Column="3" Grid.RowSpan="4" Background="OldLace" Text="Image"/>
-        <Button Content="Save" Grid.Column="0" Grid.Row="10" Command="{Binding SaveButton}" Margin="0,1,0,0"/>
+        <TextBox Name="txtDescription" Grid.Column="3" Grid.Row="7" Grid.RowSpan="3"    TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" BorderBrush="{Binding BorderColorDesc}" ToolTip="{Binding ToolTipMessageDesc}">
+            <Binding Path="product.description" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding.ValidationRules>
+                    <local:DescriptionValidation/>
+                </Binding.ValidationRules>
+            </Binding>
+
+        </TextBox>
+        <Button Content="Save" Grid.Column="0" Grid.Row="10" Command="{Binding SaveButton}" Margin="0,1,0,0" Style="{StaticResource ButtonClick}"  />
         <Button Content="Reset" Grid.Column="1" Grid.Row="10" Command="{Binding ResetButton}" Margin="0,1,0,0"/>
         <Button Content="Preview Image" Grid.Column="3" Grid.Row="4" Margin="0,2,0,0"/>
         <Button Content="Go Back" Command="{Binding goBack}" Margin="0,0,0,5" />
