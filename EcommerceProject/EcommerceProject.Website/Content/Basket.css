@@ -1,14 +1,6 @@
 ﻿body {
 }
 
-#buttons {
-    right: 5px;
-    position: absolute;
-    right: 10%;
-    top: 125px;
-    margin: 5px;
-}
-
 .displayProducts {
     top: -3px;
     left: -3px;
@@ -17,47 +9,28 @@
     width: 60%;
 }
 
-/*.displayProducts:before {
-  content: "";
-  position: absolute;
--webkit-border-image: 
-      -webkit-gradient(linear, 0 50%, 0 0, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
-  top: 125px;
-  bottom: 150px;
-  width: 3px;
-    }*/
-
-
-#products{
-    margin:20px;
-    border-bottom: 1px dotted  black;
+#products {
+    margin: 20px;
+    border-bottom: 1px dotted black;
     border-color: black;
-    
 }
 
-#quantity{
+#quantity {
     text-align: right;
     right: auto;
-
 }
 
-.header{
-    
+.header {
     border-left: 50px solid white;
 }
 
-/*#products:before{
-      content: "";
-  position: absolute;
--webkit-border-image: 
-      -webkit-gradient(linear, 0 50%, 0 0, from(black), to(rgba(0, 0, 0, 0))) 1 50%;
-
-  right:30%;
-  top: 125px;
-  bottom: 150px;
-
-  width: 2px;
-}*/
+#buttons {
+    right: 5px;
+    position: absolute;
+    right: 10%;
+    top: 125px;
+    margin: 5px;
+}
 
 .buttonsize {
     border: 3px solid black;
@@ -70,6 +43,35 @@
     width: 100px;
 }
 
-.buttonsize:hover {
+    .buttonsize:hover {
         background-color: #908f89;
     }
+
+@media screen and (max-width: 700px) {
+
+    .displayProducts {
+        width: 100%;
+    }
+
+    .header {
+        text-align:center;
+}
+
+    #buttons {
+
+        left:10px;
+        right:10px;
+        width:100%;
+        position:static;
+        text-align:center;
+    }
+
+    #buttonBreak{
+        display:none;
+    }
+
+    .buttonsize {
+        width: 250px;
+        height: 30px;
+    }
+}

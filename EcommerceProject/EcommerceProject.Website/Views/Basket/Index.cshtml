@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <div >
-        <div >
+<div id="basketContainer">
+    <div id="productsContainer">
+        <div>
 
             @Html.Partial("_BasketProductListView")
 
@@ -16,7 +16,7 @@
         <button class="buttonsize">
             Update Basket
         </button>
-        <br />
+        <br id="buttonBreak" />
 
         <button class="buttonsize" onclick="location.href='Basket/ConfirmationPage'">
             Checkout
