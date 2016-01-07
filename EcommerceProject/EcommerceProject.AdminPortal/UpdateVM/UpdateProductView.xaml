@@ -47,7 +47,7 @@
 
       </StackPanel>
       <StackPanel Grid.Row="2" Grid.Column="1">
-        <TextBox Text="{Binding product.product_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="name" Margin="10,2"/>
+        <TextBox Text="{Binding product.product_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="name" Margin="10,2" BorderBrush="{Binding BorderColorName}"/>
         <TextBox Text="{Binding product.price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="price" Margin="10,2"/>
         <TextBox Text="{Binding product.description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="description" TextWrapping="WrapWithOverflow" Height="35" Margin="10,2"/>
         <TextBox Text="{Binding product.tag1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag1" Margin="10,2"/>
