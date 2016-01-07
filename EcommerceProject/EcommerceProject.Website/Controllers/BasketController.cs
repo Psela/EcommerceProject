@@ -24,7 +24,9 @@ namespace EcommerceProject.Website.Controllers
     // GET: Basket
     public ActionResult Index()
     {
-      return View();
+      GetBasketProducts();
+      ViewBag.Total = basket.Total();
+      return View(ProductsInBasket);
     }
 
     // confirmation view

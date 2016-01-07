@@ -19,5 +19,8 @@ namespace EcommerceProject.ServerBasket
 
     [OperationContract]
     void EmptyBasket();
+
+    [OperationContract]
+    decimal Total();
   }
 }

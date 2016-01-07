@@ -29,7 +29,7 @@ namespace EcommerceProject.Test
     public void Setup()
     {
       product1 = new ProductData() { product_name = "product1", tag1 = "tag1", tag2 = "tag2", tag3 = "tag6", description = "description 1 is here", p_id = 1 };
-      product2 = new ProductData() { product_name = "product2", tag1 = "tag1", tag2 = "tag3", tag3 = "tag2", description = "description 2 not is here" };
+      product2 = new ProductData() { product_name = "product2", tag1 = "tag1", tag2 = "tag3", tag3 = "tag2", description = "description 2 not is here" , price=3.14m};
       ProductData product3 = new ProductData() { product_name = "product3", tag1 = "tag2", tag2 = "tag5", tag3 = "tag6", description = "description 6 is not here" };
       ProductData product4 = new ProductData() { product_name = "product4", tag1 = "tag3", tag2 = "tag8", tag3 = "tag12", description = "description 3 is over there" };
       ProductData product5 = new ProductData() { product_name = "product5", tag1 = "tag4", tag2 = "tag9", tag3 = "tag7", description = "description 2 is there" };
@@ -232,6 +232,19 @@ namespace EcommerceProject.Test
 
       //Assert
       CollectionAssert.AreEqual(basketServer._basket, Basket);
+    }
+
+    [TestMethod]
+    public void Test_Total_CalculatesCorrectTotal()
+    {
+      //Arrange
+      decimal expected = 3.14m;
+      
+      //Act
+      decimal actual = basketServer.Total();
+
+      //Assert
+      Assert.AreEqual(expected, actual);
     }
   }
 }
