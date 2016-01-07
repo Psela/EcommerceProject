@@ -201,3 +201,55 @@ img#img2 {
     right: 0px;
     width: 190px;
 }
+
+#midPage{
+    font-size:100%;
+}
+
+#searchBar{
+    border-radius:4px;
+    background-color:#bbc0c4;
+    padding:5px;
+    height:35px;
+
+}
+
+@media screen and (max-width:1200px) {
+    .fontface{
+        font-size:105%;
+    }
+
+    #banneritem {
+    }
+
+    #poster {
+        width: 100%;
+        height: 80%;
+    }
+
+    #Aboutid {
+
+        position: static;
+        top:initial !important;
+    }
+
+    #bottomlayout{
+        position:static;
+        overflow:auto;
+
+    }
+
+}
+
+
+@media screen and (max-width:254px){
+    #Aboutid{
+        width:85%;
+    }
+}
+
+@media (min-width:1200px){
+    .lineBreak{
+        display:none;
+    }
+}
