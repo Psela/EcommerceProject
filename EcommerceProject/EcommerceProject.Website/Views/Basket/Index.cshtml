@@ -1,27 +1,42 @@
-﻿@model Dictionary<EcommerceProject.DatabaseModel.ProductData, int>
+﻿@model List<EcommerceProject.Website.WebsiteBasketHost.BasketItem>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div id="basketContainer">
+@if (Model.Count == 0)
+{
+  <div>
+    <h1>There are no products in your basket!</h1>
+    <br />
+    <br />
+    <a href="~/Home/Categories">View available Products</a>
+  </div>
+}
+else
+{
+  <div id="basketContainer">
     <div id="productsContainer">
-        <div>
-
-            @Html.Partial("_BasketProductListView")
-
-        </div>
+      <div>
+        @Html.Partial("_BasketProductListView",Model)
+      </div>
     </div>
     <div id="buttons">
-        <button class="buttonsize">
-            Update Basket
-        </button>
-        <br id="buttonBreak" />
+      <div id="Total">
+        <h4>
+          Total: £ @ViewBag.Total
+        </h4>
+      </div>
+      <button class="buttonsize">
+        Update Basket
+      </button>
+      <br id="buttonBreak" />
 
-        <button class="buttonsize" onclick="location.href='ConfirmationPage'">
-            Checkout
-        </button>
+      <button class="buttonsize" onclick="location.href='ConfirmationPage'">
+        Checkout
+      </button>
     </div>
-</div>
+  </div>
+
+}
 
 @Styles.Render("~/Content/Basket.css")

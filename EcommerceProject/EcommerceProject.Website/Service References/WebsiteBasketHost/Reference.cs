@@ -95,6 +95,12 @@ namespace EcommerceProject.Website.WebsiteBasketHost {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBasket/EmptyBasket", ReplyAction="http://tempuri.org/IBasket/EmptyBasketResponse")]
         System.Threading.Tasks.Task EmptyBasketAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBasket/Total", ReplyAction="http://tempuri.org/IBasket/TotalResponse")]
+        decimal Total();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBasket/Total", ReplyAction="http://tempuri.org/IBasket/TotalResponse")]
+        System.Threading.Tasks.Task<decimal> TotalAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,6 +152,14 @@ namespace EcommerceProject.Website.WebsiteBasketHost {
         
         public System.Threading.Tasks.Task EmptyBasketAsync() {
             return base.Channel.EmptyBasketAsync();
+        }
+        
+        public decimal Total() {
+            return base.Channel.Total();
+        }
+        
+        public System.Threading.Tasks.Task<decimal> TotalAsync() {
+            return base.Channel.TotalAsync();
         }
     }
 }

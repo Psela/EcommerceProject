@@ -1,20 +1,32 @@
 ﻿<link href='https://fonts.googleapis.com/css?family=Allan:400,700' rel='stylesheet' type='text/css'>
 @model EcommerceProject.DatabaseModel.ProductData
 
-<img id="img" src=@Model.imageurl style=" height:300px;width:300px" />
-<div id="product">
-  <h2>@Model.product_name</h2><br />
-  <h4>£@Model.price</h4>
-  <h5>@Model.stock left in stock</h5>
-  @using (Html.BeginForm("AddToBasket", "Product",Model))
-  {
-    <a href="~/Basket"><input type="submit" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Add to the Basket" data-placement="right" value="Add to Basket" /></a>
-  }
-</div>
-<br />
-<div id="product_description">
-  <h2>Description</h2>
-  @Model.description
+<div id="productsContainer">
+
+        <div id="imgContainer">
+            <div id="imgAlign">
+                <img id="img" src=@Model.imageurl style=" " />
+            </div>
+        </div>
+
+    <div id="product">
+        <h2 id="productName">@Model.product_name</h2><br />
+        <h4>£@Model.price</h4>
+        <h5>@Model.stock left in stock</h5>
+        <div id="addButton">
+            @using (Html.BeginForm("AddToBasket", "Product", Model))
+            {
+                <a href="~/Basket"><input type="submit" class="btn btn-primary btn-lg" data-toggle="tooltip" title="Add to the Basket" data-placement="right" value="Add to Basket" /></a>
+            }
+        </div>
+    </div>
+    <br />
+    <div id="descriptionContainer">
+        <div id="productDescription">
+            <h2>Description</h2>
+            @Model.description
+        </div>
+    </div>
 </div>
 
 @Styles.Render("~/Content/ProductPage.css")
