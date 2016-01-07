@@ -3,26 +3,94 @@
 
 #img {
   position: relative;
+  float:left;
+  height:300px;
+  width:300px
 }
 
 #product {
-  position: absolute;
-  color: blue;
+  font-family: 'Alice', serif;
+  float:left;
+  color: #4d88ff;
   left: 40%;
   top: 10%;
-  width: 30%;
+  width: 50%;
+  padding:35px;
 }
 
-#product_description {
+#productName{
+    color: #3377ff;
+}
+
+#productDescription {
+    float:left;
   font-family: 'Allan', cursive;
   font-size:1.5em;
-  position: absolute;
-  width: 50%;
-  left: 40%;
-  top: 35%;
+  text-align:center;
+  margin-top:10px;
+  width: 100%;
+  border-radius:7px;
+  border:dashed 1px black;
 }
 
-.btnAlignment 
+#addButton 
 {
+    position:relative;
+}
 
+#productsContainer{
+    position:static;
+    height:400px;
+}
+
+@media (max-width:645px){
+    #productsContainer{
+        position:static;
+        font-size:100%;
+        height:initial;
+    }
+
+    #imgContainer{
+        padding:25px;
+        position:static;
+        float:none;
+    }
+
+    #imgAlign{
+        /*left:50px;
+        border:dashed 1px red;
+        height:200px;*/
+    }
+
+    #img{
+        position:static;
+        height:95%;
+        width:95%;
+        height:300px;
+
+    }
+
+    #product{
+        align-content:center;
+        width:100%;
+        text-align:center;
+    }
+
+    #productDescription{
+        clear:both;
+        float:none;
+        position:static;
+        width:initial;
+        padding:10px;
+
+    }
+}
+
+@media (max-width:300px){
+    #img{
+        right:10px;
+        left:-5px;
+        width:200px;
+        height:200px;
+    }
 }
