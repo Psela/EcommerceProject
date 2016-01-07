@@ -56,5 +56,15 @@ namespace EcommerceProject.ServerBasket
     {
       _basket = new List<BasketItem>();
     }
+
+    public decimal Total()
+    {
+      decimal total = 0m;
+      foreach (BasketItem basketItem in _basket)
+      {
+        total += (decimal) basketItem.product.price * basketItem.itemCount;
+      }
+      return total;
+    }
   }
 }

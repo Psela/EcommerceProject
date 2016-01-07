@@ -1,39 +1,20 @@
-﻿@model EcommerceProject.Website.Controllers.BasketController
+﻿@model List<EcommerceProject.Website.WebsiteBasketHost.BasketItem>
 
 
-@{
-  EcommerceProject.Website.Controllers.BasketController obj = new EcommerceProject.Website.Controllers.BasketController();
-  obj.GetBasketProducts();
-  var products = obj.ProductsInBasket;
-  if (products.Count == 0)
-  {
-    <div>
-      <h1 class="header">There are no products in your basket!</h1>
-      <br />
-      <br />
-    </div>
-  }
-  else
-  {
+<h2 class="header">Products In Basket:</h2><br />
 
-    <h2 class="header">Products In Basket:</h2><br />
-
-    foreach (var product in products)
-    {
-
-      <div class="displayProducts">
-        <div id="products">
-          @Html.Partial("_PartialProductView", product.product)
-          <div id="quantity">
-            Quantity: @product.itemCount
-          </div>
-        </div>
-        <br />
-        <br />
+@foreach (var product in Model)
+{
+  <div class="displayProducts">
+    <div id="products">
+      @Html.Partial("_PartialProductView", product.product)
+      <div id="quantity">
+        Quantity: @product.itemCount
       </div>
-    }
-
-
-  }
+    </div>
+    <br />
+    <br />
+  </div>
 }
+
 @Styles.Render("~/Content/Basket.css")
