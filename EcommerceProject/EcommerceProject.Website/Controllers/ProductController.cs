@@ -14,7 +14,6 @@ namespace EcommerceProject.Website.Controllers
   {
     IDataRetrieverService client;
     IBasket basket;
-    private IDataRetrieverService dataRetrieverService;
 
     public ProductController()
     {

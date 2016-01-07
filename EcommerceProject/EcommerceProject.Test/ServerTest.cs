@@ -23,7 +23,7 @@ namespace EcommerceProject.Test
     ProductData product1;
     ProductData product2;
     ProductData product10;
-    Dictionary<ProductData, int> Basket;
+    List<BasketItem> Basket;
 
     [TestInitialize]
     public void Setup()
@@ -51,7 +51,8 @@ namespace EcommerceProject.Test
         product9,
         product10
       };
-      Basket = new Dictionary<ProductData, int>(); 
+      Basket = new List<BasketItem>();
+      Basket.Add(new BasketItem() { product = product2, itemCount = 1 });
       mockFind = new Mock<FindProduct>();
       mockFind.Setup(x => x.GetAllProducts()).Returns(listOfProduct);
       mockFind.Setup(x => x.GetProductByID(1)).Returns(product1);
@@ -203,7 +204,7 @@ namespace EcommerceProject.Test
       //Arrange
 
       //Act
-      Dictionary<ProductData,int> result = basketServer.GetBasket();
+      List<BasketItem> result = basketServer.GetBasket();
 
       //Assert
       CollectionAssert.AreEqual(Basket, result);
@@ -213,14 +214,24 @@ namespace EcommerceProject.Test
     public void Test_AddToBasket_AddsItemToBasket()
     {
       //Arrange
-      Dictionary<ProductData, int> expectedBasket = new Dictionary<ProductData, int>();
-      expectedBasket.Add(product1, 1);
 
       //Act
       basketServer.AddToBasket(product1, 1);
 
       //Assert
-      CollectionAssert.AreEqual(expectedBasket, Basket);
+      CollectionAssert.AreEqual(basketServer._basket, Basket);
+    }
+
+    [TestMethod]
+    public void Test_AddToBasket_AddsAmountToProductAlreadyFoundInBasket_WhenPassedProductAlreadyInBasket()
+    {
+      //Arrange
+
+      //Act
+      basketServer.AddToBasket(product2, 1);
+
+      //Assert
+      CollectionAssert.AreEqual(basketServer._basket, Basket);
     }
   }
 }

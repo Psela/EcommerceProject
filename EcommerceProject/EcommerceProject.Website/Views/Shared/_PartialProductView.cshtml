@@ -1,10 +1,10 @@
 ﻿@model EcommerceProject.DatabaseModel.ProductData
 
 <h3>
-  <a href="Product/Index/@Model.p_id" id="fontcolorface" class="fontface" title="@Model.product_name">
+  <a href="~/Product/Index/@Model.p_id" id="fontcolorface" class="fontface" title="@Model.product_name">
     <img src=@Model.imageurl style="width:80px;height:80px" />
   </a>
   <br />
-    <a href="Product/Index/@Model.p_id" id="fontcolorface" class="fontface" title="@Model.product_name"><span>@Model.product_name <br /></span></a>
+    <a href="~/Product/Index/@Model.p_id" id="fontcolorface" class="fontface" title="@Model.product_name"><span>@Model.product_name <br /></span></a>
   <span class="fontface">£@Model.price</span>
 </h3>

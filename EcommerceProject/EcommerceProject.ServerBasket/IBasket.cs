@@ -12,7 +12,7 @@ namespace EcommerceProject.ServerBasket
   public interface IBasket
   {
     [OperationContract]
-    Dictionary<ProductData, int> GetBasket();
+    List<BasketItem> GetBasket();
 
     [OperationContract]
     void AddToBasket(ProductData product, int amount);

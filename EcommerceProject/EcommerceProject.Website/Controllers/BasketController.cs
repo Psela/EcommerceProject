@@ -13,7 +13,7 @@ namespace EcommerceProject.Website.Controllers
   public class BasketController : Controller
   {
     IBasket basket;
-    public Dictionary<ProductData, int> ProductsInBasket = new Dictionary<ProductData, int>();
+    public List<BasketItem> ProductsInBasket = new List<BasketItem>();
 
     public BasketController()
     {

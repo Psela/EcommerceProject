@@ -11,9 +11,9 @@ namespace EcommerceProject.ServerBasket
   [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
   public class Basket : IBasket
   {
-    public Dictionary<ProductData, int> _basket;
+    public List<BasketItem> _basket;
 
-    public Basket(Dictionary<ProductData, int> Basket)
+    public Basket(List<BasketItem> Basket)
     {
       _basket = Basket;
     }
@@ -23,24 +23,38 @@ namespace EcommerceProject.ServerBasket
 
     }
 
-    public Dictionary<ProductData, int> GetBasket()
+    public List<BasketItem> GetBasket()
+    {
+      CheckBasketExists();
+      return _basket;
+    }
+
+    private void CheckBasketExists()
     {
       if (_basket == null)
       {
-        _basket = new Dictionary<ProductData, int>();
+        _basket = new List<BasketItem>();
       }
-      return _basket;
     }
 
     public void AddToBasket(ProductData product, int amount)
     {
-      GetBasket();
-      _basket.Add(product, amount);
+      CheckBasketExists();
+      foreach (BasketItem basketItem in _basket)
+      {
+        if (basketItem.product.p_id == product.p_id)
+        {
+          basketItem.itemCount += amount;
+          return;
+        }
+      }
+
+      _basket.Add(new BasketItem() { product = product, itemCount = amount });
     }
 
     public void EmptyBasket()
     {
-      _basket = new Dictionary<ProductData, int>();
+      _basket = new List<BasketItem>();
     }
   }
 }

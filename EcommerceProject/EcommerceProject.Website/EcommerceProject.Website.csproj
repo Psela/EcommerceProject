@@ -245,6 +245,9 @@
     <None Include="Service References\WebsiteBasketHost\BasketService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\WebsiteBasketHost\EcommerceProject.Website.WebsiteBasketHost.BasketItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\WebsiteServerHost\DataRetrieverService.wsdl" />
     <None Include="Service References\WebsiteServerHost\Service.disco" />
     <None Include="Service References\WebsiteServerHost\configuration91.svcinfo" />
