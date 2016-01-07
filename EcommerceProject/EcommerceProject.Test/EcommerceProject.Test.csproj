@@ -87,6 +87,10 @@
       <Project>{d53a1d8e-25e8-4c9e-8420-d1cbb356826a}</Project>
       <Name>EcommerceProject.AdminPortal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EcommerceProject.ServerBasket\EcommerceProject.ServerBasket.csproj">
+      <Project>{b2d5954b-5cc6-4d95-8165-b6162afac286}</Project>
+      <Name>EcommerceProject.ServerBasket</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EcommerceProject.ServerHost\EcommerceProject.ServerHost.csproj">
       <Project>{816f509c-d797-4bc7-a6d8-1e02f0c36f43}</Project>
       <Name>EcommerceProject.ServerHost</Name>
@@ -102,6 +106,10 @@
     <ProjectReference Include="..\EntityFramework\EcommerceProject.DatabaseModel.csproj">
       <Project>{9097d3ac-e0bd-452b-a580-e9417ac0cbae}</Project>
       <Name>EcommerceProject.DatabaseModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication1\EcommerceProject.ServerHostBasket.csproj">
+      <Project>{ce366bf7-d396-47bd-8cb0-2837cfeac7b3}</Project>
+      <Name>EcommerceProject.ServerHostBasket</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

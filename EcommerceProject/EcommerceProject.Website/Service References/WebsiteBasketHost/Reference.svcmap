@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6b6b1018-a350-414a-b9d8-ee203fb3a3e0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="EcommerceProject.DatabaseModel" />
+      <ReferencedAssembly AssemblyName="EntityFramework" />
+      <ReferencedAssembly AssemblyName="EntityFramework.SqlServer" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56946/BasketService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BasketService.xsd" MetadataType="Schema" ID="a49a4ce1-c05d-41f1-b3e1-3f6669d5d2e2" SourceId="1" SourceUrl="http://localhost:56946/BasketService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BasketService1.xsd" MetadataType="Schema" ID="a2729824-c34e-4d2b-9ae9-fe936265cf97" SourceId="1" SourceUrl="http://localhost:56946/BasketService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BasketService2.xsd" MetadataType="Schema" ID="ecdfb172-329a-4910-b43c-a87519c84402" SourceId="1" SourceUrl="http://localhost:56946/BasketService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BasketService3.xsd" MetadataType="Schema" ID="13ab3ebc-4026-4547-b177-08dd959b988e" SourceId="1" SourceUrl="http://localhost:56946/BasketService.svc?xsd=xsd1" />
+    <MetadataFile FileName="Basket.wsdl" MetadataType="Wsdl" ID="9e3e227b-729d-4a2c-9636-e9f9c5089344" SourceId="1" SourceUrl="http://localhost:56946/BasketService.svc?wsdl" />
+    <MetadataFile FileName="BasketService.disco" MetadataType="Disco" ID="03962708-04c4-4aa0-8782-67d2003f90df" SourceId="1" SourceUrl="http://localhost:56946/BasketService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

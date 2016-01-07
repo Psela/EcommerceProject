@@ -5,7 +5,6 @@
       <xsd:import schemaLocation="http://localhost:58525/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:58525/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:58525/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcommerceProject.DatabaseModel" />
-      <xsd:import schemaLocation="http://localhost:58525/Service.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IDataRetrieverService_ReadData_InputMessage">
@@ -44,18 +43,6 @@
   <wsdl:message name="IDataRetrieverService_UpdateProduct_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
   </wsdl:message>
-  <wsdl:message name="IDataRetrieverService_GetBasket_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetBasket" />
-  </wsdl:message>
-  <wsdl:message name="IDataRetrieverService_GetBasket_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetBasketResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDataRetrieverService_AddToBasket_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddToBasket" />
-  </wsdl:message>
-  <wsdl:message name="IDataRetrieverService_AddToBasket_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddToBasketResponse" />
-  </wsdl:message>
   <wsdl:portType name="IDataRetrieverService">
     <wsdl:operation name="ReadData">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/ReadData" message="tns:IDataRetrieverService_ReadData_InputMessage" />
@@ -80,14 +67,6 @@
     <wsdl:operation name="UpdateProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/UpdateProduct" message="tns:IDataRetrieverService_UpdateProduct_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/UpdateProductResponse" message="tns:IDataRetrieverService_UpdateProduct_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetBasket">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/GetBasket" message="tns:IDataRetrieverService_GetBasket_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/GetBasketResponse" message="tns:IDataRetrieverService_GetBasket_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddToBasket">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataRetrieverService/AddToBasket" message="tns:IDataRetrieverService_AddToBasket_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataRetrieverService/AddToBasketResponse" message="tns:IDataRetrieverService_AddToBasket_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDataRetrieverService" type="tns:IDataRetrieverService">
@@ -139,24 +118,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateProduct">
       <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/UpdateProduct" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetBasket">
-      <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/GetBasket" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddToBasket">
-      <soap:operation soapAction="http://tempuri.org/IDataRetrieverService/AddToBasket" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
