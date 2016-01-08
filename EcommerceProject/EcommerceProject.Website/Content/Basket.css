@@ -25,10 +25,11 @@
 }
 
 #buttons {
-    right: 5px;
-    position: relative;
-    left: 85%;    
+    right: 10%;
+    top:70px;
+    position: fixed;    
     margin: 5px;
+
 }
 
 .buttonsize {
@@ -46,6 +47,8 @@
         background-color: #908f89;
     }
 
+
+
 @media screen and (max-width: 700px) {
 
     .displayProducts {
@@ -57,11 +60,9 @@
 }
 
     #buttons {
-
-        left:10px;
-        right:10px;
-        width:100%;
+        right: 50px;
         position:static;
+        width:100%;
         text-align:center;
     }
 
