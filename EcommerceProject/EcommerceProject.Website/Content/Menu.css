@@ -79,7 +79,7 @@
 
 
 div.relative {
-    /*  display:none;*/
+
     position: fixed;
     background-color: #FBFBFB;
     width: 600px;
@@ -89,10 +89,13 @@ div.relative {
     border-right-style: ridge;
     border-bottom-style: ridge;
     display: none;
-    left: 300px;
     top: 50px;
     z-index: 10;
    
+}
+
+#hover:hover .relative{
+    display:block;
 }
 
 div.static {
@@ -241,7 +244,6 @@ img#img2 {
 
 }
 
-
 @media screen and (max-width:254px){
     #Aboutid{
         width:85%;
@@ -253,3 +255,4 @@ img#img2 {
         display:none;
     }
 }
+

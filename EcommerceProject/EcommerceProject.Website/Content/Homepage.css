@@ -26,6 +26,11 @@
     background-color:#D43943;
     position:absolute;
     top:550px;
+
+}
+
+#Aboutid:hover{
+    cursor:default;
 }
 
 .boundaries
