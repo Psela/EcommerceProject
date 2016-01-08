@@ -47,14 +47,14 @@
 
       </StackPanel>
       <StackPanel Grid.Row="2" Grid.Column="1">
-        <TextBox Text="{Binding product.product_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="name" Margin="10,2" BorderBrush="{Binding BorderColorName}"/>
-        <TextBox Text="{Binding product.price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="price" Margin="10,2"/>
-        <TextBox Text="{Binding product.description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="description" TextWrapping="WrapWithOverflow" Height="35" Margin="10,2"/>
-        <TextBox Text="{Binding product.tag1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag1" Margin="10,2"/>
-        <TextBox Text="{Binding product.tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag2" Margin="10,2"/>
-        <TextBox Text="{Binding product.tag3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag3" Margin="10,2"/>
-        <TextBox Text="{Binding product.stock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="stock" Margin="10,2"/>
-        <TextBox Text="{Binding product.image, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="imageurl" Margin="10,2"/>
+        <TextBox Text="{Binding product.product_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="name" Margin="10,2" BorderBrush="{Binding BorderColorName}" ToolTip="{Binding ToolTipMessageName}"/>
+                <TextBox Text="{Binding product.price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="price" Margin="10,2"  BorderBrush="{Binding BorderColorPrice}" ToolTip="{Binding ToolTipMessagePrice}"/>
+                <TextBox Text="{Binding product.description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="description" TextWrapping="WrapWithOverflow" Height="35" Margin="10,2"  BorderBrush="{Binding BorderColorDesc}" ToolTip="{Binding ToolTipMessageDesc}"/>
+                <TextBox Text="{Binding product.tag1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag1" Margin="10,2"  BorderBrush="{Binding BorderColorTag1}" ToolTip="{Binding ToolTipMessageTag1}"/>
+                <TextBox Text="{Binding product.tag2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag2" Margin="10,2"  BorderBrush="{Binding BorderColorTag2}" ToolTip="{Binding ToolTipMessageTag2}"/>
+                <TextBox Text="{Binding product.tag3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="tag3" Margin="10,2"  BorderBrush="{Binding BorderColorTag3}" ToolTip="{Binding ToolTipMessageTag3}"/>
+                <TextBox Text="{Binding product.stock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="stock" Margin="10,2"  BorderBrush="{Binding BorderColorStock}" ToolTip="{Binding ToolTipMessageStock}"/>
+                <TextBox Text="{Binding product.image, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="imageurl" Margin="10,2"  BorderBrush="{Binding BorderColorImg}" ToolTip="{Binding ToolTipMessageImageurl}"/>
       </StackPanel>
     </Grid>
     <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
