@@ -323,29 +323,28 @@ namespace EcommerceProject.AdminPortal.UpdateVM
     {
        if (product != null)
       {
-       if (product.product_name == "")
+  /*     if (product.product_name == "")
         {
           MessageBox.Show("Please enter a Product Name");
           BorderColorName = "Red";
           ToolTipMessageName = EmptyMessage;
-        }
+        }*/
+    var result=validateInput();
+    if (validateInput())
+       {
+           MessageBox.Show("Failed!" + " " + "A Field/Some Fields are missing");
+           GetFinalBorderColor();
+      
+       }
         else
         {
-           
+            BorderColorName = "";
+            ToolTipMessageName = "";
           client.UpdateProduct(product);
           MessageBox.Show("The product " + product.product_name + " has been updated");
         }
       }
-    /*    if (validateInput())
-        {
-            client.UpdateProduct(product);
-            MessageBox.Show("The product " + " " +product.product_name + " " +"has been updated");
-        }
-        else
-        {
-            MessageBox.Show("Failed!" + " " + "A Field/Some Fields are missing");
-           /// GetFinalBorderColor();
-        }*/
+
     }
 
 
@@ -412,19 +411,20 @@ namespace EcommerceProject.AdminPortal.UpdateVM
         
     private bool validateInput()
     {
-        if (product.stock.HasValue && product.price.HasValue && product.product_name != null &&
+      //  var value1 = product.price.HasValue;
+        if (product.stock!=0 && product.stock!=null && product.price!=0.00m && product.price!=null && product.product_name!=null&&
         product.tag1 != null && product.tag2 != null &&
-           product.tag3 != null && product.imageurl != null && product.description != null)
+           product.tag3 != null)
         {
             return true;
         }
+      //  var rp = product.product_name != null;
         FinalResult.Add("BorderColorName", product.product_name != null);
-
-        FinalResult.Add("BorderColorPrice", product.price.HasValue);
+        FinalResult.Add("BorderColorPrice", product.price!=0.00m && product.price!=null);
         FinalResult.Add("BorderColorTag1", product.tag1 != null);
         FinalResult.Add("BorderColorTag2", product.tag2 != null);
         FinalResult.Add("BorderColorTag3", product.tag3 != null);
-        FinalResult.Add("BorderColorStock", product.stock.HasValue);
+        FinalResult.Add("BorderColorStock", product.stock!=0 && product.stock!=null);
         FinalResult.Add("BorderColorImg", product.imageurl != null);
         FinalResult.Add("BorderColorDesc", product.description != null);
 
@@ -439,6 +439,8 @@ namespace EcommerceProject.AdminPortal.UpdateVM
 
         return false;
     }
+
+
 
     public event PropertyChangedEventHandler PropertyChanged;
 

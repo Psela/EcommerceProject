@@ -80,7 +80,7 @@
 
 div.relative {
     /*  display:none;*/
-    position: absolute;
+    position: fixed;
     background-color: #FBFBFB;
     width: 600px;
     height: 600px;

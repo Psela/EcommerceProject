@@ -223,7 +223,7 @@ namespace EcommerceProject.AdminPortal.AddProductVM
 
         private bool validateInput()
         {
-            if (product.stock.HasValue && product.price.HasValue && product.product_name != null &&
+            if (product.stock != 0 && product.stock != null && product.price != 0.00m && product.price != null && product.product_name != null &&
             product.tag1 != null && product.tag2 != null &&
                product.tag3 != null && product.imageurl != null && product.description != null)
             {
@@ -231,11 +231,11 @@ namespace EcommerceProject.AdminPortal.AddProductVM
             }
             FinalResult.Add("BorderColorName", product.product_name != null);
 
-            FinalResult.Add("BorderColorPrice", product.price.HasValue);
+            FinalResult.Add("BorderColorPrice", product.price != 0.00m && product.price != null);
             FinalResult.Add("BorderColorTag1", product.tag1 != null);
             FinalResult.Add("BorderColorTag2", product.tag2 != null);
             FinalResult.Add("BorderColorTag3", product.tag3 != null);
-            FinalResult.Add("BorderColorStock", product.stock.HasValue);
+            FinalResult.Add("BorderColorStock", product.stock != 0 && product.stock != null);
             FinalResult.Add("BorderColorImg", product.imageurl != null);
             FinalResult.Add("BorderColorDesc", product.description != null);
 
