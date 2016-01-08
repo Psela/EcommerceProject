@@ -1,55 +1,61 @@
-﻿
-<h1>Confirmation Note</h1>
-<br/>
-<div>
-   <p>Dear CustomerName,<br/>
-    Thank you for ordering via The Dragon's Hoard.<br/>
-    Your order reference is (ref number)
-    </p>
-</div>
-<br/><br/>
-<div>
-    <div class="btn btn-block" id="delivery">Delivery Details</div>
-    <div id ="toplayer">
-        <p>Standard Delivery:4.99</p>
-        <p>Delivery Company: Yodel</p>
-        <br/><br/>
-        <table class="tablestyle">
-           
-            <tr>
-                <th>
-                    Your order
-                </th>
-            </tr>
-            <tr>
-                <td><b>Qty</b></td>
-                <td><b>Description</b></td>
-                <td><b>Price</b></td>
-                <td><b>Total</b></td>
-            </tr>
+﻿@model List<EcommerceProject.Website.WebsiteBasketHost.BasketItem>
 
-         
-        </table>
-    </div>
-    <br/>
-    <br/>
-    <div id="bottomlayer">
-        <table>
-            <tr>
-                <td>Sub Total:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>VAT:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Grand Total:</td>
-                <td></td>
-            </tr>
-        </table>
-        
-    </div>
+<h1>Confirmation Note</h1>
+<br />
+<div>
+  <p>
+    Dear CustomerName,<br />
+    Thank you for ordering via The Dragon's Hoard.<br />
+    Your order reference is (ref number)
+  </p>
+</div>
+<br /><br />
+<div>
+  <div class="btn btn-block" id="delivery">Delivery Details</div>
+  <div id="toplayer">
+    <p>Standard Delivery:4.99</p>
+    <p>Delivery Company: Yodel</p>
+    <br /><br />
+    <table class="tablestyle">
+
+      <tr>
+        <th>
+          Your order
+        </th>
+      </tr>
+
+        @foreach (var basketItem in Model)
+        {
+          ViewBag.Total = basketItem.itemCount * basketItem.product.price;
+          <tr>
+            <td><b>Qty: @basketItem.itemCount</b></td>
+            <td><b>Description: @basketItem.product.product_name</b></td>
+            <td><b>Price: £@basketItem.product.price</b></td>
+            <td><b>Total: £@ViewBag.Total</b></td>
+          </tr>
+        }
+
+    </table>
+  </div>
+  <br />
+  <br />
+  <div id="bottomlayer">
+    <table>
+      <tr>
+        <td>Sub Total:</td>
+        <td width="25%">£ @ViewBag.SubTotal</td>
+      </tr>
+      <tr>
+        <td>VAT:</td>
+        <td>£ @ViewBag.VAT</td>
+      </tr>
+      <tr>
+        <td>Grand Total:</td>
+        <td>£ @ViewBag.GrandTotal</td>
+      </tr>
+    </table>
+
+  </div>
 </div>
 
 <br /><br /><br /><br /><br /><br />

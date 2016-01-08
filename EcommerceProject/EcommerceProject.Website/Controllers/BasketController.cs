@@ -32,8 +32,12 @@ namespace EcommerceProject.Website.Controllers
     // confirmation view
     public ActionResult ConfirmationPage()
     {
+      ViewBag.SubTotal = basket.Total();
+      ViewBag.VAT = 0.2m * ViewBag.SubTotal;
+      ViewBag.GrandTotal = ViewBag.SubTotal + ViewBag.VAT;
+      GetBasketProducts();
       basket.EmptyBasket();
-      return View();
+      return View(ProductsInBasket);
     }
 
     public void GetBasketProducts()
