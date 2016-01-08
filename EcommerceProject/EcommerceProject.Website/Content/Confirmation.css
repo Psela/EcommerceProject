@@ -7,6 +7,10 @@
     color:black;
 }
 
+#delivery:hover{
+    cursor:context-menu;
+}
+
 #toplayer
 {
  border:2px dashed grey;
@@ -21,10 +25,41 @@ td
  color:black;
 }
 
+#prices{
+    border-left:2px;
+    width:50%;
+}
+
 #bottomlayer
 {
     border-top:2px solid black;
-    position:absolute;
+    float:right;
     right:230px;
-    width:250px;
+    width:16em;
+}
+
+.confirmationDetailsContainer{
+    font-size:1em;
+
+    overflow:hidden;
+}
+
+@media (max-width:700px){
+    .confirmationDetailsContainer{
+        -webkit-transform:scale(.8);
+        width:100%;
+    }
+
+    #bottomlayer{
+        width:50%;
+    }
+}
+
+@media (max-width:310px){
+    #bottomlayer{
+        width:95%;
+    }
+    #toplayer{
+        height:50%;
+    }
 }
