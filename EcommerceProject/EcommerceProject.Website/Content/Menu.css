@@ -256,3 +256,17 @@ img#img2 {
     }
 }
 
+@media (max-width:768px){
+    #hover:hover .relative {
+        display:none;
+       /*top:314px;
+        height:75%;
+        width:75%;*/
+
+    }
+    /*.relative .static .verticalline1 .absolute-centre .verticalline2 .absolute-right{
+                height:75%;
+        width:50%;
+    }*/
+}
+
