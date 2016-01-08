@@ -10,7 +10,7 @@
   </p>
 </div>
 <br /><br />
-<div>
+<div class="confirmationDetailsContainer">
   <div class="btn btn-block" id="delivery">Delivery Details</div>
   <div id="toplayer">
     <p>Standard Delivery:4.99</p>
@@ -43,15 +43,15 @@
     <table>
       <tr>
         <td>Sub Total:</td>
-        <td width="25%">£ @ViewBag.SubTotal</td>
+        <td id="prices">£ @ViewBag.SubTotal</td>
       </tr>
       <tr>
         <td>VAT:</td>
-        <td>£ @ViewBag.VAT</td>
+          <td id="prices">£ @ViewBag.VAT</td>
       </tr>
       <tr>
         <td>Grand Total:</td>
-        <td>£ @ViewBag.GrandTotal</td>
+          <td id="prices">£ @ViewBag.GrandTotal</td>
       </tr>
     </table>
 
