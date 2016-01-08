@@ -33,7 +33,7 @@ namespace EcommerceProject.Website.Controllers
     public ActionResult ConfirmationPage()
     {
       ViewBag.SubTotal = basket.Total();
-      ViewBag.VAT = 0.2m * ViewBag.SubTotal;
+      ViewBag.VAT = Math.Round( 0.2m * ViewBag.SubTotal,2);
       ViewBag.GrandTotal = ViewBag.SubTotal + ViewBag.VAT;
       GetBasketProducts();
       basket.EmptyBasket();
