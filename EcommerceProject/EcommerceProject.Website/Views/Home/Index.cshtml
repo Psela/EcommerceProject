@@ -2,53 +2,53 @@
 
 
 <center>
-    <div>
-        @* This is for the search bar *@
-        @using (Ajax.BeginForm(
+  <div>
+    @* This is for the search bar *@
+    @using (Ajax.BeginForm(
                 new AjaxOptions
                 {
-                    HttpMethod = "GET",
-                    UpdateTargetId = "midPage",
-                    InsertionMode = InsertionMode.Replace
+                  HttpMethod = "GET",
+                  UpdateTargetId = "midPage",
+                  InsertionMode = InsertionMode.Replace
 
                 }))
-        {
-            <p id="searchBar">
-                Search:@Html.TextBox("searchInput")
-                <input type="submit" value="Search" />
+    {
+      <p id="searchBar">
+        Search:@Html.TextBox("searchInput")
+        <input type="submit" value="Search" />
 
-            </p>
-        }
-    </div>
+      </p>
+    }
+  </div>
 </center>
 
 <div id="midPage">
-    <div id="banner1">
-        <div id="banneritem">
-            <h1>
-                <span class="fontface1">The Dragon&rsquo;s Hoard</></span>
-            </h1>
-        </div>
-        <span>
-            <img id="poster" src="discount.gif" width="1140" height="400">
-        </span>
-        <div id="Aboutid" class="fontface btn btn-default">About Dragon&rsquo;s Hoard</div>
-        <div id="bottomlayout">
-            <br />
-            <br class="lineBreak" />
+  <div id="banner1">
+    <div id="banneritem">
+      <h1>
+        <span class="fontface1">The Dragon&rsquo;s Hoard</></span>
+      </h1>
+    </div>
+    <span>
+      <img id="poster" src="discount.gif" width="1140" height="400">
+    </span>
+    <div id="Aboutid" class="fontface btn btn-default">About Dragon&rsquo;s Hoard</div>
+    <div id="bottomlayout">
+      <br />
+      <br class="lineBreak" />
 
-            <span class="fontface">
-                <p>Earth's Most Customer-Centric Company, The Dragon&rsquo;s Hoard is a treasure trove of products from around the galaxy.</p>
-                <p>Based in Gallifrey, our brave team of adventurers traverse both space and time to bring you items both magical and mundane.</p>
-                <p>It&rsquo;s best not to ask when the Hoard was established. Little things like time tend to be a bit...flexible.</p>
-                <p>From Dragons to Knights, heroes to villains, we got what you need!</p>
-                <p>For the convenience of our users, our products display in the language and currency of your current demesne.</p>
-                <p>Please note: it is not always possible to restock some items due to the nature of our business. When things go - they are gone!</p>
-            </span>
-        </div>
+      <span class="fontface">
+        <p>Earth's Most Customer-Centric Company, The Dragon&rsquo;s Hoard is a treasure trove of products from around the galaxy.</p>
+        <p>Based in Gallifrey, our brave team of adventurers traverse both space and time to bring you items both magical and mundane.</p>
+        <p>It&rsquo;s best not to ask when the Hoard was established. Little things like time tend to be a bit...flexible.</p>
+        <p>From Dragons to Knights, heroes to villains, we got what you need!</p>
+        <p>For the convenience of our users, our products display in the language and currency of your current demesne.</p>
+        <p>Please note: it is not always possible to restock some items due to the nature of our business. When things go - they are gone!</p>
+      </span>
     </div>
-    <div id="homeProducts">
-        <br />
-        @Html.Partial("_ProductListView", Model)
-    </div>
+  </div>
+  <div id="homeProducts">
+    <br />
+    @Html.Partial("_ProductListView", Model)
+  </div>
 </div>

@@ -17,7 +17,7 @@ else
   <div id="basketContainer">
     <div id="productsContainer">
       <div>
-        @Html.Partial("_BasketProductListView",Model)
+        @Html.Partial("_BasketProductListView", Model)
       </div>
     </div>
     <div id="buttons">
@@ -26,11 +26,12 @@ else
           Total: £ @ViewBag.Total
         </h4>
       </div>
-      <button class="buttonsize">Update Basket
-      </button>
+      @using (Html.BeginForm("EmptyBasket", "Basket"))
+      {
+        <input type="submit" class="buttonsize" value="Empty Basket" />
+      }
       <br id="buttonBreak" />
-      <button class="buttonsize" onclick="location.href='ConfirmationPage'">Checkout
-      </button>
+      <button class="buttonsize" onclick="location.href='ConfirmationPage'">Checkout</button>
     </div>
   </div>
 

@@ -21,9 +21,14 @@ namespace EcommerceProject.Website.Controllers
       basket = factory.CreateChannel();
     }
 
+    public BasketController(IBasket Basket)
+    {
+      basket = Basket;
+    }
+
     // GET: Basket
     public ActionResult Index()
-    {
+    {      
       GetBasketProducts();
       ViewBag.Total = basket.Total();
       return View(ProductsInBasket);
@@ -45,9 +50,10 @@ namespace EcommerceProject.Website.Controllers
       ProductsInBasket = basket.GetBasket();
     }
 
-    public PartialViewResult ShowBasketProducts()
+    public void EmptyBasket()
     {
-      return PartialView("_ProductListView", ProductsInBasket);
+      basket.EmptyBasket();
+      Response.Redirect("~/Basket/Index");
     }
   }
 }

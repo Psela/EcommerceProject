@@ -15,7 +15,7 @@ namespace EcommerceProject.Test
     HomeController homeController;
     Mock<IDataRetrieverService> mockDbReader;
     Mock<IBasket> mockBasketReader;
-    ProductController productController;
+    BasketController basketController;
 
     [TestInitialize]
     public void Setup()
@@ -27,20 +27,8 @@ namespace EcommerceProject.Test
       mockBasketReader = new Mock<IBasket>();
       mockBasketReader.Setup(x => x.AddToBasket(It.IsAny<ProductData>(), 1));
       homeController = new HomeController(mockDbReader.Object);
-      productController = new ProductController(mockDbReader.Object, mockBasketReader.Object);
+      basketController= new BasketController(mockBasketReader.Object);
     }
-
-    //[TestMethod]
-    //public void Test_HomeControllerHasIndex()
-    //{
-    //  // Arrange
-
-    //  // Act
-    //  ViewResult result = controller.Index() as ViewResult;
-
-    //  // Assert
-    //  Assert.IsNotNull(result);
-    //}
 
     [TestMethod]
     public void Test_HomeController_SearchProducts_CallsUponSearchData_ExactlyOnce_WhenCalled()
@@ -66,17 +54,17 @@ namespace EcommerceProject.Test
       mockDbReader.Verify(x => x.ReadData(), Times.Once);
     }
 
-    //[TestMethod]
-    //public void Test_ProductController_AddToBasket_CallsAddToBasket_ExactlyOnce()
-    //{
-    //  //Arrange
-    //  ProductData product1 = new ProductData();
+    [TestMethod]
+    public void Test_BasketController_GetBasketProducts_CallsUponGetBasket_ExactlyOnce_WhenCalled()
+    {
+      //Arrange
 
-    //  //Act
-    //  productController.AddToBasket(product1);
+      //Act
+      basketController.GetBasketProducts();
 
-    //  //Assert
-    //  mockDbReader.Verify(x => x.AddToBasket(It.IsAny<ProductData>(), 1));
-    //}
+      //Assert
+      mockBasketReader.Verify(x => x.GetBasket(), Times.Once);
+
+    }
   }
 }
